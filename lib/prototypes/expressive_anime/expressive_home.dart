@@ -734,7 +734,7 @@ class _WatchingCardState extends State<WatchingCard> {
                                 child: LinearProgressIndicator(
                                   value: progressFraction,
                                   backgroundColor: Colors.white,
-                                  color: Colors.black,
+                                  color: shadowColor,
                                   minHeight: 12,
                                 ),
                               ),
@@ -755,7 +755,14 @@ class _WatchingCardState extends State<WatchingCard> {
                                 numberOfParticles: 10,
                                 maxBlastForce: 5,
                                 minBlastForce: 2,
-                                colors: const [Colors.black, Colors.grey],
+                                colors: const [
+                                  Colors.red,
+                                  Colors.blue,
+                                  Colors.green,
+                                  Colors.yellow,
+                                  Colors.purple,
+                                  Colors.orange,
+                                ],
                               ),
                               Material(
                                 color: Colors.transparent,
