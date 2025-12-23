@@ -11,6 +11,7 @@ class WatchingCard extends StatefulWidget {
   final VoidCallback onIncrement;
   final double? width;
   final double? height;
+  final String? heroPrefix;
 
   const WatchingCard({
     super.key,
@@ -19,6 +20,7 @@ class WatchingCard extends StatefulWidget {
     required this.onIncrement,
     this.width,
     this.height,
+    this.heroPrefix,
   });
 
   @override
@@ -92,7 +94,7 @@ class _WatchingCardState extends State<WatchingCard> {
                 ),
               ),
               child: Hero(
-                tag: 'watching_${widget.entry.id}',
+                tag: '${widget.heroPrefix ?? 'watching'}_${widget.entry.id}',
                 child: SizedBox(
                   width: 100,
                   child: ExpressiveImage(

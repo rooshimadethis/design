@@ -133,6 +133,7 @@ class _LibraryPageState extends State<LibraryPage> {
 
     if (listName == 'Watching' || listName == 'Current') {
       return ListView.builder(
+        key: PageStorageKey<String>('library_list_$listName'),
         padding: const EdgeInsets.all(24),
         itemCount: entries.length,
         itemBuilder: (context, index) {
@@ -149,6 +150,7 @@ class _LibraryPageState extends State<LibraryPage> {
                 WatchingCard(
                       entry: entry,
                       progress: entry.progress,
+                      heroPrefix: 'library',
                       onIncrement: () {},
                       width: double.infinity,
                       height: 140,
@@ -163,6 +165,7 @@ class _LibraryPageState extends State<LibraryPage> {
       );
     }
     return GridView.builder(
+      key: PageStorageKey<String>('library_grid_$listName'),
       padding: const EdgeInsets.all(24),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,

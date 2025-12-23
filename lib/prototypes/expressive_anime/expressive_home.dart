@@ -223,6 +223,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                                 WatchingCard(
                                       entry: entry,
                                       progress: progress,
+                                      heroPrefix: 'home',
                                       onIncrement: () => _incrementProgress(
                                         entry.id,
                                         progress,
