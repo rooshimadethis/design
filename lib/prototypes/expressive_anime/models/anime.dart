@@ -48,6 +48,10 @@ class Anime {
   final List<Character> characters;
   final List<Studio> studios;
   final List<Anime> recommendations;
+  final String? season;
+  final int? seasonYear;
+  final String? status;
+  final List<RelatedMedia> relations;
 
   Anime({
     required this.id,
@@ -62,6 +66,10 @@ class Anime {
     this.characters = const [],
     this.studios = const [],
     this.recommendations = const [],
+    this.season,
+    this.seasonYear,
+    this.status,
+    this.relations = const [],
   });
 
   factory Anime.fromJson(Map<String, dynamic> json) {
@@ -83,6 +91,9 @@ class Anime {
       genres: json['genres'] != null ? List<String>.from(json['genres']) : [],
       color: coverObj['color'],
       description: json['description'],
+      season: json['season'],
+      seasonYear: json['seasonYear'],
+      status: json['status'],
       characters: json['characters'] != null
           ? (json['characters']['edges'] as List)
                 .map((e) => Character.fromEdge(e))
@@ -96,6 +107,11 @@ class Anime {
       recommendations: json['recommendations'] != null
           ? (json['recommendations']['nodes'] as List)
                 .map((e) => Anime.fromRecommendation(e['mediaRecommendation']))
+                .toList()
+          : [],
+      relations: json['relations'] != null
+          ? (json['relations']['edges'] as List)
+                .map((e) => RelatedMedia.fromJson(e))
                 .toList()
           : [],
     );
@@ -113,6 +129,20 @@ class Anime {
           'Unknown',
       coverImage:
           coverObj['extraLarge'] ?? coverObj['large'] ?? coverObj['medium'],
+    );
+  }
+}
+
+class RelatedMedia {
+  final String relationType;
+  final Anime anime;
+
+  RelatedMedia({required this.relationType, required this.anime});
+
+  factory RelatedMedia.fromJson(Map<String, dynamic> json) {
+    return RelatedMedia(
+      relationType: json['relationType'] ?? 'UNKNOWN',
+      anime: Anime.fromJson(json['node']),
     );
   }
 }

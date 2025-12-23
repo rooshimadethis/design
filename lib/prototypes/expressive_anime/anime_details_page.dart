@@ -155,6 +155,19 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                 spacing: 8,
                                 runSpacing: 8,
                                 children: [
+                                  if (anime.season != null &&
+                                      anime.seasonYear != null)
+                                    _buildMetadataChip(
+                                      context,
+                                      '${anime.season} ${anime.seasonYear}',
+                                      Icons.calendar_today_rounded,
+                                    ),
+                                  if (anime.status != null)
+                                    _buildMetadataChip(
+                                      context,
+                                      anime.status!,
+                                      Icons.info_outline_rounded,
+                                    ),
                                   if (anime.studios.isNotEmpty)
                                     _buildMetadataChip(
                                       context,
@@ -299,7 +312,119 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                             ),
                           ),
                         ],
-                        // Recommendations Section
+                        // Relations Section
+                        if (anime.relations.isNotEmpty) ...[
+                          const SizedBox(height: 32),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 24.0,
+                            ),
+                            child: Text(
+                              'Relations',
+                              style: Theme.of(context).textTheme.titleLarge
+                                  ?.copyWith(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          SizedBox(
+                            height: 220,
+                            child: ListView.separated(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 24,
+                              ),
+                              scrollDirection: Axis.horizontal,
+                              itemCount: anime.relations.length,
+                              separatorBuilder: (_, __) =>
+                                  const SizedBox(width: 16),
+                              itemBuilder: (context, index) {
+                                final relation = anime.relations[index];
+                                final relAnime = relation.anime;
+                                return GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            AnimeDetailsPage(anime: relAnime),
+                                      ),
+                                    );
+                                  },
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Stack(
+                                        children: [
+                                          Container(
+                                            width: 100,
+                                            height: 140,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                              image: DecorationImage(
+                                                image: NetworkImage(
+                                                  relAnime.coverImage ?? '',
+                                                ),
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            top: 6,
+                                            left: 6,
+                                            child: Container(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                    horizontal: 6,
+                                                    vertical: 3,
+                                                  ),
+                                              decoration: BoxDecoration(
+                                                color: Colors.black.withOpacity(
+                                                  0.6,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(6),
+                                              ),
+                                              child: Text(
+                                                relation.relationType
+                                                    .replaceAll('_', ' '),
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .labelSmall
+                                                    ?.copyWith(
+                                                      color: Colors.white,
+                                                      fontSize: 9,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      letterSpacing: 0.5,
+                                                    ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 8),
+                                      SizedBox(
+                                        width: 100,
+                                        child: Text(
+                                          relAnime.title,
+                                          maxLines: 3,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .labelSmall
+                                              ?.copyWith(
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ], // Recommendations Section
                         if (anime.recommendations.isNotEmpty) ...[
                           const SizedBox(height: 32),
                           Padding(
