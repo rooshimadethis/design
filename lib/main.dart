@@ -1,0 +1,73 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+// Import your prototypes here (comment out when not in use to avoid unused import warnings if you want)
+import 'prototypes/anime_cyberpunk/main_screen.dart';
+
+void main() {
+  runApp(const DesignPlaygroundApp());
+}
+
+class DesignPlaygroundApp extends StatelessWidget {
+  const DesignPlaygroundApp({super.key});
+
+  /// --------------------------------------------------------------------------
+  /// 🛠️ DEV MODE: DIRECT BOOT
+  /// Assign a widget here to skip the menu and boot directly into a prototype.
+  /// Example: static Widget? activePrototype = CyberpunkMain();
+  /// --------------------------------------------------------------------------
+  static Widget? activePrototype = const CyberpunkMain();
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Design Playground',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        textTheme: GoogleFonts.interTextTheme(),
+      ),
+      // If activePrototype is set, boot it. Otherwise show the Menu.
+      home: activePrototype ?? const PlaygroundMenu(),
+    );
+  }
+}
+
+class PlaygroundMenu extends StatelessWidget {
+  const PlaygroundMenu({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Design Playground'), elevation: 2),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          _buildSectionHeader(context, 'Prototypes'),
+          // TODO: Add list items here as we create them
+          const Card(
+            child: ListTile(
+              leading: Icon(Icons.hub),
+              title: Text('No prototypes yet'),
+              subtitle: Text('Create a new folder in lib/prototypes/'),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSectionHeader(BuildContext context, String title) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Text(
+        title,
+        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+          fontWeight: FontWeight.bold,
+          color: Theme.of(context).colorScheme.primary,
+        ),
+      ),
+    );
+  }
+}
