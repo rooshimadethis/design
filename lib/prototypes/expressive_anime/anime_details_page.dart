@@ -48,12 +48,10 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
           return CustomScrollView(
             slivers: [
               SliverAppBar(
-                expandedHeight: 300,
+                expandedHeight: 300, // Increased height for the covering effect
                 pinned: true,
                 stretch: true,
-                backgroundColor: Colors
-                    .black, // Force black header in collapsed state? Or use primary.
-                // Let's use black for maximum contrast manga feel.
+                backgroundColor: Colors.black,
                 leading: Container(
                   margin: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
@@ -79,17 +77,27 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                   ],
                   background: Stack(
                     fit: StackFit.expand,
+                    alignment: Alignment.bottomCenter,
                     children: [
+                      // Banner Background
                       if (anime.bannerImage != null || anime.coverImage != null)
-                        Hero(
-                          tag: 'anime_cover_${anime.id}',
-                          child: ColorFiltered(
-                            // Optional: Desaturate for manga feel? maybe not, covers are colorful.
-                            // colorFilter: const ColorFilter.mode(Colors.grey, BlendMode.saturation),
-                            colorFilter: const ColorFilter.mode(
-                              Colors.transparent,
-                              BlendMode.multiply,
-                            ),
+                        ColorFiltered(
+                          colorFilter: const ColorFilter.mode(
+                            Colors.grey, // Desaturate banner to make cover pop
+                            BlendMode.saturation,
+                          ),
+                          child: ShaderMask(
+                            shaderCallback: (rect) {
+                              return LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Colors.black.withValues(alpha: 0.3),
+                                  Colors.black.withValues(alpha: 0.8),
+                                ],
+                              ).createShader(rect);
+                            },
+                            blendMode: BlendMode.srcOver,
                             child: Image.network(
                               anime.bannerImage ?? anime.coverImage!,
                               fit: BoxFit.cover,
@@ -98,11 +106,40 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                         )
                       else
                         Container(color: Colors.black),
+
+                      // Decoration / Border
                       const DecoratedBox(
                         decoration: BoxDecoration(
-                          // Manga style scanline effect or just simple border at bottom
                           border: Border(
                             bottom: BorderSide(color: Colors.black, width: 4),
+                          ),
+                        ),
+                      ),
+
+                      // Hovering Cover Image
+                      Positioned(
+                        bottom: 40,
+                        child: Hero(
+                          tag: 'anime_cover_${anime.id}',
+                          child: Container(
+                            width: 180, // Larger Poster size
+                            height: 270,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white, width: 4),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: shadowColor,
+                                  offset: const Offset(8, 8),
+                                  blurRadius: 0,
+                                ),
+                              ],
+                            ),
+                            child: Image.network(
+                              anime.coverImage ?? '',
+                              fit: BoxFit.cover,
+                              errorBuilder: (_, __, ___) =>
+                                  Container(color: Colors.grey),
+                            ),
                           ),
                         ),
                       ),
