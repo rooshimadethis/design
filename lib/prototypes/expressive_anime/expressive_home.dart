@@ -64,6 +64,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
   final TextEditingController _searchController = TextEditingController(
     text: 'naruto',
   );
+  String? _libraryInitialTab;
 
   late Future<UserProfile> _profileFuture;
   late Future<List<WatchingEntry>> _watchingFuture;
@@ -192,9 +193,16 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                   ),
                   const SizedBox(height: 32),
                   // Watching Section
+                  // Watching Section
                   _buildSectionTitle(
                     context,
                     'Continue Watching',
+                    onPressed: () {
+                      setState(() {
+                        _libraryInitialTab = 'Watching';
+                        _selectedIndex = 2;
+                      });
+                    },
                   ).animate().fadeIn(delay: 100.ms).slideX(begin: -0.2, end: 0),
                   const SizedBox(height: 16),
                   SizedBox(
@@ -237,9 +245,16 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                   ),
                   const SizedBox(height: 32),
                   // Trending Section
+                  // Trending Section
                   _buildSectionTitle(
                     context,
                     'Trending Now',
+                    onPressed: () {
+                      setState(() {
+                        _libraryInitialTab = 'Planning';
+                        _selectedIndex = 2;
+                      });
+                    },
                   ).animate().fadeIn(delay: 200.ms).slideX(begin: -0.2, end: 0),
                   const SizedBox(height: 16),
                   SizedBox(
@@ -369,7 +384,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
               ),
             ),
           ),
-          const LibraryPage(),
+          LibraryPage(initialTabName: _libraryInitialTab),
         ],
       ),
       bottomNavigationBar: Container(
@@ -400,8 +415,12 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
           child: NavigationBar(
             // height: 50,
             selectedIndex: _selectedIndex,
-            onDestinationSelected: (index) =>
-                setState(() => _selectedIndex = index),
+            onDestinationSelected: (index) => setState(() {
+              _selectedIndex = index;
+              if (index != 2) {
+                _libraryInitialTab = null;
+              }
+            }),
             elevation: 0,
             backgroundColor: Colors.white,
             indicatorColor:
@@ -429,7 +448,11 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
     );
   }
 
-  Widget _buildSectionTitle(BuildContext context, String title) {
+  Widget _buildSectionTitle(
+    BuildContext context,
+    String title, {
+    VoidCallback? onPressed,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
       child: Row(
@@ -450,7 +473,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: onPressed,
             child: Text(
               'See All >',
               style: GoogleFonts.teko(
@@ -462,6 +485,22 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildOutlinedStar(double size) {
+    return Stack(
+      children: [
+        Icon(Icons.star, size: size, color: Colors.black),
+        Icon(Icons.star_border, size: size, color: Colors.black),
+        Positioned(
+          top: 1,
+          left: 1,
+          bottom: 1,
+          right: 1,
+          child: Icon(Icons.star, size: size - 2, color: Colors.yellow),
+        ),
+      ],
     );
   }
 
@@ -537,11 +576,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Icon(
-                              Icons.star,
-                              size: 12,
-                              color: Colors.amber,
-                            ),
+                            _buildOutlinedStar(12),
                             const SizedBox(width: 4),
                             Text(
                               '${anime.averageScore}%',

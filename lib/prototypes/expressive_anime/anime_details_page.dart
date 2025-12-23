@@ -204,11 +204,7 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                       ),
                                       child: Row(
                                         children: [
-                                          const Icon(
-                                            Icons.star,
-                                            size: 18,
-                                            color: Colors.amber,
-                                          ),
+                                          _buildOutlinedStar(18),
                                           const SizedBox(width: 4),
                                           Text(
                                             '${anime.averageScore}%',
@@ -688,6 +684,22 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildOutlinedStar(double size) {
+    return Stack(
+      children: [
+        Icon(Icons.star, size: size, color: Colors.black),
+        Icon(Icons.star_border, size: size, color: Colors.black),
+        Positioned(
+          top: 1,
+          left: 1,
+          bottom: 1,
+          right: 1,
+          child: Icon(Icons.star, size: size - 2, color: Colors.yellow),
+        ),
+      ],
     );
   }
 }

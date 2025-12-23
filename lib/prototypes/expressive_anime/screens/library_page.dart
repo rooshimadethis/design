@@ -6,7 +6,8 @@ import '../anime_details_page.dart';
 import '../widgets/watching_card.dart';
 
 class LibraryPage extends StatefulWidget {
-  const LibraryPage({super.key});
+  final String? initialTabName;
+  const LibraryPage({super.key, this.initialTabName});
 
   @override
   State<LibraryPage> createState() => _LibraryPageState();
@@ -42,8 +43,18 @@ class _LibraryPageState extends State<LibraryPage> {
         final library = snapshot.data!;
         final listNames = library.keys.toList();
 
+        int initialIndex = 0;
+        if (widget.initialTabName != null) {
+          initialIndex = listNames.indexWhere(
+            (name) =>
+                name.toLowerCase() == widget.initialTabName!.toLowerCase(),
+          );
+          if (initialIndex == -1) initialIndex = 0;
+        }
+
         return DefaultTabController(
           length: listNames.length,
+          initialIndex: initialIndex,
           child: Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
@@ -223,11 +234,7 @@ class _LibraryPageState extends State<LibraryPage> {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Icon(
-                              Icons.star,
-                              size: 12,
-                              color: Colors.black,
-                            ),
+                            _buildOutlinedStar(12),
                             const SizedBox(width: 4),
                             Text(
                               '${entry.userScore}',
@@ -263,6 +270,22 @@ class _LibraryPageState extends State<LibraryPage> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildOutlinedStar(double size) {
+    return Stack(
+      children: [
+        Icon(Icons.star, size: size, color: Colors.black),
+        Icon(Icons.star_border, size: size, color: Colors.black),
+        Positioned(
+          top: 1,
+          left: 1,
+          bottom: 1,
+          right: 1,
+          child: Icon(Icons.star, size: size - 2, color: Colors.yellow),
+        ),
+      ],
     );
   }
 }
