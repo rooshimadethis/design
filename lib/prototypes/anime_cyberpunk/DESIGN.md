@@ -28,3 +28,17 @@ A futuristic, "Hacker/Cyberpunk" aesthetic. High contrast, data-dense, neon acce
 *   `google_fonts`
 *   `flutter_animate`
 *   `phosphor_flutter` (Icons)
+
+## 🚀 Feature Roadmap
+
+### Priority 1: Media Discovery & Search (Core)
+- **Advanced Search**: Genre, tags, year, season, format, status filters.
+- **Trending & Popular**: Seasonal trends and all-time popular media.
+- **Details Page**: Descriptions, countdowns, relations, studios, recommendations, and reviews.
+
+### Priority 2: User List Management (Tracking)
+- **Personal List Sync**: View Current, Planning, Completed, etc.
+- **Progress Updates**: Episode increments, status changes, and scoring.
+
+### Priority 3: Global Discovery (Future)
+- **Global Activity Feed**: Community-wide watching updates.

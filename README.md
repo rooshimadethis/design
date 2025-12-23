@@ -1,16 +1,13 @@
-# flutter_design_playground
+# Flutter Design Playground
 
-A new Flutter project.
+A monolithic sandbox for rapid UI prototyping and design iterations.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- **Isolated Modules**: Each design (e.g., `prototypes/anime_cyberpunk`) is self-contained for easy export.
+- **Zero-Friction Dev**: `main.dart` can be configured to boot directly into a specific prototype.
+- **Mobile-First**: Optimized for mobile, with graceful scaling for desktop.
 
-A few resources to get you started if this is your first Flutter project:
+## Usage
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Check `lib/main.dart` to toggle the active prototype or view the index of all designs.

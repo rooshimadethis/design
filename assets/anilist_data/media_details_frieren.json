@@ -1,0 +1,347 @@
+{
+  "data": {
+    "Media": {
+      "id": 154587,
+      "title": {
+        "romaji": "Sousou no Frieren",
+        "english": "Frieren: Beyond Journey\u2019s End",
+        "native": "\u846c\u9001\u306e\u30d5\u30ea\u30fc\u30ec\u30f3"
+      },
+      "coverImage": {
+        "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx154587-qQTzQnEJJ3oB.jpg"
+      },
+      "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/154587-ivXNJ23SM1xB.jpg",
+      "description": "The adventure is over but life goes on for an elf mage just beginning to learn what living is all about. Elf mage Frieren and her courageous fellow adventurers have defeated the Demon King and brought peace to the land. But Frieren will long outlive the rest of her former party. How will she come to understand what life means to the people around her? Decades after their victory, the funeral of one her friends confronts Frieren with her own near immortality. Frieren sets out to fulfill the last wishes of her comrades and finds herself beginning a new adventure\u2026\n<br><br>\n(Source: Crunchyroll)",
+      "averageScore": 91,
+      "popularity": 362302,
+      "favourites": 43458,
+      "episodes": 28,
+      "duration": 24,
+      "status": "FINISHED",
+      "startDate": {
+        "year": 2023,
+        "month": 9,
+        "day": 29
+      },
+      "endDate": {
+        "year": 2024,
+        "month": 3,
+        "day": 22
+      },
+      "season": "FALL",
+      "seasonYear": 2023,
+      "studios": {
+        "nodes": [
+          {
+            "id": 11,
+            "name": "MADHOUSE"
+          }
+        ]
+      },
+      "genres": [
+        "Adventure",
+        "Drama",
+        "Fantasy"
+      ],
+      "tags": [
+        {
+          "id": 1310,
+          "name": "Travel",
+          "rank": 96,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 29,
+          "name": "Magic",
+          "rank": 94,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 598,
+          "name": "Elf",
+          "rank": 91,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 391,
+          "name": "Philosophy",
+          "rank": 85,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 153,
+          "name": "Time Skip",
+          "rank": 83,
+          "isMediaSpoiler": true
+        },
+        {
+          "id": 1752,
+          "name": "Medieval",
+          "rank": 83,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 98,
+          "name": "Female Protagonist",
+          "rank": 82,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 1277,
+          "name": "Found Family",
+          "rank": 77,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 81,
+          "name": "Iyashikei",
+          "rank": 75,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 779,
+          "name": "Kuudere",
+          "rank": 74,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 15,
+          "name": "Demons",
+          "rank": 70,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 198,
+          "name": "Foreign",
+          "rank": 70,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 1052,
+          "name": "Adoption",
+          "rank": 60,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 250,
+          "name": "Rural",
+          "rank": 59,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 1045,
+          "name": "Heterosexual",
+          "rank": 56,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 193,
+          "name": "Episodic",
+          "rank": 56,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 1681,
+          "name": "Aromantic",
+          "rank": 54,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 604,
+          "name": "Dungeon",
+          "rank": 53,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 56,
+          "name": "Shounen",
+          "rank": 53,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 683,
+          "name": "Rotoscoping",
+          "rank": 45,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 1091,
+          "name": "Religion",
+          "rank": 44,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 142,
+          "name": "Food",
+          "rank": 40,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 1616,
+          "name": "Snowscape",
+          "rank": 40,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 224,
+          "name": "Dragons",
+          "rank": 37,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 1342,
+          "name": "Clone",
+          "rank": 34,
+          "isMediaSpoiler": true
+        },
+        {
+          "id": 1525,
+          "name": "Horticulture",
+          "rank": 33,
+          "isMediaSpoiler": false
+        },
+        {
+          "id": 90,
+          "name": "CGI",
+          "rank": 20,
+          "isMediaSpoiler": false
+        }
+      ],
+      "recommendations": {
+        "nodes": [
+          {
+            "mediaRecommendation": {
+              "id": 21827,
+              "title": {
+                "romaji": "Violet Evergarden"
+              },
+              "coverImage": {
+                "medium": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/small/bx21827-ubzq619ZA2E9.png"
+              }
+            }
+          },
+          {
+            "mediaRecommendation": {
+              "id": 153518,
+              "title": {
+                "romaji": "Dungeon Meshi"
+              },
+              "coverImage": {
+                "medium": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/small/bx153518-IVXPDY5ph3kO.jpg"
+              }
+            }
+          },
+          {
+            "mediaRecommendation": {
+              "id": 112609,
+              "title": {
+                "romaji": "Majo no Tabitabi"
+              },
+              "coverImage": {
+                "medium": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/small/bx112609-hBCbnYlEHluz.jpg"
+              }
+            }
+          },
+          {
+            "mediaRecommendation": {
+              "id": 114535,
+              "title": {
+                "romaji": "Fumetsu no Anata e"
+              },
+              "coverImage": {
+                "medium": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/small/bx114535-y3NnjexcqKG1.jpg"
+              }
+            }
+          },
+          {
+            "mediaRecommendation": {
+              "id": 457,
+              "title": {
+                "romaji": "Mushishi"
+              },
+              "coverImage": {
+                "medium": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/small/bx457-l6cTtNgI9Bi6.png"
+              }
+            }
+          }
+        ]
+      },
+      "characters": {
+        "edges": [
+          {
+            "role": "MAIN",
+            "node": {
+              "id": 176754,
+              "name": {
+                "full": "Frieren"
+              },
+              "image": {
+                "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b176754-PCnpqIOkjhFk.png"
+              }
+            }
+          },
+          {
+            "role": "MAIN",
+            "node": {
+              "id": 184313,
+              "name": {
+                "full": "Stark"
+              },
+              "image": {
+                "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b184313-CQl6GSt4RSny.jpg"
+              }
+            }
+          },
+          {
+            "role": "MAIN",
+            "node": {
+              "id": 183965,
+              "name": {
+                "full": "Fern"
+              },
+              "image": {
+                "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b183965-uGFohBjlFoTp.png"
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "id": 318148,
+              "name": {
+                "full": "Akuma no Ko"
+              },
+              "image": {
+                "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b318148-u49X2U8E5jS6.png"
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "id": 246058,
+              "name": {
+                "full": "Denken"
+              },
+              "image": {
+                "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b246058-FOtuSIUBQ4WJ.png"
+              }
+            }
+          },
+          {
+            "role": "SUPPORTING",
+            "node": {
+              "id": 321719,
+              "name": {
+                "full": "Land"
+              },
+              "image": {
+                "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b321719-GUHhBOb81K9H.png"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

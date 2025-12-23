@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // Import your prototypes here (comment out when not in use to avoid unused import warnings if you want)
-import 'prototypes/anime_cyberpunk/main_screen.dart';
+// import 'prototypes/anime_cyberpunk/main_screen.dart';
+import 'prototypes/expressive_anime/expressive_home.dart';
 
 void main() {
   runApp(const DesignPlaygroundApp());
@@ -16,7 +17,7 @@ class DesignPlaygroundApp extends StatelessWidget {
   /// Assign a widget here to skip the menu and boot directly into a prototype.
   /// Example: static Widget? activePrototype = CyberpunkMain();
   /// --------------------------------------------------------------------------
-  static Widget? activePrototype = const CyberpunkMain();
+  static Widget? activePrototype = const ExpressiveApp();
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +47,17 @@ class PlaygroundMenu extends StatelessWidget {
         children: [
           _buildSectionHeader(context, 'Prototypes'),
           // TODO: Add list items here as we create them
+          ListTile(
+            leading: const Icon(Icons.auto_awesome),
+            title: const Text('Expressive Anime'),
+            subtitle: const Text('Fun, bouncy, and vibrant'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const ExpressiveApp()),
+            ),
+          ),
+          const Divider(),
+          _buildSectionHeader(context, "Older Prototypes"),
           const Card(
             child: ListTile(
               leading: Icon(Icons.hub),
