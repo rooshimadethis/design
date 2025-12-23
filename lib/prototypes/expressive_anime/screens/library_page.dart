@@ -5,6 +5,7 @@ import '../services/mock_data_service.dart';
 import '../anime_details_page.dart';
 import '../widgets/watching_card.dart';
 import '../widgets/expressive_image.dart';
+import '../widgets/anime_card_skeleton.dart';
 
 class LibraryPage extends StatefulWidget {
   final String? initialTabName;
@@ -29,8 +30,30 @@ class _LibraryPageState extends State<LibraryPage> {
       future: _libraryFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Scaffold(
-            body: Center(child: CircularProgressIndicator(color: Colors.black)),
+          return Scaffold(
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              elevation: 0,
+              title: Container(
+                width: 200,
+                height: 32,
+                color: Colors.grey[300],
+              ).animate(onPlay: (c) => c.repeat()).shimmer(),
+            ),
+            body: GridView.builder(
+              padding: const EdgeInsets.all(24),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 24,
+                crossAxisSpacing: 24,
+                childAspectRatio: 0.65,
+              ),
+              itemCount: 6,
+              itemBuilder: (context, index) => const AnimeCardSkeleton()
+                  .animate(delay: (index * 100).ms)
+                  .fadeIn(),
+            ),
           );
         }
 
@@ -113,20 +136,23 @@ class _LibraryPageState extends State<LibraryPage> {
         itemBuilder: (context, index) {
           final entry = entries[index];
           return Padding(
-                padding: const EdgeInsets.only(bottom: 16),
-                child: WatchingCard(
-                  entry: entry,
-                  progress: entry.progress,
-                  onIncrement: () {
-                    // In a real app, this would update state/API
-                  },
-                  width: double.infinity,
-                  height: 140,
-                ),
-              )
-              .animate(delay: (index * 100).ms)
-              .fadeIn()
-              .slideX(begin: 0.1, end: 0);
+            padding: const EdgeInsets.only(bottom: 16),
+            child: Stack(
+              children: [
+                const AnimeCardSkeleton(isHorizontal: true),
+                WatchingCard(
+                      entry: entry,
+                      progress: entry.progress,
+                      onIncrement: () {},
+                      width: double.infinity,
+                      height: 140,
+                    )
+                    .animate(delay: (index < 6 ? index * 100 : 0).ms)
+                    .fadeIn()
+                    .slideX(begin: 0.1, end: 0),
+              ],
+            ),
+          );
         },
       );
     }
@@ -141,10 +167,15 @@ class _LibraryPageState extends State<LibraryPage> {
       itemCount: entries.length,
       itemBuilder: (context, index) {
         final entry = entries[index];
-        return _buildLibraryCard(context, entry)
-            .animate(delay: (index * 50).ms)
-            .fadeIn()
-            .scale(begin: const Offset(0.9, 0.9), end: const Offset(1, 1));
+        return Stack(
+          children: [
+            const AnimeCardSkeleton(),
+            _buildLibraryCard(context, entry)
+                .animate(delay: (index < 8 ? index * 50 : 0).ms)
+                .fadeIn()
+                .scale(begin: const Offset(0.9, 0.9), end: const Offset(1, 1)),
+          ],
+        );
       },
     );
   }

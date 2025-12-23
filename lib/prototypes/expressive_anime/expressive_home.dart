@@ -640,7 +640,20 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                               ),
                           itemCount: animeList.length,
                           itemBuilder: (context, index) {
-                            return _buildAnimeCard(context, animeList[index]);
+                            return Stack(
+                              children: [
+                                const AnimeCardSkeleton(),
+                                _buildAnimeCard(context, animeList[index])
+                                    .animate(
+                                      delay: (index < 10 ? index * 100 : 0).ms,
+                                    )
+                                    .fadeIn()
+                                    .scale(
+                                      begin: const Offset(0.9, 0.9),
+                                      end: const Offset(1, 1),
+                                    ),
+                              ],
+                            );
                           },
                         );
                       },
