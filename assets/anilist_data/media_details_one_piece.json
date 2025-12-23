@@ -1,0 +1,1856 @@
+{
+  "data": {
+    "Media": {
+      "id": 21,
+      "title": {
+        "userPreferred": "ONE PIECE",
+        "english": "ONE PIECE"
+      },
+      "coverImage": {
+        "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21-ELSYx3yMPcKM.jpg",
+        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx21-ELSYx3yMPcKM.jpg",
+        "color": "#e49335"
+      },
+      "type": "ANIME",
+      "format": "TV",
+      "status": "RELEASING",
+      "averageScore": 88,
+      "episodes": null,
+      "isAdult": false,
+      "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21-wf37VakJmZqs.jpg",
+      "description": "Gold Roger was known as the Pirate King, the strongest and most infamous being to have sailed the Grand Line. The capture and death of Roger by the World Government brought a change throughout the world. His last words before his death revealed the location of the greatest treasure in the world, One Piece. It was this revelation that brought about the Grand Age of Pirates, men who dreamed of finding One Piece (which promises an unlimited amount of riches and fame), and quite possibly the most coveted of titles for the person who found it, the title of the Pirate King.<br><br>\nEnter Monkey D. Luffy, a 17-year-old boy that defies your standard definition of a pirate. Rather than the popular persona of a wicked, hardened, toothless pirate who ransacks villages for fun, Luffy\u2019s reason for being a pirate is one of pure wonder; the thought of an exciting adventure and meeting new and intriguing people, along with finding One Piece, are his reasons of becoming a pirate. Following in the footsteps of his childhood hero, Luffy and his crew travel across the Grand Line, experiencing crazy adventures, unveiling dark mysteries and battling strong enemies, all in order to reach One Piece.<br><br>\n<b>*This includes following special episodes:</b><br>\n- Chopperman to the Rescue! Protect the TV Station by the Shore! (Episode 336)<br>\n- The Strongest Tag-Team! Luffy and Toriko's Hard Struggle! (Episode 492)<br>\n- Team Formation! Save Chopper (Episode 542)<br>\n- History's Strongest Collaboration vs. Glutton of the Sea (Episode 590)<br>\n- 20th Anniversary! Special Romance Dawn (Episode 907)",
+      "startDate": {
+        "year": 1999,
+        "month": 10,
+        "day": 20
+      },
+      "season": "FALL",
+      "seasonYear": 1999,
+      "studios": {
+        "nodes": [
+          {
+            "name": "Toei Animation"
+          }
+        ]
+      },
+      "streamingEpisodes": [
+        {
+          "title": "Episode 130 - Scent of Danger! the Seventh Member Is Nico Robin!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/d80b3fbce742e6deb4d2caf37d08ca6e1395451246_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G8WUNGWKG/scent-of-danger-the-seventh-member-is-nico-robin"
+        },
+        {
+          "title": "Episode 129 - It All Started On That Day! Vivi Tells the Story of Her Adventure!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/7952451fa68d1dabaac8ad83488c4eaf1395451132_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GPWUKZ53G/it-all-started-on-that-day-vivi-tells-the-story-of-her-adventure"
+        },
+        {
+          "title": "Episode 128 - The Pirates' Banquet and Operation Escape from Alabasta!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/c4e3a81d230bf89f3e88dd654978d83c1395451834_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G31UXW35G/the-pirates-banquet-and-operation-escape-from-alabasta"
+        },
+        {
+          "title": "Episode 127 - A Farewell to Arms! Pirates and Different Ideas of Justice!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/e589e3221145a17bacdcc102e8181efc1395451652_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GK9U3M495/a-farewell-to-arms-pirates-and-different-ideas-of-justice"
+        },
+        {
+          "title": "Episode 126 - I Will Surpass You! Rain Falls in Alabasta!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/3796f820fc47a1042253a73bee0fcd381395450881_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GN7UD278G/i-will-surpass-you-rain-falls-in-alabasta"
+        },
+        {
+          "title": "Episode 125 - Magnificent Wings! My Name Is Pell, Guardian Deity of the Country!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/6410233fd30b326746e6a397367aa70d1395451607_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G14U49EKX/magnificent-wings-my-name-is-pell-guardian-deity-of-the-country"
+        },
+        {
+          "title": "Episode 124 - The Nightmare Draws Near! This Is the Sand-Sand Clan's Secret Base!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/f37c688368d79ad91fce89f59f283da31395450861_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GX9UQJ7VN/the-nightmare-draws-near-this-is-the-sand-sand-clans-secret-base"
+        },
+        {
+          "title": "Episode 123 - That Looks Croc-ish! Luffy, Run to the Royal Tomb!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/32d07c1c15b42a9a6cbb178d96bf4de01395451444_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G7PU4MVGN/that-looks-croc-ish-luffy-run-to-the-royal-tomb"
+        },
+        {
+          "title": "Episode 122 - Sand Croc and Water Luffy! the Second Round of the Duel!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/612860faccd7ffecbfac9a41129034481395450747_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GG1U24EK2/sand-croc-and-water-luffy-the-second-round-of-the-duel"
+        },
+        {
+          "title": "Episode 121 - Where Vivi's Voice Gets Heard! the Hero Descends!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/063736e62a3deb2031bb32c4d883d1951395452272_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G7PU4MVEW/where-vivis-voice-gets-heard-the-hero-descends"
+        },
+        {
+          "title": "Episode 120 - The Battle Is Over! Koza Raises the White Flag!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/f486bf9d01a1af98b5d5c27c85b4b9781395451606_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GWDU8EK43/the-battle-is-over-koza-raises-the-white-flag"
+        },
+        {
+          "title": "Episode 119 - Secret of Powerful Swordplay! Ability to Cut Steel and the Rhythm Things Have!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/554423a0e3c8e19f86de5d674199fc9c1395450686_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GQJUGV9XN/secret-of-powerful-swordplay-ability-to-cut-steel-and-the-rhythm-things-have"
+        },
+        {
+          "title": "Episode 118 - Secret Passed Down in the Royal Family! the Ancient Weapon Pluton!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/b6888351895dc46598deb78d8d0b708c1395450706_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GZ7UV2X5E/secret-passed-down-in-the-royal-family-the-ancient-weapon-pluton"
+        },
+        {
+          "title": "Episode 117 - Nami's Cyclone Advisory! Clima Takt Burst!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/70d35cea8fe5171ed857079dffcb607b1395451231_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G2XU043PD/namis-cyclone-advisory-clima-takt-burst"
+        },
+        {
+          "title": "Episode 116 - Transformed Into Nami! Bon Clay's Rapid-Fire Ballet Kenpo!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/0e8717d8adbd37652ffba134e1f6198c1395450676_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G31UXW3JG/transformed-into-nami-bon-clays-rapid-fire-ballet-kenpo"
+        },
+        {
+          "title": "Episode 115 - Big Opening Day Today! the Copy-Copy Montage!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/2a8217c029ef1e314dcf66f3c89bcb821395450639_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GMKUXQ4D7/big-opening-day-today-the-copy-copy-montage"
+        },
+        {
+          "title": "Episode 114 - Sworn On a Friend's Dream! the Battle of Molehill, Block 4!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/98a2ae43f977f28a41a6f455802a79241395451119_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GN7UD273G/sworn-on-a-friends-dream-the-battle-of-molehill-block-4"
+        },
+        {
+          "title": "Episode 113 - Alubarna Grieves! the Fierce Captain Karoo!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/4dc9487a227cc4a0bda09fbbf68ea38b1395450635_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G14U49EZX/alubarna-grieves-the-fierce-captain-karoo"
+        },
+        {
+          "title": "Episode 112 - Rebel Army Vs. Royal Army! Showdown at Alubarna!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/c2b6d2b272d1e4540c281948a0333f741395450563_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GEVUZXGMP/rebel-army-vs-royal-army-showdown-at-alubarna"
+        },
+        {
+          "title": "Episode 111 - Dash for a Miracle! Alabasta Animal Land!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/187975dcc98f37dcba03d23f32345dcf1395451423_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G9DUE5PVK/dash-for-a-miracle-alabasta-animal-land"
+        },
+        {
+          "title": "Episode 110 - Merciless Mortal Combat! Luffy Vs. Crocodile!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/26ac62cb682591b7e9cc06a1e9075ba41395450537_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G7PU4MVNN/merciless-mortal-combat-luffy-vs-crocodile"
+        },
+        {
+          "title": "Episode 109 - The Key to a Great Comeback Escape! the Wax-Wax Ball!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/c21afad4c00c46d43a6f0c65a84435771395450536_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G0DUND0EM/the-key-to-a-great-comeback-escape-the-wax-wax-ball"
+        },
+        {
+          "title": "Episode 108 - The Terrifying Banana Gators and Mr. Prince!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/1c17330dac1e21a30e26b13e3135ddd91395450541_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GWDU8EKZ3/the-terrifying-banana-gators-and-mr-prince"
+        },
+        {
+          "title": "Episode 107 - Operation Utopia Commences! the Swell of Rebellion Stirs!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/1933c458ff1c4261128cfe170394748c1395450509_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G0DUND0PQ/operation-utopia-commences-the-swell-of-rebellion-stirs"
+        },
+        {
+          "title": "Episode 106 - The Trap of Certain Defeat! Storming Raindinners!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/47d61ce83e5e02ce639a29845e22e1c21395451673_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G50UZX43N/the-trap-of-certain-defeat-storming-raindinners"
+        },
+        {
+          "title": "Episode 105 - The Battlefront of Alabasta! Rainbase, the City of Dreams!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/644ccb0288deb635cf8b1fe50fc39b891395450500_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GZ7UV2X9E/the-battlefront-of-alabasta-rainbase-the-city-of-dreams"
+        },
+        {
+          "title": "Episode 104 - Luffy Vs. Vivi! the Tearful Vow to Put Friends On the Line!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/e8f3b5cb4318a51ac688c295e12cf75e1395450520_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GG1U24E9K/luffy-vs-vivi-the-tearful-vow-to-put-friends-on-the-line"
+        },
+        {
+          "title": "Episode 103 - Spider's Cafe at 8 O'Clock! the Enemy Leaders Gather!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/a82b493a8e7a0dc459a5dbc735fb37681395450466_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GPWUKZ5MG/spiders-cafe-at-8-oclock-the-enemy-leaders-gather"
+        },
+        {
+          "title": "Episode 102 - Ruins and Lost Ways! Vivi, Her Friends and the Country's Form!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/f1dd44434fa23d9807c57affc4bc145e1395450457_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G31UXW38G/ruins-and-lost-ways-vivi-her-friends-and-the-countrys-form"
+        },
+        {
+          "title": "Episode 101 - Showdown in a Heat Haze! Ace Vs. the Gallant Scorpion!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/b099e04520e6b0240a8dd19e827e3eb21395450437_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GVWU0WZ1E/showdown-in-a-heat-haze-ace-vs-the-gallant-scorpion"
+        },
+        {
+          "title": "Episode 100 - Rebel Warrior Koza! the Dream Vowed to Vivi!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/c36f2878dd54b8b243cc4914ea98de2c1395450410_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GMKUXQ407/rebel-warrior-koza-the-dream-vowed-to-vivi"
+        },
+        {
+          "title": "Episode 99 - False Fortitude! Camu, Rebel Soldier at Heart!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/b728d30ea221f8f25c1f178f5998baa11394836376_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G0DUND0N5/false-fortitude-camu-rebel-soldier-at-heart"
+        },
+        {
+          "title": "Episode 98 - Enter the Desert Pirates! the Men Who Live Freely!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/69687d03cc46ac10a1185bc7e4b567261394836327_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G50UZX4ZE/enter-the-desert-pirates-the-men-who-live-freely"
+        },
+        {
+          "title": "Episode 97 - Adventure in the Country of Sand! the Monsters That Live in the Scorching Land!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/9db0ea6f4b2b9af270a28e265cbc717c1394836633_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GQJUGV9GD/adventure-in-the-country-of-sand-the-monsters-that-live-in-the-scorching-land"
+        },
+        {
+          "title": "Episode 96 - Erumalu, the City of Green and the Kung Fu Dugongs!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/91d1b19ac66bcbdd4a46d8313aee02d41394836278_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GD9UVQWV4/erumalu-the-city-of-green-and-the-kung-fu-dugongs"
+        },
+        {
+          "title": "Episode 95 - Ace and Luffy! Hot Emotions and Brotherly Bonds!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/319e4df12cb45d077fb6636c28ef705a1394836814_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G8WUNGWNQ/ace-and-luffy-hot-emotions-and-brotherly-bonds"
+        },
+        {
+          "title": "Episode 94 - The Heroes' Reunion! His Name Is Fire Fist Ace!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/95c51c473c159ff872b70fd66130bd311394836164_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G2XU04309/the-heroes-reunion-his-name-is-fire-fist-ace"
+        },
+        {
+          "title": "Episode 93 - Off to the Desert Kingdom! the Rain-Summoning Powder and the Rebel Army!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/4d0e70a1f7a1cfc7375e82c243a631571394835901_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GWDU8EKXZ/off-to-the-desert-kingdom-the-rain-summoning-powder-and-the-rebel-army"
+        },
+        {
+          "title": "Episode 92 - Alabasta's Hero and a Ballerina On the Ship!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/9e0b9a24e4a950b0747a91188a14ca3b1394835893_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G50UZX4PG/alabastas-hero-and-a-ballerina-on-the-ship"
+        },
+        {
+          "title": "Episode 91 - Goodbye Drum Island! I'm Going Out to Sea!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/f2af5caf9562ab077a8c8274af1238f11394835867_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GPWUKZ5K8/goodbye-drum-island-im-going-out-to-sea"
+        },
+        {
+          "title": "Episode 90 - Hiriluk's Cherry Blossoms! Miracle in the Drum Rockies!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/6b30473fd853b6e7ea326fa1599b04381394835840_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GJWU29X10/hiriluks-cherry-blossoms-miracle-in-the-drum-rockies"
+        },
+        {
+          "title": "Episode 89 - When the Kingdom's Rule Ends! the Flag of Faith Flies Forever!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/540b6e46cdd2c85139edaf125980f2631394835826_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GX9UQJ740/when-the-kingdoms-rule-ends-the-flag-of-faith-flies-forever"
+        },
+        {
+          "title": "Episode 88 - Zoan-type Devil Fruit! Chopper's Seven-form Transformation!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/ee5d997043bd977beb1a335724a5d45d1394836309_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G7PU4MVDE/zoan-type-devil-fruit-choppers-seven-form-transformation"
+        },
+        {
+          "title": "Episode 87 - Fight Wapol's Crew! the Power of the Munch Munch Fruit!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/44c292d194c5359aac1439a1acf632831394837000_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G0DUND0X5/fight-wapols-crew-the-power-of-the-munch-munch-fruit"
+        },
+        {
+          "title": "Episode 86 - Hiriluk's Cherry Blossoms and the Will That Gets Carried On!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/a2c5dc028b9f743d767effb98f333a3c1394836424_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GG1U24EV0/hiriluks-cherry-blossoms-and-the-will-that-gets-carried-on"
+        },
+        {
+          "title": "Episode 85 - An Outcast's Dream! Hiriluk the Quack!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/ad9c8880cb3ecca5f777c4d147319d501394835534_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G50UZX4DE/an-outcasts-dream-hiriluk-the-quack"
+        },
+        {
+          "title": "Episode 84 - Blue-nosed Reindeer! Chopper's Secret!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/33afe207ae1bac47033eb4c756907d741394835507_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GD9UVQWG4/blue-nosed-reindeer-choppers-secret"
+        },
+        {
+          "title": "Episode 83 - The Island Where Snow Lives! Climb the Drum Rockies!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/8146ce892dbed30e5d50027d042d5cb41394835504_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G8WUNGWPQ/the-island-where-snow-lives-climb-the-drum-rockies"
+        },
+        {
+          "title": "Episode 82 - Dalton's Resolve! Wapol's Corps Land On the Island!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/6ff2554a171090cb05390399634f23ec1394835440_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GPWUKZ5X8/daltons-resolve-wapols-corps-land-on-the-island"
+        },
+        {
+          "title": "Episode 81 - Are You Happy? the Doctor Called Witch!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/8991be1032c58a3697aee07b0bc7a0541394835517_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GMKUXQ43M/are-you-happy-the-doctor-called-witch"
+        },
+        {
+          "title": "Episode 80 - An Island Without Doctors? Adventure in a Nameless Land!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/5c640c90a9ad1d34eb7d07e2aaf543151394836363_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GJWU29X70/an-island-without-doctors-adventure-in-a-nameless-land"
+        },
+        {
+          "title": "Episode 79 - A Raid! the Tin Tyrant and Tin Plate Wapol!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/08b513f25d870df2fcf106de1a8012da1394835357_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G14U49EJ9/a-raid-the-tin-tyrant-and-tin-plate-wapol"
+        },
+        {
+          "title": "Episode 78 - Nami's Sick? Beyond the Snow Falling On the Stars!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/806b64e4ef7006152f8c6ea8a29726931394836314_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G4VUQ1X08/namis-sick-beyond-the-snow-falling-on-the-stars"
+        },
+        {
+          "title": "Episode 77 - Farewell Giant Island! Head for Alabasta!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/b44e39d2d44e88c975d325b665db34271394835413_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G9DUE5PN8/farewell-giant-island-head-for-alabasta"
+        },
+        {
+          "title": "Episode 76 - Time to Fight Back! Usopp's Quick Thinking and Fire Star!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/bdd85282f30723e2f63d1a66845f9cbc1394835379_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GEVUZXG32/time-to-fight-back-usopps-quick-thinking-and-fire-star"
+        },
+        {
+          "title": "Episode 75 - A Hex On Luffy! Colors Trap!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/e4626db18cd70c89159ace1ee9b782ab1394835335_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GG1U24E50/a-hex-on-luffy-colors-trap"
+        },
+        {
+          "title": "Episode 74 - The Devilish Candle! Tears of Regret and Tears of Anger!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/8054d33928f8e5129f12c4e3e454f2f31394836151_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GQJUGV90D/the-devilish-candle-tears-of-regret-and-tears-of-anger"
+        },
+        {
+          "title": "Episode 73 - Broggy's Bitter Tears of Victory! The Conclusion of Elbaf!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/dc594895cdb3449f251959e00b3f9bfd1394836457_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G31UXW3EX/broggys-bitter-tears-of-victory-the-conclusion-of-elbaf"
+        },
+        {
+          "title": "Episode 72 - Luffy Gets Angry! a Dirty Trick Violates the Sacred Duel!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/268239eb9946532461b897a121cfa7d71394835815_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GVWU0WZX2/luffy-gets-angry-a-dirty-trick-violates-the-sacred-duel"
+        },
+        {
+          "title": "Episode 71 - Huge Duel! the Giants Dorry and Broggy!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/d2607d6bf5162e5b15bfe7a75c9fac0d1394835138_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GMKUXQ4MM/huge-duel-the-giants-dorry-and-broggy"
+        },
+        {
+          "title": "Episode 70 - An Ancient Island! the Shadow Hiding in Little Garden!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/9b0bf7c4335ac47971e6f83921f655eb1394835098_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GK9U3M42V/an-ancient-island-the-shadow-hiding-in-little-garden"
+        },
+        {
+          "title": "Episode 69 - Coby and Helmeppo's Resolve! Vice-Admiral Garp's Parental Affection!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/5dc4a00f6feb264a6e0a28474bb375d21394835084_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GJWU29XN0/coby-and-helmeppos-resolve-vice-admiral-garps-parental-affection"
+        },
+        {
+          "title": "Episode 68 - Try Hard, Coby! Coby and Helmeppo's Struggles in the Marines!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/56cb9c7d2df01e7e9f04ed310648dbc81394835109_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G4VUQ1XK8/try-hard-coby-coby-and-helmeppos-struggles-in-the-marines"
+        },
+        {
+          "title": "Episode 67 - Deliver Princess Vivi! the Luffy Pirates Set Sail!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/a1ab3f5d26709acb8ba7ad7b090dff071394835094_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GX9UQJ710/deliver-princess-vivi-the-luffy-pirates-set-sail"
+        },
+        {
+          "title": "Episode 66 - All-out Battle! Luffy Vs. Zoro, Mysterious Grand Duel!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/223b1f1232191077aa77f576e8b0f3281394835150_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G9DUE5PZ8/all-out-battle-luffy-vs-zoro-mysterious-grand-duel"
+        },
+        {
+          "title": "Episode 65 - Explosion! the Three Swords Style! Zoro Vs. Baroque Works!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/38f9445371c77821a50c2f8fde474e601394835045_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G7PU4MVPE/explosion-the-three-swords-style-zoro-vs-baroque-works"
+        },
+        {
+          "title": "Episode 64 - A Town That Welcomes Pirates? Setting Foot On Whisky Peak!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/7de0eb5a5516124eb90639b078e918f81394835887_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GEVUZXGJ2/a-town-that-welcomes-pirates-setting-foot-on-whisky-peak"
+        },
+        {
+          "title": "Episode 63 - A Promise Between Men! Luffy and the Whale Vow to Meet Again!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/4af5f85879ae184420238497ac9c34331394246618_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/G0DUND0G5/a-promise-between-men-luffy-and-the-whale-vow-to-meet-again"
+        },
+        {
+          "title": "Episode 62 - The First Line of Defense? the Giant Whale Laboon Appears!",
+          "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/c99339b8763577e3dbde3011d470eef81394246915_full.jpg",
+          "url": "http://www.crunchyroll.com/watch/GG1U24EW0/the-first-line-of-defense-the-giant-whale-laboon-appears"
+        }
+      ],
+      "relations": {
+        "edges": [
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 466,
+              "title": {
+                "userPreferred": "ONE PIECE: Taose! Kaizoku Ganzack",
+                "english": "One Piece: Defeat the Pirate Ganzack!"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx466-bVP54I7dCB2F.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx466-bVP54I7dCB2F.jpg",
+                "color": "#e49328"
+              },
+              "type": "ANIME",
+              "format": "OVA",
+              "status": "FINISHED",
+              "averageScore": 64,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 1094,
+              "title": {
+                "userPreferred": "ONE PIECE TV Special: Umi no Heso no Daibouken-hen",
+                "english": "One Piece: Umi no Heso no Daibouken-hen"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1094-H3YFJ1TR0ZZi.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx1094-H3YFJ1TR0ZZi.jpg",
+                "color": "#f1a10d"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 67,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 1237,
+              "title": {
+                "userPreferred": "ONE PIECE: Oounabara ni Hirake! Dekkai Dekkai Chichi no Yume!",
+                "english": "One Piece Special: Open Upon the Great Sea! A Father's Huge, HUGE Dream!"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/1237.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/1237.jpg",
+                "color": "#e4ae35"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 67,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 1238,
+              "title": {
+                "userPreferred": "ONE PIECE: Mamore! Saigo no Oobutai",
+                "english": "One Piece Special: Protect! The Last Great Performance"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1238-Rf2wqBrCwgvO.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx1238-Rf2wqBrCwgvO.jpg",
+                "color": "#5dc9f1"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 68,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 2020,
+              "title": {
+                "userPreferred": "ONE PIECE: Nenmatsu Tokubetsu Kikaku! Mugiwara no Luffy Oyabun Torimonochou",
+                "english": "One Piece Special: The Detective Memoirs of Chief Straw Hat Luffy"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/2020.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/2020.jpg",
+                "color": "#f1bb35"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 68,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 2386,
+              "title": {
+                "userPreferred": "ONE PIECE: Yume no Soccer Ou!",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/2386-NQQkq1taHJ08.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/2386-NQQkq1taHJ08.jpg",
+                "color": "#d6931a"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 66,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 2490,
+              "title": {
+                "userPreferred": "ONE PIECE: Mezase! Kaizoku Yakyuu Ou",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/2490-AL4WmnCJ5zvE.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/2490-AL4WmnCJ5zvE.jpg",
+                "color": "#ffbb43"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 64,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 12001,
+              "title": {
+                "userPreferred": "ONE PIECE 3D: Gekisou! Trap Coaster",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx12001-XX0NNNfaKZ3e.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx12001-XX0NNNfaKZ3e.jpg",
+                "color": "#f1e435"
+              },
+              "type": "ANIME",
+              "format": "MOVIE",
+              "status": "FINISHED",
+              "averageScore": 61,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 16239,
+              "title": {
+                "userPreferred": "ONE PIECE: Episode of Luffy - Hand Island no Bouken",
+                "english": "One Piece: Episode of Luffy - Hand Island Adventure"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b16239-XzoVjd7JK8xJ.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b16239-XzoVjd7JK8xJ.png",
+                "color": "#f1c900"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 72,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 16468,
+              "title": {
+                "userPreferred": "ONE PIECE FILM: Z - GLORIOUS ISLAND",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b16468-pMKFwfY8lYZX.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b16468-pMKFwfY8lYZX.png",
+                "color": "#feae28"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 69,
+              "episodes": 2,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SUMMARY",
+            "node": {
+              "id": 15323,
+              "title": {
+                "userPreferred": "ONE PIECE: Episode of Nami - Koukaishi no Namida to Nakama no Kizuna",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/15323.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/15323.jpg",
+                "color": "#fed628"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 78,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SUMMARY",
+            "node": {
+              "id": 19123,
+              "title": {
+                "userPreferred": "ONE PIECE: Episode of Merry - Mou Hitori no Nakama no Monogatari",
+                "english": "One Piece: Episode of Merry - The Tale of One More Friend"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx19123-leET1CrSJknT.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx19123-leET1CrSJknT.jpg",
+                "color": "#e4c95d"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 78,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 20835,
+              "title": {
+                "userPreferred": "ONE PIECE \"3D2Y\": Ace no shi wo Koete! Luffy Nakama to no Chikai",
+                "english": "One Piece 3D2Y: Overcome Ace\u2019s Death! Luffy\u2019s Vow to his Friends"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20835-QVV6LpJlqe1A.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx20835-QVV6LpJlqe1A.jpg",
+                "color": "#e47850"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 76,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SUMMARY",
+            "node": {
+              "id": 21230,
+              "title": {
+                "userPreferred": "ONE PIECE: Episode of Sabo - 3-Kyoudai no Kizuna Kiseki no Saikai to Uketsugareru Ishi",
+                "english": "One Piece - Episode of Sabo: Bond of Three Brothers - A Miraculous Reunion and an Inherited Will"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21230-rfoUZud1Jn0L.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx21230-rfoUZud1Jn0L.png",
+                "color": "#f1a150"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 74,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 21485,
+              "title": {
+                "userPreferred": "ONE PIECE: Adventure of Nebulandia",
+                "english": "One Piece: Adventure of Nebulandia"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/21485-KR1sv4rYSe6V.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/21485-KR1sv4rYSe6V.jpg",
+                "color": "#e4bb43"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 69,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 21831,
+              "title": {
+                "userPreferred": "ONE PIECE: Heart of Gold",
+                "english": "One Piece: Heart of Gold"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21831-qj5IKYiPOupF.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx21831-qj5IKYiPOupF.jpg",
+                "color": "#f1a10d"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 73,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SUMMARY",
+            "node": {
+              "id": 99302,
+              "title": {
+                "userPreferred": "ONE PIECE: Episode of East Blue - Luffy to 4-nin no Nakama no Daibouken",
+                "english": "One Piece: Episode of East Blue"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx99302-b40WIhc5dylo.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx99302-b40WIhc5dylo.jpg",
+                "color": "#bbe45d"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 76,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 459,
+              "title": {
+                "userPreferred": "ONE PIECE (Movie)",
+                "english": "ONE PIECE: The Movie"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx459-Ivw65mUXackh.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx459-Ivw65mUXackh.png",
+                "color": "#e40d0d"
+              },
+              "type": "ANIME",
+              "format": "MOVIE",
+              "status": "FINISHED",
+              "averageScore": 68,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 460,
+              "title": {
+                "userPreferred": "ONE PIECE: Nejimaki-jima no Bouken",
+                "english": "One Piece: Clockwork Island Adventure"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx460-p9HObfGUhWn0.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx460-p9HObfGUhWn0.jpg",
+                "color": "#e4c943"
+              },
+              "type": "ANIME",
+              "format": "MOVIE",
+              "status": "FINISHED",
+              "averageScore": 67,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 461,
+              "title": {
+                "userPreferred": "ONE PIECE: Chinjuu-jima no Chopper Oukoku",
+                "english": "One Piece: Chopper\u2019s Kingdom on the Island of Strange Animals"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx461-DC9fMDl3AaK1.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx461-DC9fMDl3AaK1.jpg",
+                "color": "#e49343"
+              },
+              "type": "ANIME",
+              "format": "MOVIE",
+              "status": "FINISHED",
+              "averageScore": 64,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 462,
+              "title": {
+                "userPreferred": "ONE PIECE THE MOVIE: Dead End no Bouken",
+                "english": "One Piece The Movie: The Dead End Adventure"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx462-Ig8zfdsFWcql.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx462-Ig8zfdsFWcql.png",
+                "color": "#e49343"
+              },
+              "type": "ANIME",
+              "format": "MOVIE",
+              "status": "FINISHED",
+              "averageScore": 72,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 463,
+              "title": {
+                "userPreferred": "ONE PIECE: Norowareta Seiken",
+                "english": "One Piece: The Curse of the Sacred Sword"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx463-QDnETPoHp9oD.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx463-QDnETPoHp9oD.jpg",
+                "color": "#e45078"
+              },
+              "type": "ANIME",
+              "format": "MOVIE",
+              "status": "FINISHED",
+              "averageScore": 67,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 464,
+              "title": {
+                "userPreferred": "ONE PIECE THE MOVIE: Omatsuri Danshaku to Himitsu no Shima",
+                "english": "One Piece: Baron Omatsuri and the Secret Island"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx464-g4wcZPjbhY5j.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx464-g4wcZPjbhY5j.png",
+                "color": "#e4a15d"
+              },
+              "type": "ANIME",
+              "format": "MOVIE",
+              "status": "FINISHED",
+              "averageScore": 77,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 465,
+              "title": {
+                "userPreferred": "ONE PIECE THE MOVIE: Karakuri-jou no Mecha Kyohei",
+                "english": "One Piece: Mega Mecha Soldier of Karakuri Castle"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx465-qSRr0MKYhS0I.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx465-qSRr0MKYhS0I.jpg",
+                "color": "#43aeff"
+              },
+              "type": "ANIME",
+              "format": "MOVIE",
+              "status": "FINISHED",
+              "averageScore": 67,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SUMMARY",
+            "node": {
+              "id": 2107,
+              "title": {
+                "userPreferred": "ONE PIECE: Episode of Alabasta - Sabaku no Oujo to Kaizoku-tachi",
+                "english": "One Piece: The Desert Princess and the Pirates, Adventures in Alabasta"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx2107-H8bRuRRbhCIJ.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx2107-H8bRuRRbhCIJ.jpg",
+                "color": "#e4a143"
+              },
+              "type": "ANIME",
+              "format": "MOVIE",
+              "status": "FINISHED",
+              "averageScore": 70,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SUMMARY",
+            "node": {
+              "id": 3848,
+              "title": {
+                "userPreferred": "ONE PIECE THE MOVIE: Episode of Chopper Plus - Fuyu ni Saku, Kiseki no Sakura",
+                "english": "One Piece: Episode Of Chopper +: The Miracle Winter Cherry Blossom"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx3848-SCnYGTn34Llt.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx3848-SCnYGTn34Llt.jpg",
+                "color": "#e4e450"
+              },
+              "type": "ANIME",
+              "format": "MOVIE",
+              "status": "FINISHED",
+              "averageScore": 71,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 4155,
+              "title": {
+                "userPreferred": "ONE PIECE FILM: STRONG WORLD",
+                "english": "One Piece Film: Strong World"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx4155-P5TDf6t6qFwX.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx4155-P5TDf6t6qFwX.png",
+                "color": "#e4ae50"
+              },
+              "type": "ANIME",
+              "format": "MOVIE",
+              "status": "FINISHED",
+              "averageScore": 78,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 9999,
+              "title": {
+                "userPreferred": "ONE PIECE 3D: Mugiwara Chase",
+                "english": "One Piece 3D: Mugiwara Chase"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/9999.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/9999.jpg",
+                "color": "#ffa100"
+              },
+              "type": "ANIME",
+              "format": "MOVIE",
+              "status": "FINISHED",
+              "averageScore": 64,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 12859,
+              "title": {
+                "userPreferred": "ONE PIECE FILM: Z",
+                "english": "One Piece Film: Z"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx12859-uQFENDPzMWz6.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx12859-uQFENDPzMWz6.jpg",
+                "color": "#f1ae5d"
+              },
+              "type": "ANIME",
+              "format": "MOVIE",
+              "status": "FINISHED",
+              "averageScore": 79,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 21335,
+              "title": {
+                "userPreferred": "ONE PIECE FILM: GOLD",
+                "english": "One Piece Film: Gold"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx21335-XsXdE0AeOkkZ.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx21335-XsXdE0AeOkkZ.jpg",
+                "color": "#f1bb35"
+              },
+              "type": "ANIME",
+              "format": "MOVIE",
+              "status": "FINISHED",
+              "averageScore": 77,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "ADAPTATION",
+            "node": {
+              "id": 96427,
+              "title": {
+                "userPreferred": "ONE PIECE: Loguetown-hen",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx96427-XiDc44cTlf29.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx96427-XiDc44cTlf29.png",
+                "color": "#e4861a"
+              },
+              "type": "MANGA",
+              "format": "NOVEL",
+              "status": "FINISHED",
+              "averageScore": 67,
+              "episodes": null,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "ADAPTATION",
+            "node": {
+              "id": 30013,
+              "title": {
+                "userPreferred": "ONE PIECE",
+                "english": "One Piece"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx30013-BeslEMqiPhlk.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx30013-BeslEMqiPhlk.jpg",
+                "color": "#f1935d"
+              },
+              "type": "MANGA",
+              "format": "MANGA",
+              "status": "RELEASING",
+              "averageScore": 91,
+              "episodes": null,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SUMMARY",
+            "node": {
+              "id": 101918,
+              "title": {
+                "userPreferred": "ONE PIECE: Episode of Sorajima",
+                "english": "One Piece: Episode of Skypiea"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101918-3uyCYHw1syki.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx101918-3uyCYHw1syki.png",
+                "color": "#5dc9f1"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 69,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 8740,
+              "title": {
+                "userPreferred": "ONE PIECE FILM: STRONG WORLD - EPISODE:0",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b8740-oZajT3brPn7b.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b8740-oZajT3brPn7b.jpg",
+                "color": "#e493a1"
+              },
+              "type": "ANIME",
+              "format": "OVA",
+              "status": "FINISHED",
+              "averageScore": 76,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 105143,
+              "title": {
+                "userPreferred": "ONE PIECE STAMPEDE",
+                "english": "One Piece: Stampede"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx105143-5uBDmhvMr6At.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx105143-5uBDmhvMr6At.png",
+                "color": "#e4e450"
+              },
+              "type": "ANIME",
+              "format": "MOVIE",
+              "status": "FINISHED",
+              "averageScore": 80,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "CHARACTER",
+            "node": {
+              "id": 102639,
+              "title": {
+                "userPreferred": "Nissan SERENA x One Piece: Sennyuu Sauzando Sanii-gou",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx102639-AjxqMLkusd2Y.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx102639-AjxqMLkusd2Y.jpg",
+                "color": "#d6ae78"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 56,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "CHARACTER",
+            "node": {
+              "id": 106492,
+              "title": {
+                "userPreferred": "Kyutai Panic Adventure!",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b106492-ciLSI5nTJsV7.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b106492-ciLSI5nTJsV7.png",
+                "color": "#e4c943"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 43,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SUMMARY",
+            "node": {
+              "id": 106572,
+              "title": {
+                "userPreferred": "ONE PIECE: Episode of Alabasta - Sabaku no Oujo to Kaizoku-tachi",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/n106572-k1gqIsDcqGaV.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/n106572-k1gqIsDcqGaV.jpg",
+                "color": "#e4bb43"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 68,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "OTHER",
+            "node": {
+              "id": 107110,
+              "title": {
+                "userPreferred": "ONE PIECE: Cry heart",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/n107110-pF0sMxDe3aLi.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/n107110-pF0sMxDe3aLi.png",
+                "color": "#f1861a"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 59,
+              "episodes": 3,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "CHARACTER",
+            "node": {
+              "id": 107256,
+              "title": {
+                "userPreferred": "Kyutai Panic Adventure Returns!!!",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b107256-Pvgk6VnCmMZq.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b107256-Pvgk6VnCmMZq.png",
+                "color": "#f1c9ae"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 46,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 2385,
+              "title": {
+                "userPreferred": "ONE PIECE: Nejimaki-jima no Bouken - Jango no Dance Carnival",
+                "english": "One Piece: Django's Dance Carnival"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx2385-06iBj9aNIadt.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx2385-06iBj9aNIadt.jpg",
+                "color": "#fef10d"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 67,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "CHARACTER",
+            "node": {
+              "id": 101099,
+              "title": {
+                "userPreferred": "HUNGRY DAYS: Aoharu ka yo.",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b101099-3AoCbJWTj2cV.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b101099-3AoCbJWTj2cV.jpg",
+                "color": "#a1a135"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 61,
+              "episodes": 11,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 21880,
+              "title": {
+                "userPreferred": "ONE PIECE FILM: GOLD - episode 0 711ver.",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx21880-uxsZ880LXSdY.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx21880-uxsZ880LXSdY.jpg",
+                "color": "#e4a135"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 69,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "ALTERNATIVE",
+            "node": {
+              "id": 5252,
+              "title": {
+                "userPreferred": "ONE PIECE: ROMANCE DAWN STORY",
+                "english": "One Piece: Romance Dawn Story"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/5252.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/5252.jpg",
+                "color": "#43a1e4"
+              },
+              "type": "ANIME",
+              "format": "OVA",
+              "status": "FINISHED",
+              "averageScore": 70,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "ADAPTATION",
+            "node": {
+              "id": 30793,
+              "title": {
+                "userPreferred": "WANTED! Oda Eiichiro Tanpenshuu",
+                "english": "Wanted! Eiichiro Oda Before One Piece "
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx30793-Zca4SIWG5j8e.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx30793-Zca4SIWG5j8e.png",
+                "color": "#f1ae5d"
+              },
+              "type": "MANGA",
+              "format": "MANGA",
+              "status": "FINISHED",
+              "averageScore": 70,
+              "episodes": null,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "CHARACTER",
+            "node": {
+              "id": 113308,
+              "title": {
+                "userPreferred": "Kinen Satsuei",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx113308-u6wWW3d01DSt.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx113308-u6wWW3d01DSt.jpg",
+                "color": "#f1865d"
+              },
+              "type": "ANIME",
+              "format": "MUSIC",
+              "status": "FINISHED",
+              "averageScore": 76,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "CHARACTER",
+            "node": {
+              "id": 114761,
+              "title": {
+                "userPreferred": "A-RA-SHI : Reborn",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b114761-C2xOMuA44zKY.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b114761-C2xOMuA44zKY.png",
+                "color": "#0dbbfe"
+              },
+              "type": "ANIME",
+              "format": "MUSIC",
+              "status": "FINISHED",
+              "averageScore": 56,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "CHARACTER",
+            "node": {
+              "id": 10033,
+              "title": {
+                "userPreferred": "Toriko",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx10033-V7xnlgAVtaVR.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx10033-V7xnlgAVtaVR.jpg",
+                "color": "#50aef1"
+              },
+              "type": "ANIME",
+              "format": "TV",
+              "status": "FINISHED",
+              "averageScore": 69,
+              "episodes": 147,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "CHARACTER",
+            "node": {
+              "id": 813,
+              "title": {
+                "userPreferred": "Dragon Ball Z",
+                "english": "Dragon Ball Z"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx813-ZhnFNOeCU5dQ.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx813-ZhnFNOeCU5dQ.png",
+                "color": "#e49343"
+              },
+              "type": "ANIME",
+              "format": "TV",
+              "status": "FINISHED",
+              "averageScore": 80,
+              "episodes": 291,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 126649,
+              "title": {
+                "userPreferred": "Tokyo One Piece Tower: Tongari Shima no Dai Hihou",
+                "english": "The Great Tongari Island Treasure Hunting Adventure"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b126649-sbuKTAghtsln.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b126649-sbuKTAghtsln.jpg",
+                "color": "#e48628"
+              },
+              "type": "ANIME",
+              "format": "MOVIE",
+              "status": "FINISHED",
+              "averageScore": 60,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "ADAPTATION",
+            "node": {
+              "id": 134184,
+              "title": {
+                "userPreferred": "Romance Dawn",
+                "english": "Romance Dawn"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx134184-25CEkbRJEzXB.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx134184-25CEkbRJEzXB.png",
+                "color": "#fe9350"
+              },
+              "type": "MANGA",
+              "format": "ONE_SHOT",
+              "status": "FINISHED",
+              "averageScore": 69,
+              "episodes": null,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 141902,
+              "title": {
+                "userPreferred": "ONE PIECE FILM: RED",
+                "english": "One Piece Film: Red"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx141902-fTyoTk8F8qOl.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx141902-fTyoTk8F8qOl.jpg",
+                "color": "#f1c950"
+              },
+              "type": "ANIME",
+              "format": "MOVIE",
+              "status": "FINISHED",
+              "averageScore": 78,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "OTHER",
+            "node": {
+              "id": 143293,
+              "title": {
+                "userPreferred": "One Piece: Annecy Festival 60th Anniversary",
+                "english": "One Piece: Annecy Festival 60th Anniversary"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx143293-1ngwckHDsK95.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx143293-1ngwckHDsK95.jpg",
+                "color": "#e4e443"
+              },
+              "type": "ANIME",
+              "format": "ONA",
+              "status": "FINISHED",
+              "averageScore": 52,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "PREQUEL",
+            "node": {
+              "id": 167404,
+              "title": {
+                "userPreferred": "MONSTERS: Ippaku Sanjou Hiryuu Jigoku",
+                "english": "MONSTERS: 103 Mercies Dragon Damnation"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx167404-QMZJVARntkbv.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx167404-QMZJVARntkbv.jpg",
+                "color": "#ff931a"
+              },
+              "type": "ANIME",
+              "format": "ONA",
+              "status": "FINISHED",
+              "averageScore": 76,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "ALTERNATIVE",
+            "node": {
+              "id": 171630,
+              "title": {
+                "userPreferred": "THE ONE PIECE",
+                "english": "THE ONE PIECE"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx171630-CULIbflZbhK1.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx171630-CULIbflZbhK1.jpg",
+                "color": null
+              },
+              "type": "ANIME",
+              "format": null,
+              "status": "NOT_YET_RELEASED",
+              "averageScore": null,
+              "episodes": null,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "OTHER",
+            "node": {
+              "id": 177475,
+              "title": {
+                "userPreferred": "ONE PIECE\u00d7KAWAISOUNI! Kono Boushi wo Omae ni Azukeru",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx177475-8HlvUgopoH0S.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx177475-8HlvUgopoH0S.png",
+                "color": "#d6ae6b"
+              },
+              "type": "ANIME",
+              "format": "ONA",
+              "status": "FINISHED",
+              "averageScore": 58,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 182469,
+              "title": {
+                "userPreferred": "ONE PIECE FAN LETTER",
+                "english": "ONE PIECE FAN LETTER"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx182469-JQ808NBPxmgn.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx182469-JQ808NBPxmgn.jpg",
+                "color": "#e4935d"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 90,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SUMMARY",
+            "node": {
+              "id": 183423,
+              "title": {
+                "userPreferred": "ONE PIECE: Gyojin Tou-hen",
+                "english": "One Piece Log: Fish-Man Island Saga"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx183423-6Iiu194UDxD0.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx183423-6Iiu194UDxD0.jpg",
+                "color": "#f1bb35"
+              },
+              "type": "ANIME",
+              "format": "TV",
+              "status": "FINISHED",
+              "averageScore": 78,
+              "episodes": 21,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "CHARACTER",
+            "node": {
+              "id": 187225,
+              "title": {
+                "userPreferred": "LOS ANGELES LAKERS x ONE PIECE",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx187225-H0ppAOkOYMxM.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx187225-H0ppAOkOYMxM.jpg",
+                "color": "#e4ae35"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 77,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 188668,
+              "title": {
+                "userPreferred": "Koisuru ONE PIECE",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx188668-rOB7rkgOz89w.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx188668-rOB7rkgOz89w.jpg",
+                "color": "#35bbf1"
+              },
+              "type": "ANIME",
+              "format": "ONA",
+              "status": "FINISHED",
+              "averageScore": 66,
+              "episodes": 5,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 197178,
+              "title": {
+                "userPreferred": "ONE PIECE HEROINES",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx197178-Ui8PY9HQbNgu.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx197178-Ui8PY9HQbNgu.jpg",
+                "color": "#e45d86"
+              },
+              "type": "ANIME",
+              "format": null,
+              "status": "NOT_YET_RELEASED",
+              "averageScore": null,
+              "episodes": null,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SIDE_STORY",
+            "node": {
+              "id": 187380,
+              "title": {
+                "userPreferred": "ONE PIECE: Original Episode/Luffy, Law",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx187380-RZmxpJyB3A6Y.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx187380-RZmxpJyB3A6Y.jpg",
+                "color": "#86d6e4"
+              },
+              "type": "ANIME",
+              "format": "SPECIAL",
+              "status": "FINISHED",
+              "averageScore": 62,
+              "episodes": 1,
+              "isAdult": false
+            }
+          },
+          {
+            "relationType": "SPIN_OFF",
+            "node": {
+              "id": 204432,
+              "title": {
+                "userPreferred": "CHOPPER's",
+                "english": null
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx204432-h8U4bVnSU6bM.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx204432-h8U4bVnSU6bM.png",
+                "color": "#e4bb78"
+              },
+              "type": "ANIME",
+              "format": "TV_SHORT",
+              "status": "NOT_YET_RELEASED",
+              "averageScore": null,
+              "episodes": null,
+              "isAdult": false
+            }
+          }
+        ]
+      },
+      "recommendations": {
+        "nodes": [
+          {
+            "mediaRecommendation": {
+              "id": 11061,
+              "title": {
+                "userPreferred": "HUNTER\u00d7HUNTER (2011)",
+                "english": "Hunter x Hunter (2011)"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx11061-y5gsT1hoHuHw.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx11061-y5gsT1hoHuHw.png",
+                "color": "#f1d65d"
+              },
+              "type": "ANIME",
+              "format": "TV",
+              "status": "FINISHED",
+              "averageScore": 89,
+              "episodes": 148,
+              "isAdult": false
+            }
+          },
+          {
+            "mediaRecommendation": {
+              "id": 20,
+              "title": {
+                "userPreferred": "NARUTO",
+                "english": "Naruto"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20-dE6UHbFFg1A5.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx20-dE6UHbFFg1A5.jpg",
+                "color": "#e47850"
+              },
+              "type": "ANIME",
+              "format": "TV",
+              "status": "FINISHED",
+              "averageScore": 80,
+              "episodes": 220,
+              "isAdult": false
+            }
+          },
+          {
+            "mediaRecommendation": {
+              "id": 1735,
+              "title": {
+                "userPreferred": "NARUTO: Shippuuden",
+                "english": "Naruto: Shippuden"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1735-kGfVm0YqCPcu.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx1735-kGfVm0YqCPcu.png",
+                "color": "#e4865d"
+              },
+              "type": "ANIME",
+              "format": "TV",
+              "status": "FINISHED",
+              "averageScore": 82,
+              "episodes": 500,
+              "isAdult": false
+            }
+          },
+          {
+            "mediaRecommendation": {
+              "id": 97940,
+              "title": {
+                "userPreferred": "Black Clover",
+                "english": "Black Clover"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx97940-fyh8o7gNbha0.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx97940-fyh8o7gNbha0.png",
+                "color": "#d6c96b"
+              },
+              "type": "ANIME",
+              "format": "TV",
+              "status": "FINISHED",
+              "averageScore": 79,
+              "episodes": 170,
+              "isAdult": false
+            }
+          },
+          {
+            "mediaRecommendation": {
+              "id": 223,
+              "title": {
+                "userPreferred": "Dragon Ball",
+                "english": "Dragon Ball"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx223-scE5uJfXqqj8.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx223-scE5uJfXqqj8.png",
+                "color": "#e48635"
+              },
+              "type": "ANIME",
+              "format": "TV",
+              "status": "FINISHED",
+              "averageScore": 78,
+              "episodes": 153,
+              "isAdult": false
+            }
+          },
+          {
+            "mediaRecommendation": {
+              "id": 813,
+              "title": {
+                "userPreferred": "Dragon Ball Z",
+                "english": "Dragon Ball Z"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx813-ZhnFNOeCU5dQ.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx813-ZhnFNOeCU5dQ.png",
+                "color": "#e49343"
+              },
+              "type": "ANIME",
+              "format": "TV",
+              "status": "FINISHED",
+              "averageScore": 80,
+              "episodes": 291,
+              "isAdult": false
+            }
+          },
+          {
+            "mediaRecommendation": {
+              "id": 269,
+              "title": {
+                "userPreferred": "BLEACH",
+                "english": "Bleach"
+              },
+              "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx269-d2GmRkJbMopq.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx269-d2GmRkJbMopq.png",
+                "color": "#f1a150"
+              },
+              "type": "ANIME",
+              "format": "TV",
+              "status": "FINISHED",
+              "averageScore": 79,
+              "episodes": 366,
+              "isAdult": false
+            }
+          }
+        ]
+      }
+    }
+  }
+}

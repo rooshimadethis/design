@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import '../models/anime.dart';
 import '../models/user_profile.dart';
@@ -26,22 +27,26 @@ class MockDataService {
 
   Future<List<WatchingEntry>> getWatchingList() async {
     final jsonString = await rootBundle.loadString(
-      'assets/anilist_data/user_watching_list.json',
+      'assets/anilist_data/user_library.json',
     );
     final Map<String, dynamic> json = jsonDecode(jsonString);
     final List<dynamic> lists = json['data']['MediaListCollection']['lists'];
 
     // Find the "Watching" list
+    // In the real app/data, this might be "Watching" or "Current"
+    // We'll look for standard AniList status names
     final watchingList = lists.firstWhere(
-      (list) => list['name'] == 'Watching',
-      orElse: () => {'entries': []},
+      (list) => list['name'] == 'Watching' || list['name'] == 'Current',
+      orElse: () => null,
     );
+
+    if (watchingList == null) return [];
 
     final List<dynamic> entries = watchingList['entries'];
     return entries.map((e) {
       return WatchingEntry(
         id: e['id'],
-        progress: e['progress'],
+        progress: e['progress'] ?? 0,
         anime: Anime.fromJson(e['media']),
       );
     }).toList();
@@ -49,29 +54,27 @@ class MockDataService {
 
   Future<List<Anime>> getTrendingAnime() async {
     final jsonString = await rootBundle.loadString(
-      'assets/anilist_data/home_feed.json',
+      'assets/anilist_data/home_data.json',
     );
     final Map<String, dynamic> json = jsonDecode(jsonString);
     final List<dynamic> media = json['data']['trending']['media'];
     return media.map((e) => Anime.fromJson(e)).toList();
   }
 
-  Future<List<Anime>> getPopularAnime() async {
-    final jsonString = await rootBundle.loadString(
-      'assets/anilist_data/home_feed.json',
-    );
-    final Map<String, dynamic> json = jsonDecode(jsonString);
-    final List<dynamic> media = json['data']['popular']['media'];
-    return media.map((e) => Anime.fromJson(e)).toList();
-  }
+  // Popular list removed as requested to reduce load
 
   Future<Anime?> getAnimeDetails(int id) async {
     // Determine which file to load based on the ID
-    String fileName = 'media_details_aot.json'; // Default
-    if (id == 186794) {
-      fileName = 'media_details_frieren.json'; // Just for testing
+    String fileName;
+
+    if (id == 154587) {
+      fileName = 'media_details_frieren.json';
+    } else if (id == 21) {
+      fileName = 'media_details_one_piece.json';
+    } else {
+      // Fallback for testing generic clicks, default to Frieren for robust details
+      fileName = 'media_details_frieren.json';
     }
-    // In a real app, we'd have a mapping or fetch from API
 
     try {
       final jsonString = await rootBundle.loadString(
@@ -80,17 +83,32 @@ class MockDataService {
       final Map<String, dynamic> json = jsonDecode(jsonString);
       return Anime.fromJson(json['data']['Media']);
     } catch (e) {
+      debugPrint('Error loading details for ID $id: $e');
       return null;
     }
   }
 
   Future<List<Anime>> searchAnime(String query) async {
-    // Only mocks Naruto results for now
-    final jsonString = await rootBundle.loadString(
-      'assets/anilist_data/search_results_naruto.json',
-    );
-    final Map<String, dynamic> json = jsonDecode(jsonString);
-    final List<dynamic> media = json['data']['Page']['media'];
-    return media.map((e) => Anime.fromJson(e)).toList();
+    // Determine which mock file to use based on query
+    String fileName = 'search_results_naruto.json';
+
+    // Simple mock logic for testing filters
+    if (query.toLowerCase().contains('2023') ||
+        query.toLowerCase().contains('winter')) {
+      fileName = 'search_results_2023_winter.json';
+    }
+
+    try {
+      final jsonString = await rootBundle.loadString(
+        'assets/anilist_data/$fileName',
+      );
+      final Map<String, dynamic> json = jsonDecode(jsonString);
+      // Handle the slightly different structure if necessary, but usually Page -> media
+      final List<dynamic> media = json['data']['Page']['media'];
+      return media.map((e) => Anime.fromJson(e)).toList();
+    } catch (e) {
+      debugPrint('Error searching anime: $e');
+      return [];
+    }
   }
 }

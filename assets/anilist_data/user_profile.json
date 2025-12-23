@@ -5,14 +5,9 @@
       "name": "VoltAndVeg",
       "about": null,
       "avatar": {
-        "large": "https://s4.anilist.co/file/anilistcdn/user/avatar/large/default.png",
-        "medium": "https://s4.anilist.co/file/anilistcdn/user/avatar/medium/default.png"
+        "large": "https://s4.anilist.co/file/anilistcdn/user/avatar/large/default.png"
       },
       "bannerImage": null,
-      "isFollowing": false,
-      "isFollower": false,
-      "donatorTier": 0,
-      "createdAt": 1766060317,
       "statistics": {
         "anime": {
           "count": 52,
