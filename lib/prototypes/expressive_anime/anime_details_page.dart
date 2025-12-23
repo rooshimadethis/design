@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import '../../common/models/anime.dart';
-import '../../common/services/mock_data_service.dart';
+import 'models/anime.dart';
+import 'services/mock_data_service.dart';
 
 class AnimeDetailsPage extends StatefulWidget {
   final Anime anime;

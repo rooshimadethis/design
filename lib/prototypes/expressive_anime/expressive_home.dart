@@ -2,9 +2,9 @@ import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../common/models/anime.dart';
-import '../../common/models/user_profile.dart';
-import '../../common/services/mock_data_service.dart';
+import 'models/anime.dart';
+import 'models/user_profile.dart';
+import 'services/mock_data_service.dart';
 import 'anime_details_page.dart';
 
 class ExpressiveApp extends StatelessWidget {
@@ -37,6 +37,16 @@ class ExpressiveHomePage extends StatefulWidget {
 class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
   int _selectedIndex = 0;
   final Map<int, int> _progressOverrides = {};
+  String _searchQuery = 'naruto';
+  final TextEditingController _searchController = TextEditingController(
+    text: 'naruto',
+  );
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   void _incrementProgress(int entryId, int currentProgress) {
     // TODO: Stub - In a real app, this would call an API to update progress
@@ -65,7 +75,14 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                       builder: (context, snapshot) {
                         final user = snapshot.data;
                         final name = user?.name ?? 'Guest';
-                        final avatarUrl = user?.avatarMedium;
+                        final avatarUrl = user?.avatarLarge;
+
+                        final hour = DateTime.now().hour;
+                        final greeting = hour < 12
+                            ? 'Good Morning'
+                            : hour < 17
+                            ? 'Good Afternoon'
+                            : 'Good Evening';
 
                         return Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,7 +92,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                               children: [
                                 const SizedBox(height: 20),
                                 Text(
-                                  'Good Morning, $name!',
+                                  '$greeting, $name!',
                                   style: Theme.of(context)
                                       .textTheme
                                       .headlineMedium
@@ -93,7 +110,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                                 ),
                               ],
                             ),
-                            if (avatarUrl != null)
+                            if (avatarUrl != null && avatarUrl.isNotEmpty)
                               Container(
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
@@ -220,6 +237,12 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                   ),
                   const SizedBox(height: 16),
                   TextField(
+                    controller: _searchController,
+                    onChanged: (value) {
+                      setState(() {
+                        _searchQuery = value.isEmpty ? 'naruto' : value;
+                      });
+                    },
                     decoration: InputDecoration(
                       hintText: 'Search anime...',
                       prefixIcon: const Icon(Icons.search_rounded),
@@ -234,7 +257,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                   const SizedBox(height: 24),
                   Expanded(
                     child: FutureBuilder<List<Anime>>(
-                      future: MockDataService().searchAnime('naruto'),
+                      future: MockDataService().searchAnime(_searchQuery),
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
@@ -467,7 +490,18 @@ class _WatchingCardState extends State<WatchingCard> {
           borderRadius: BorderRadius.circular(24),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.05),
+              color:
+                  (widget.entry.anime.color != null
+                          ? Color(
+                              int.parse(
+                                widget.entry.anime.color!.replaceAll(
+                                  '#',
+                                  '0xFF',
+                                ),
+                              ),
+                            )
+                          : Colors.grey)
+                      .withValues(alpha: 0.2),
               blurRadius: 16,
               offset: const Offset(0, 8),
             ),

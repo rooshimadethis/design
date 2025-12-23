@@ -12,11 +12,14 @@ class Character {
   });
 
   factory Character.fromEdge(Map<String, dynamic> edge) {
+    final node = edge['node'] ?? {};
+    final name = node['name'] ?? {};
+    final image = node['image'] ?? {};
     return Character(
-      id: edge['node']['id'],
-      name: edge['node']['name']['full'],
-      image: edge['node']['image']['medium'],
-      role: edge['role'],
+      id: node['id'] ?? 0,
+      name: name['full'] ?? 'Unknown',
+      image: image['medium'] ?? image['large'] ?? '',
+      role: edge['role'] ?? '',
     );
   }
 }
@@ -28,7 +31,7 @@ class Studio {
   Studio({required this.id, required this.name});
 
   factory Studio.fromJson(Map<String, dynamic> json) {
-    return Studio(id: json['id'], name: json['name']);
+    return Studio(id: json['id'] ?? 0, name: json['name'] ?? 'Unknown');
   }
 }
 
@@ -99,10 +102,17 @@ class Anime {
   }
 
   factory Anime.fromRecommendation(Map<String, dynamic> json) {
+    final titleObj = json['title'] ?? {};
+    final coverObj = json['coverImage'] ?? {};
     return Anime(
-      id: json['id'],
-      title: json['title']['romaji'] ?? 'Unknown',
-      coverImage: json['coverImage']['medium'] ?? json['coverImage']['large'],
+      id: json['id'] ?? 0,
+      title:
+          titleObj['english'] ??
+          titleObj['romaji'] ??
+          titleObj['userPreferred'] ??
+          'Unknown',
+      coverImage:
+          coverObj['extraLarge'] ?? coverObj['large'] ?? coverObj['medium'],
     );
   }
 }

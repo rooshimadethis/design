@@ -67,13 +67,17 @@ class MockDataService {
     // Determine which file to load based on the ID
     String fileName;
 
-    if (id == 154587) {
+    if (id == 20) {
+      fileName = 'media_details_naruto.json';
+    } else if (id == 1735) {
+      fileName = 'media_details_naruto_shippuden.json';
+    } else if (id == 154587) {
       fileName = 'media_details_frieren.json';
     } else if (id == 21) {
       fileName = 'media_details_one_piece.json';
     } else {
-      // Fallback for testing generic clicks, default to Frieren for robust details
-      fileName = 'media_details_frieren.json';
+      // Fallback for testing generic clicks, default to Naruto for robust details
+      fileName = 'media_details_naruto.json';
     }
 
     try {

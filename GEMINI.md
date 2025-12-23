@@ -13,7 +13,7 @@ A monolithic sandbox environment designed for rapid Flutter UI prototyping and d
 
 ### Directory Structure
 - `lib/main.dart`: The entry point and "Harness". Configures the active prototype or shows the main menu.
-- `lib/prototypes/`: **Main Workspace**. Each design concept lives in its own isolated subdirectory (e.g., `lib/prototypes/anime_cyberpunk/`).
+- `lib/prototypes/`: **Main Workspace**. Each design concept lives in its own isolated subdirectory (e.g., `lib/prototypes/expressive_anime/`).
     - **Isolation Rule**: Prototypes should act like mini-apps and minimize dependencies on other prototypes.
 - `lib/common/`: Shared utilities (breakpoints, responsive helpers).
 
