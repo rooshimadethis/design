@@ -1,9 +1,13 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import '../models/anime.dart';
 import '../models/user_profile.dart';
 
+/// Represents a user's watching entry with progress and score information.
+///
+/// This combines anime metadata with user-specific tracking data.
 class WatchingEntry {
   final Anime anime;
   final int progress;
@@ -18,7 +22,14 @@ class WatchingEntry {
   });
 }
 
+/// Service for loading mock AniList data from JSON assets.
+///
+/// This service simulates API calls by loading pre-fetched JSON data from the assets folder.
+/// In a production app, these methods would make actual HTTP requests to the AniList GraphQL API.
 class MockDataService {
+  /// Loads the current user's profile information.
+  ///
+  /// Returns the user's name, avatar, and statistics.
   Future<UserProfile> getUserProfile() async {
     final jsonString = await rootBundle.loadString(
       'assets/anilist_data/viewer_data.json',
@@ -27,6 +38,11 @@ class MockDataService {
     return UserProfile.fromJson(json['data']['Viewer']);
   }
 
+  /// Loads the user's currently watching anime list.
+  ///
+  /// Returns a list of [WatchingEntry] objects containing anime with progress tracking.
+  /// Looks for lists named "Watching" or "Current" in the user's library.
+  /// Returns an empty list if no watching list is found.
   Future<List<WatchingEntry>> getWatchingList() async {
     final jsonString = await rootBundle.loadString(
       'assets/anilist_data/viewer_data.json',
@@ -53,6 +69,10 @@ class MockDataService {
     }).toList();
   }
 
+  /// Loads all of the user's library lists (Watching, Completed, Planning, etc.).
+  ///
+  /// Returns a map where keys are list names and values are lists of [WatchingEntry].
+  /// Each entry includes the anime and the user's progress/score for that anime.
   Future<Map<String, List<WatchingEntry>>> getLibraryLists() async {
     final jsonString = await rootBundle.loadString(
       'assets/anilist_data/viewer_data.json',
@@ -78,6 +98,10 @@ class MockDataService {
     return library;
   }
 
+  /// Loads the list of currently trending anime.
+  ///
+  /// Returns a list of [Anime] objects sorted by current popularity.
+  /// This data is pre-fetched from the AniList trending query.
   Future<List<Anime>> getTrendingAnime() async {
     final jsonString = await rootBundle.loadString(
       'assets/anilist_data/home_data.json',
@@ -89,6 +113,19 @@ class MockDataService {
 
   // Popular list removed as requested to reduce load
 
+  /// Loads detailed information for a specific anime by ID.
+  ///
+  /// [id] The AniList media ID of the anime to load.
+  ///
+  /// Returns full anime details including characters, studios, and recommendations.
+  /// Returns null if the anime details cannot be loaded.
+  ///
+  /// Currently supports specific IDs with pre-fetched data:
+  /// - 20: Naruto
+  /// - 1735: Naruto Shippuden
+  /// - 154587: Frieren
+  /// - 21: One Piece
+  /// - Others: Defaults to Naruto for testing
   Future<Anime?> getAnimeDetails(int id) async {
     // Determine which file to load based on the ID
     String fileName;
@@ -118,6 +155,15 @@ class MockDataService {
     }
   }
 
+  /// Searches for anime matching the given query.
+  ///
+  /// [query] The search term to match against anime titles.
+  ///
+  /// Returns a list of matching [Anime] objects.
+  /// Returns an empty list if no results are found or an error occurs.
+  ///
+  /// Note: This is a simplified mock implementation. In production, this would
+  /// support advanced filters like genre, year, status, etc.
   Future<List<Anime>> searchAnime(String query) async {
     // Determine which mock file to use based on query
     String fileName = 'search_results_naruto.json';
@@ -142,7 +188,10 @@ class MockDataService {
     }
   }
 
-  /// Get the names of all available lists from the user's library
+  /// Retrieves the names of all available lists in the user's library.
+  ///
+  /// Returns a list of list names (e.g., "Watching", "Completed", "Planning").
+  /// Used for populating list selection dialogs.
   Future<List<String>> getAvailableListNames() async {
     final jsonString = await rootBundle.loadString(
       'assets/anilist_data/viewer_data.json',
@@ -177,8 +226,15 @@ class MockDataService {
     return null;
   }
 
-  /// Save or update a media list entry (mock mutation)
-  /// In a real app, this would call the AniList API
+  /// Saves or updates an anime entry in the user's library.
+  ///
+  /// [animeId] The AniList media ID of the anime.
+  /// [listName] The target list name (e.g., "Watching", "Completed").
+  /// [progress] The current episode progress.
+  ///
+  /// This is a mock mutation that logs the action.
+  /// In a production app, this would make an actual API call to AniList's
+  /// SaveMediaListEntry mutation.
   Future<void> saveMediaListEntry(
     int animeId,
     String listName,
@@ -191,8 +247,17 @@ class MockDataService {
     // For now, we just log the action
   }
 
-  /// Update episode progress with auto-status logic
-  /// Automatically moves to COMPLETED when all episodes are watched
+  /// Updates the episode progress for an anime with automatic status management.
+  ///
+  /// [animeId] The AniList media ID of the anime.
+  /// [progress] The new episode progress count.
+  /// [totalEpisodes] The total number of episodes (if known).
+  ///
+  /// Automatically moves the anime to "Completed" when progress reaches totalEpisodes.
+  /// This is a mock mutation that logs the action.
+  ///
+  /// In a production app, this would make an actual API call to update the entry
+  /// and potentially move it between lists based on the new progress.
   Future<void> updateEpisodeProgress(
     int animeId,
     int progress,

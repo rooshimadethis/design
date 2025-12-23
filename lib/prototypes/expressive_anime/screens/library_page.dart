@@ -179,10 +179,10 @@ class _LibraryPageState extends State<LibraryPage> {
         return Stack(
           children: [
             const AnimeCardSkeleton(),
-            _buildLibraryCard(context, entry)
-                .animate(delay: (index < 8 ? index * 100 : 0).ms)
-                .fadeIn()
-                .scale(begin: const Offset(0.9, 0.9), end: const Offset(1, 1)),
+            _buildLibraryCard(context, entry).animate().fadeIn().scale(
+              begin: const Offset(0.9, 0.9),
+              end: const Offset(1, 1),
+            ),
           ],
         );
       },

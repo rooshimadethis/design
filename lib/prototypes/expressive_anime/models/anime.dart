@@ -47,11 +47,17 @@ class Anime {
   final List<String> genres;
   final String? color;
 
+  // Cached parsed color to avoid redundant parsing
+  Color? _cachedParsedColor;
   Color get parsedColor {
     if (color == null) return Colors.black;
+    if (_cachedParsedColor != null) return _cachedParsedColor!;
+
     try {
-      return Color(int.parse(color!.replaceAll('#', '0xFF')));
+      _cachedParsedColor = Color(int.parse(color!.replaceAll('#', '0xFF')));
+      return _cachedParsedColor!;
     } catch (_) {
+      _cachedParsedColor = Colors.black;
       return Colors.black;
     }
   }

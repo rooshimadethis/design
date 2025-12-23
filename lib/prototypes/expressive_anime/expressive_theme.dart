@@ -84,6 +84,85 @@ class ExpressiveTheme {
   static const Duration animationSlow = Duration(milliseconds: 500);
 
   // ============================================================================
+  // CARD DIMENSIONS
+  // ============================================================================
+
+  /// Standard manga card width
+  static const double cardWidth = 180.0;
+
+  /// Standard manga card height
+  static const double cardHeight = 280.0;
+
+  /// Poster/cover width for detail pages
+  static const double posterWidth = 180.0;
+
+  /// Poster/cover height for detail pages
+  static const double posterHeight = 270.0;
+
+  /// Watching card width
+  static const double watchingCardWidth = 280.0;
+
+  /// Watching card height
+  static const double watchingCardHeight = 180.0;
+
+  /// Watching card image width
+  static const double watchingCardImageWidth = 100.0;
+
+  /// Avatar size
+  static const double avatarSize = 56.0;
+
+  /// Large avatar size (for dialogs)
+  static const double avatarSizeLarge = 80.0;
+
+  // ============================================================================
+  // DECORATION HELPERS
+  // ============================================================================
+
+  /// Creates a standard manga-style container decoration with hard borders and shadow
+  static BoxDecoration mangaContainer({
+    Color backgroundColor = surfaceWhite,
+    Color borderColor = primaryBlack,
+    double borderWidth = borderWidthMedium,
+    Color shadowColor = primaryBlack,
+    Offset shadowOffset = shadowOffsetXLarge,
+  }) {
+    return BoxDecoration(
+      color: backgroundColor,
+      border: Border.all(width: borderWidth, color: borderColor),
+      borderRadius: BorderRadius.zero,
+      boxShadow: hardShadows(color: shadowColor, offset: shadowOffset),
+    );
+  }
+
+  /// Creates a circular avatar decoration with border and shadow
+  static BoxDecoration avatarDecoration({
+    Color borderColor = primaryBlack,
+    double borderWidth = borderWidthMedium,
+    Color shadowColor = primaryBlack,
+    Offset shadowOffset = shadowOffsetMedium,
+  }) {
+    return BoxDecoration(
+      shape: BoxShape.circle,
+      border: Border.all(color: borderColor, width: borderWidth),
+      boxShadow: hardShadows(color: shadowColor, offset: shadowOffset),
+    );
+  }
+
+  /// Creates a badge/chip decoration
+  static BoxDecoration badgeDecoration({
+    Color backgroundColor = primaryBlack,
+    Color borderColor = surfaceWhite,
+    double borderWidth = borderWidthThin,
+    Offset shadowOffset = shadowOffsetSmall,
+  }) {
+    return BoxDecoration(
+      color: backgroundColor,
+      border: Border.all(color: borderColor, width: borderWidth),
+      boxShadow: hardShadows(offset: shadowOffset),
+    );
+  }
+
+  // ============================================================================
   // TEXT STYLES
   // ============================================================================
 

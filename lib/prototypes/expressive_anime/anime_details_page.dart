@@ -25,7 +25,6 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
 
   // List management state
   String? _currentListName;
-  int? _listEntryId;
   int _currentEpisode = 0;
   bool _isUpdating = false;
 
@@ -50,10 +49,8 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
     final entry = await _dataService.getMediaListEntry(widget.anime.id);
     if (entry != null && mounted) {
       setState(() {
-        _listEntryId = entry.id;
         _currentEpisode = entry.progress;
-        // We need to find which list this entry belongs to
-        // For now, we'll determine it based on progress
+        // Determine which list this entry belongs to based on progress
         if (entry.progress == entry.anime.episodes) {
           _currentListName = 'Completed';
         } else if (entry.progress > 0) {

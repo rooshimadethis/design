@@ -218,6 +218,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                             final progress =
                                 _progressOverrides[entry.id] ?? entry.progress;
                             return Stack(
+                              key: ValueKey('watching_${entry.id}'),
                               children: [
                                 const AnimeCardSkeleton(isHorizontal: true),
                                 WatchingCard(
@@ -277,6 +278,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                               const SizedBox(width: 16),
                           itemBuilder: (context, index) {
                             return Stack(
+                              key: ValueKey('trending_${animeList[index].id}'),
                               children: [
                                 const AnimeCardSkeleton(),
                                 MangaCard(anime: animeList[index])
@@ -392,6 +394,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                           itemCount: animeList.length,
                           itemBuilder: (context, index) {
                             return Stack(
+                              key: ValueKey('search_${animeList[index].id}'),
                               children: [
                                 const AnimeCardSkeleton(),
                                 MangaCard(anime: animeList[index])
