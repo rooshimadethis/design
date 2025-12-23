@@ -139,7 +139,11 @@ class _LibraryPageState extends State<LibraryPage> {
             padding: const EdgeInsets.only(bottom: 16),
             child: Stack(
               children: [
-                const AnimeCardSkeleton(isHorizontal: true),
+                const AnimeCardSkeleton(
+                  isHorizontal: true,
+                  width: double.infinity,
+                  height: 140,
+                ),
                 WatchingCard(
                       entry: entry,
                       progress: entry.progress,

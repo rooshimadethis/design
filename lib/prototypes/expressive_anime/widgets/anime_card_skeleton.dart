@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 class AnimeCardSkeleton extends StatelessWidget {
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final bool isHorizontal;
 
   const AnimeCardSkeleton({
     super.key,
-    this.width = 180,
-    this.height = 280,
+    this.width,
+    this.height,
     this.isHorizontal = false,
   });
 
@@ -17,8 +17,8 @@ class AnimeCardSkeleton extends StatelessWidget {
   Widget build(BuildContext context) {
     if (isHorizontal) {
       return Container(
-        width: 280,
-        height: 180,
+        width: width ?? 280,
+        height: height ?? 180,
         margin: const EdgeInsets.only(bottom: 12, right: 12),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -32,7 +32,12 @@ class AnimeCardSkeleton extends StatelessWidget {
             Container(
               width: 100,
               height: double.infinity,
-              color: Colors.grey[300],
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                border: const Border(
+                  right: BorderSide(width: 3, color: Colors.black),
+                ),
+              ),
               child: _buildShimmer(),
             ),
             Expanded(
@@ -57,8 +62,8 @@ class AnimeCardSkeleton extends StatelessWidget {
     }
 
     return Container(
-      width: width,
-      height: height,
+      width: width ?? 180,
+      height: height ?? 280,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(width: 3, color: Colors.black),
