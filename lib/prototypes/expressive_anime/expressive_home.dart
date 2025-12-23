@@ -1,4 +1,3 @@
-import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,6 +5,8 @@ import 'models/anime.dart';
 import 'models/user_profile.dart';
 import 'services/mock_data_service.dart';
 import 'anime_details_page.dart';
+import 'screens/library_page.dart';
+import 'widgets/watching_card.dart';
 
 class ExpressiveApp extends StatelessWidget {
   const ExpressiveApp({super.key});
@@ -368,7 +369,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
               ),
             ),
           ),
-          const Center(child: Text("Library Page")),
+          const LibraryPage(),
         ],
       ),
       bottomNavigationBar: Container(
@@ -576,242 +577,6 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                     ),
                   ),
                 ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class WatchingCard extends StatefulWidget {
-  final WatchingEntry entry;
-  final int progress;
-  final VoidCallback onIncrement;
-
-  const WatchingCard({
-    super.key,
-    required this.entry,
-    required this.progress,
-    required this.onIncrement,
-  });
-
-  @override
-  State<WatchingCard> createState() => _WatchingCardState();
-}
-
-class _WatchingCardState extends State<WatchingCard> {
-  late ConfettiController _confettiController;
-
-  @override
-  void initState() {
-    super.initState();
-    _confettiController = ConfettiController(
-      duration: const Duration(seconds: 1),
-    );
-  }
-
-  @override
-  void dispose() {
-    _confettiController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // Calculate progress as a fraction (assuming 12, 24, etc episodes if available,
-    // else just show a bar that fills up somewhat arbitrarily or based on strict logic)
-    // The JSON provided has 'episodes', so we can use that.
-    final totalEpisodes = widget.entry.anime.episodes ?? 12; // fallback
-    final progressFraction = (widget.progress / totalEpisodes).clamp(0.0, 1.0);
-
-    // Check if there is a next episode
-    final hasNext = widget.progress < totalEpisodes;
-
-    Color shadowColor = Colors.black;
-    if (widget.entry.anime.color != null) {
-      try {
-        shadowColor = Color(
-          int.parse(widget.entry.anime.color!.replaceAll('#', '0xFF')),
-        );
-      } catch (_) {}
-    }
-
-    return GestureDetector(
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => AnimeDetailsPage(anime: widget.entry.anime),
-          ),
-        );
-      },
-      child: Container(
-        width: 280, // Wider card for watching status
-        margin: const EdgeInsets.only(
-          bottom: 12,
-          right: 12,
-        ), // For shadow spacing
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(width: 3, color: Colors.black),
-          borderRadius: BorderRadius.zero,
-          boxShadow: [
-            BoxShadow(
-              color: shadowColor,
-              blurRadius: 0,
-              offset: const Offset(8, 8),
-            ),
-          ],
-        ),
-        child: Row(
-          children: [
-            // Image Section
-            Container(
-              decoration: const BoxDecoration(
-                border: Border(
-                  right: BorderSide(width: 3, color: Colors.black),
-                ),
-              ),
-              child: Hero(
-                tag: 'watching_${widget.entry.id}',
-                child: SizedBox(
-                  width: 100,
-                  height: double.infinity,
-                  child: widget.entry.anime.coverImage != null
-                      ? Image.network(
-                          widget.entry.anime.coverImage!,
-                          fit: BoxFit.cover,
-                          errorBuilder: (_, __, ___) => Container(
-                            color: Colors.grey[200],
-                            child: const Icon(Icons.broken_image),
-                          ),
-                        )
-                      : Container(color: Colors.grey[200]),
-                ),
-              ),
-            ),
-            // Info & Controls Section
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Title (Full Width)
-                    Text(
-                      widget.entry.anime.title.toUpperCase(),
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: GoogleFonts.teko(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        height: 0.9,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-
-                    // Bottom Row: Episode/Progress + Plus Button
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 6,
-                                  vertical: 2,
-                                ),
-                                color: Colors.black,
-                                child: Text(
-                                  'EPISODE ${widget.progress + 1}',
-                                  style: GoogleFonts.robotoMono(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Container(
-                                height: 16,
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.black,
-                                    width: 2,
-                                  ),
-                                  borderRadius: BorderRadius.zero,
-                                ),
-                                child: LinearProgressIndicator(
-                                  value: progressFraction,
-                                  backgroundColor: Colors.white,
-                                  color: shadowColor,
-                                  minHeight: 12,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        if (hasNext) ...[
-                          const SizedBox(width: 12),
-                          Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              ConfettiWidget(
-                                confettiController: _confettiController,
-                                blastDirectionality:
-                                    BlastDirectionality.explosive,
-                                shouldLoop: false,
-                                gravity: 0.2,
-                                numberOfParticles: 10,
-                                maxBlastForce: 5,
-                                minBlastForce: 2,
-                                colors: const [
-                                  Colors.red,
-                                  Colors.blue,
-                                  Colors.green,
-                                  Colors.yellow,
-                                  Colors.purple,
-                                  Colors.orange,
-                                ],
-                              ),
-                              Material(
-                                color: Colors.transparent,
-                                child: InkWell(
-                                  onTap: () {
-                                    widget.onIncrement();
-                                    _confettiController.play();
-                                  },
-                                  borderRadius: BorderRadius.zero,
-                                  child: Container(
-                                    padding: const EdgeInsets.all(8),
-                                    decoration: BoxDecoration(
-                                      color: Colors.black,
-                                      shape: BoxShape.rectangle,
-                                      boxShadow: const [
-                                        BoxShadow(
-                                          color: Colors.black,
-                                          offset: Offset(2, 2),
-                                        ),
-                                      ],
-                                    ),
-                                    child: const Icon(
-                                      Icons.add_sharp,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ],
-                    ),
-                  ],
-                ),
               ),
             ),
           ],

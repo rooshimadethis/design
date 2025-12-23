@@ -7,11 +7,13 @@ import '../models/user_profile.dart';
 class WatchingEntry {
   final Anime anime;
   final int progress;
+  final int userScore;
   final int id; // The entry ID, not media ID
 
   WatchingEntry({
     required this.anime,
     required this.progress,
+    required this.userScore,
     required this.id,
   });
 }
@@ -45,6 +47,7 @@ class MockDataService {
       return WatchingEntry(
         id: e['id'],
         progress: e['progress'] ?? 0,
+        userScore: e['score'] ?? 0,
         anime: Anime.fromJson(e['media']),
       );
     }).toList();
@@ -66,6 +69,7 @@ class MockDataService {
         return WatchingEntry(
           id: e['id'],
           progress: e['progress'] ?? 0,
+          userScore: e['score'] ?? 0,
           anime: Anime.fromJson(e['media']),
         );
       }).toList();
