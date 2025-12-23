@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// Import your prototypes here (comment out when not in use to avoid unused import warnings if you want)
 // import 'prototypes/anime_cyberpunk/main_screen.dart';
 import 'prototypes/expressive_anime/expressive_home.dart';
+import 'prototypes/marshmallow/main.dart';
 
 void main() {
   runApp(const DesignPlaygroundApp());
@@ -17,7 +17,7 @@ class DesignPlaygroundApp extends StatelessWidget {
   /// Assign a widget here to skip the menu and boot directly into a prototype.
   /// Example: static Widget? activePrototype = CyberpunkMain();
   /// --------------------------------------------------------------------------
-  static Widget? activePrototype = const ExpressiveApp();
+  static Widget? activePrototype = const MarshmallowPrototypeApp();
 
   @override
   Widget build(BuildContext context) {

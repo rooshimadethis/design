@@ -12,7 +12,7 @@ Load the context and start a conversation to define the prototype.
 1.  Read the Design Rules:
     `view_file .agent/rules/flutter_design_rules.md`
 2.  Ask the user for the "Product Vision" (Goal, Vibe, Name).
-    -   *Prompt*: "I'm ready to scaffold a new prototype. What are we building? What's the 'Vibe' (e.g., Cyberpunk, Minimal, Organic)? Do you have a name in mind?"
+    -   *Prompt*: "I'm ready to scaffold a new prototype. What are we building? What's the 'Vibe' (e.g., Cyberpunk, Minimal, Organic)? Do you have a name in mind? Will this be mobile or web first?"
     -   *Action*: Discuss until you have a clear **Name** (snake_case, e.g., `retro_music_player`) and **Vibe Description**.
 
 ## Step 2: Scaffold
@@ -26,7 +26,7 @@ Create the basic structure.
 ## Step 3: Concept Generation (The Playground)
 Instead of guessing colors, create a tool for the user to choose.
 
-1.  **Generate `design_playground.dart`**:
+1.  **Generate `design_playground.dart` designed around their platform (web/mobile)**:
     -   Create a `StatefulWidget` named `DesignPlayground`.
     -   **Concept Data**: Define a `List<ThemeData>` with 3 contrasting concepts based on the "Vibe".
         -   *Example*: If "Retro", generate "Neon Synthwave", "Faded Polaroid", and "Arcade Bit".
@@ -38,6 +38,7 @@ Instead of guessing colors, create a tool for the user to choose.
     -   *Goal*: The user should run this, click the buttons, and see which vibe fits best.
 
 2.  **Run the Playground**:
+    -   Set the main.dart to launch the playground
     -   Instruct the user: "I've created a Design Playground. Please run `lib/prototypes/<name>/main.dart` and tell me which Concept (1, 2, or 3) you prefer, or if we should mix them."
 
 ## Step 4: Finalize Foundation

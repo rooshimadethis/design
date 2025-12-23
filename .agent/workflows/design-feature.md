@@ -1,5 +1,5 @@
 ---
-description: Design and build a specific screen or feature for an existing prototype. Usage: /design-feature
+description: Design and build a specific screen or feature for an existing prototype. Usage /design-feature
 ---
 
 # Design Feature Workflow
