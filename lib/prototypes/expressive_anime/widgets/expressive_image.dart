@@ -23,7 +23,7 @@ class ExpressiveImage extends StatelessWidget {
       return _buildSkeleton();
     }
 
-    return Image.network(
+    Widget image = Image.network(
       imageUrl!,
       width: width,
       height: height,
@@ -35,6 +35,16 @@ class ExpressiveImage extends StatelessWidget {
         }
         return AnimatedSwitcher(
           duration: 500.ms,
+          layoutBuilder: (currentChild, previousChildren) {
+            return Stack(
+              fit: StackFit.expand,
+              alignment: Alignment.center,
+              children: [
+                ...previousChildren,
+                if (currentChild != null) currentChild,
+              ],
+            );
+          },
           child: frame != null
               ? SizedBox(
                   width: width,
@@ -51,6 +61,12 @@ class ExpressiveImage extends StatelessWidget {
         return _buildSkeleton();
       },
     );
+
+    if (width != null || height != null) {
+      return SizedBox(width: width, height: height, child: image);
+    }
+
+    return image;
   }
 
   Widget _buildSkeleton({Key? key}) {
