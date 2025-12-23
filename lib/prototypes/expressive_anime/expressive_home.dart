@@ -677,7 +677,7 @@ class _WatchingCardState extends State<WatchingCard> {
                 ),
               ),
             ),
-            // Info Section
+            // Info & Controls Section
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -685,9 +685,10 @@ class _WatchingCardState extends State<WatchingCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    // Title (Full Width)
                     Text(
                       widget.entry.anime.title.toUpperCase(),
-                      maxLines: 2,
+                      maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.teko(
                         fontSize: 24,
@@ -695,88 +696,103 @@ class _WatchingCardState extends State<WatchingCard> {
                         height: 0.9,
                       ),
                     ),
-                    const SizedBox(height: 8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 6,
-                        vertical: 2,
-                      ),
-                      color: Colors.black,
-                      child: Text(
-                        'EPISODE ${widget.progress + 1}',
-                        style: GoogleFonts.robotoMono(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
                     const SizedBox(height: 12),
-                    // Progress Bar
-                    Container(
-                      height: 16,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black, width: 2),
-                        borderRadius: BorderRadius.zero,
-                      ),
-                      child: LinearProgressIndicator(
-                        value: progressFraction,
-                        backgroundColor: Colors.white,
-                        color: Colors.black,
-                        minHeight: 12,
-                      ),
+
+                    // Bottom Row: Episode/Progress + Plus Button
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 6,
+                                  vertical: 2,
+                                ),
+                                color: Colors.black,
+                                child: Text(
+                                  'EPISODE ${widget.progress + 1}',
+                                  style: GoogleFonts.robotoMono(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Container(
+                                height: 16,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.black,
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.zero,
+                                ),
+                                child: LinearProgressIndicator(
+                                  value: progressFraction,
+                                  backgroundColor: Colors.white,
+                                  color: Colors.black,
+                                  minHeight: 12,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        if (hasNext) ...[
+                          const SizedBox(width: 12),
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              ConfettiWidget(
+                                confettiController: _confettiController,
+                                blastDirectionality:
+                                    BlastDirectionality.explosive,
+                                shouldLoop: false,
+                                gravity: 0.2,
+                                numberOfParticles: 10,
+                                maxBlastForce: 5,
+                                minBlastForce: 2,
+                                colors: const [Colors.black, Colors.grey],
+                              ),
+                              Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  onTap: () {
+                                    widget.onIncrement();
+                                    _confettiController.play();
+                                  },
+                                  borderRadius: BorderRadius.zero,
+                                  child: Container(
+                                    padding: const EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                      color: Colors.black,
+                                      shape: BoxShape.rectangle,
+                                      boxShadow: const [
+                                        BoxShadow(
+                                          color: Colors.black,
+                                          offset: Offset(2, 2),
+                                        ),
+                                      ],
+                                    ),
+                                    child: const Icon(
+                                      Icons.add_sharp,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ],
                     ),
                   ],
                 ),
               ),
             ),
-            // Plus Button
-            if (hasNext)
-              Padding(
-                padding: const EdgeInsets.only(right: 16.0),
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    ConfettiWidget(
-                      confettiController: _confettiController,
-                      blastDirectionality: BlastDirectionality.explosive,
-                      shouldLoop: false,
-                      gravity: 0.2, // Float down slowly
-                      numberOfParticles: 10,
-                      maxBlastForce: 5,
-                      minBlastForce: 2,
-                      colors: const [Colors.black, Colors.grey],
-                    ),
-                    Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        onTap: () {
-                          widget.onIncrement();
-                          _confettiController.play();
-                        },
-                        borderRadius: BorderRadius.zero,
-                        child: Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            color: Colors.black,
-                            shape: BoxShape.rectangle,
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.black,
-                                offset: Offset(2, 2),
-                              ),
-                            ],
-                          ),
-                          child: const Icon(
-                            Icons.add_sharp,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
           ],
         ),
       ),
