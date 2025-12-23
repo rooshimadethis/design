@@ -42,6 +42,20 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
     text: 'naruto',
   );
 
+  late Future<UserProfile> _profileFuture;
+  late Future<List<WatchingEntry>> _watchingFuture;
+  late Future<List<Anime>> _trendingFuture;
+  late Future<List<Anime>> _searchFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _profileFuture = MockDataService().getUserProfile();
+    _watchingFuture = MockDataService().getWatchingList();
+    _trendingFuture = MockDataService().getTrendingAnime();
+    _searchFuture = MockDataService().searchAnime(_searchQuery);
+  }
+
   @override
   void dispose() {
     _searchController.dispose();
@@ -71,7 +85,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24.0),
                     child: FutureBuilder<UserProfile>(
-                      future: MockDataService().getUserProfile(),
+                      future: _profileFuture,
                       builder: (context, snapshot) {
                         final user = snapshot.data;
                         final name = user?.name ?? 'Guest';
@@ -149,7 +163,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                   SizedBox(
                     height: 220, // Slightly shorter for watching cards
                     child: FutureBuilder<List<WatchingEntry>>(
-                      future: MockDataService().getWatchingList(),
+                      future: _watchingFuture,
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
@@ -192,7 +206,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                   SizedBox(
                     height: 280,
                     child: FutureBuilder<List<Anime>>(
-                      future: MockDataService().getTrendingAnime(),
+                      future: _trendingFuture,
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
@@ -241,6 +255,9 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                     onChanged: (value) {
                       setState(() {
                         _searchQuery = value.isEmpty ? 'naruto' : value;
+                        _searchFuture = MockDataService().searchAnime(
+                          _searchQuery,
+                        );
                       });
                     },
                     decoration: InputDecoration(
@@ -257,7 +274,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                   const SizedBox(height: 24),
                   Expanded(
                     child: FutureBuilder<List<Anime>>(
-                      future: MockDataService().searchAnime(_searchQuery),
+                      future: _searchFuture,
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
