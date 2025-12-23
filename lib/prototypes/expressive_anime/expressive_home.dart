@@ -16,11 +16,35 @@ class ExpressiveApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
+        scaffoldBackgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFFFF4081), // Vibrant Pink
+          seedColor: const Color(0xFF000000), // Black primary
+          primary: Colors.black,
+          secondary: const Color(0xFFFF4081),
+          surface: Colors.white,
           brightness: Brightness.light,
         ),
-        textTheme: GoogleFonts.outfitTextTheme(),
+        textTheme: GoogleFonts.bangersTextTheme().copyWith(
+          // If bangers isn't ideal for body, we can mix.
+          // But let's stick to standard fonts with aggressive styling for now to be safe,
+          // as Bangers might not be readable for small text.
+          // actually, let's use 'Anime' style standard:
+          headlineMedium: GoogleFonts.teko(
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1.0,
+            color: Colors.black,
+          ),
+          titleLarge: GoogleFonts.teko(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+          titleMedium: GoogleFonts.roboto(
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
       ),
       home: const ExpressiveHomePage(),
     );
@@ -72,7 +96,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF0F4F8),
+      backgroundColor: Colors.white,
       body: IndexedStack(
         index: _selectedIndex,
         children: [
@@ -129,16 +153,14 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   border: Border.all(
-                                    color: Colors.white,
-                                    width: 2,
+                                    color: Colors.black,
+                                    width: 3,
                                   ),
-                                  boxShadow: [
+                                  boxShadow: const [
                                     BoxShadow(
-                                      color: Colors.black.withValues(
-                                        alpha: 0.1,
-                                      ),
-                                      blurRadius: 8,
-                                      offset: const Offset(0, 4),
+                                      color: Colors.black,
+                                      blurRadius: 0,
+                                      offset: Offset(2, 2),
                                     ),
                                   ],
                                 ),
@@ -261,14 +283,36 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                       });
                     },
                     decoration: InputDecoration(
-                      hintText: 'Search anime...',
-                      prefixIcon: const Icon(Icons.search_rounded),
+                      hintText: 'SEARCH MANGA/ANIME...',
+                      hintStyle: GoogleFonts.teko(
+                        fontSize: 18,
+                        color: Colors.grey,
+                      ),
+                      prefixIcon: const Icon(
+                        Icons.search_rounded,
+                        color: Colors.black,
+                      ),
                       filled: true,
                       fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: BorderSide.none,
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(
+                          color: Colors.black,
+                          width: 3,
+                        ),
                       ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(
+                          color: Colors.black,
+                          width: 3,
+                        ),
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                        vertical: 16,
+                        horizontal: 16,
+                      ),
+                      // Add a hard shadow effect via container typically, but here we just do border
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -340,11 +384,10 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            title,
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: Colors.black87,
-            ),
+            title.toUpperCase(),
+            style: Theme.of(
+              context,
+            ).textTheme.titleLarge?.copyWith(fontStyle: FontStyle.italic),
           ),
           TextButton(onPressed: () {}, child: const Text('See All')),
         ],
@@ -365,19 +408,10 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
         width: 160,
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(24),
-          boxShadow: [
-            BoxShadow(
-              color:
-                  (anime.color != null
-                          ? Color(
-                              int.parse(anime.color!.replaceAll('#', '0xFF')),
-                            )
-                          : Colors.grey)
-                      .withValues(alpha: 0.2),
-              blurRadius: 16,
-              offset: const Offset(0, 8),
-            ),
+          border: Border.all(width: 3, color: Colors.black),
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: const [
+            BoxShadow(color: Colors.black, blurRadius: 0, offset: Offset(6, 6)),
           ],
         ),
         child: Column(
@@ -386,7 +420,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
             Expanded(
               child: ClipRRect(
                 borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(24),
+                  top: Radius.circular(5),
                 ),
                 child: Hero(
                   tag: 'anime_cover_${anime.id}',
@@ -403,17 +437,22 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                 ),
               ),
             ),
-            Padding(
+            Container(
               padding: const EdgeInsets.all(12.0),
+              decoration: const BoxDecoration(
+                border: Border(top: BorderSide(width: 3, color: Colors.black)),
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    anime.title,
+                    anime.title.toUpperCase(),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                    style: GoogleFonts.teko(
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
+                      height: 1.0,
                     ),
                   ),
                   if (anime.averageScore != null) ...[
@@ -421,18 +460,18 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                     Row(
                       children: [
                         const Icon(
-                          Icons.star_rounded,
-                          size: 16,
-                          color: Colors.amber,
+                          Icons.star, // Sharp star
+                          size: 14,
+                          color: Colors.black,
                         ),
                         const SizedBox(width: 4),
                         Text(
                           '${anime.averageScore}%',
-                          style: Theme.of(context).textTheme.bodySmall
-                              ?.copyWith(
-                                color: Colors.grey[600],
-                                fontWeight: FontWeight.bold,
-                              ),
+                          style: GoogleFonts.robotoMono(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                            color: Colors.black,
+                          ),
                         ),
                       ],
                     ),
@@ -501,52 +540,48 @@ class _WatchingCardState extends State<WatchingCard> {
       },
       child: Container(
         width: 280, // Wider card for watching status
-        margin: const EdgeInsets.only(bottom: 8), // For shadow
+        margin: const EdgeInsets.only(
+          bottom: 8,
+          right: 8,
+        ), // For shadow spacing
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(24),
-          boxShadow: [
-            BoxShadow(
-              color:
-                  (widget.entry.anime.color != null
-                          ? Color(
-                              int.parse(
-                                widget.entry.anime.color!.replaceAll(
-                                  '#',
-                                  '0xFF',
-                                ),
-                              ),
-                            )
-                          : Colors.grey)
-                      .withValues(alpha: 0.2),
-              blurRadius: 16,
-              offset: const Offset(0, 8),
-            ),
+          border: Border.all(width: 3, color: Colors.black),
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: const [
+            BoxShadow(color: Colors.black, blurRadius: 0, offset: Offset(6, 6)),
           ],
         ),
         child: Row(
           children: [
             // Image Section
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(24),
-                bottomLeft: Radius.circular(24),
+            Container(
+              decoration: const BoxDecoration(
+                border: Border(
+                  right: BorderSide(width: 3, color: Colors.black),
+                ),
               ),
-              child: Hero(
-                tag: 'watching_${widget.entry.id}',
-                child: SizedBox(
-                  width: 100,
-                  height: double.infinity,
-                  child: widget.entry.anime.coverImage != null
-                      ? Image.network(
-                          widget.entry.anime.coverImage!,
-                          fit: BoxFit.cover,
-                          errorBuilder: (_, __, ___) => Container(
-                            color: Colors.grey[200],
-                            child: const Icon(Icons.broken_image),
-                          ),
-                        )
-                      : Container(color: Colors.grey[200]),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(5),
+                  bottomLeft: Radius.circular(5),
+                ),
+                child: Hero(
+                  tag: 'watching_${widget.entry.id}',
+                  child: SizedBox(
+                    width: 100,
+                    height: double.infinity,
+                    child: widget.entry.anime.coverImage != null
+                        ? Image.network(
+                            widget.entry.anime.coverImage!,
+                            fit: BoxFit.cover,
+                            errorBuilder: (_, __, ___) => Container(
+                              color: Colors.grey[200],
+                              child: const Icon(Icons.broken_image),
+                            ),
+                          )
+                        : Container(color: Colors.grey[200]),
+                  ),
                 ),
               ),
             ),
@@ -559,30 +594,40 @@ class _WatchingCardState extends State<WatchingCard> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      widget.entry.anime.title,
+                      widget.entry.anime.title.toUpperCase(),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                      style: GoogleFonts.teko(
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
+                        height: 1.0,
                       ),
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'Episode ${widget.progress + 1}',
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.w600,
+                      'EPISODE ${widget.progress + 1}',
+                      style: GoogleFonts.robotoMono(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
                       ),
                     ),
                     const SizedBox(height: 12),
                     // Progress Bar
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(4),
-                      child: LinearProgressIndicator(
-                        value: progressFraction,
-                        backgroundColor: Colors.grey[100],
-                        color: Theme.of(context).colorScheme.primary,
-                        minHeight: 6,
+                    Container(
+                      height: 12,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black, width: 2),
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(4),
+                        child: LinearProgressIndicator(
+                          value: progressFraction,
+                          backgroundColor: Colors.white,
+                          color: Colors.black,
+                          minHeight: 12,
+                        ),
                       ),
                     ),
                   ],
@@ -604,13 +649,7 @@ class _WatchingCardState extends State<WatchingCard> {
                       numberOfParticles: 10,
                       maxBlastForce: 5,
                       minBlastForce: 2,
-                      colors: const [
-                        Colors.green,
-                        Colors.blue,
-                        Colors.pink,
-                        Colors.orange,
-                        Colors.purple,
-                      ], // manually specify colors
+                      colors: const [Colors.black, Colors.grey],
                     ),
                     Material(
                       color: Colors.transparent,
@@ -623,15 +662,10 @@ class _WatchingCardState extends State<WatchingCard> {
                         child: Container(
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            color: Theme.of(
-                              context,
-                            ).colorScheme.primaryContainer,
-                            borderRadius: BorderRadius.circular(12),
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                          child: Icon(
-                            Icons.add_rounded,
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
+                          child: const Icon(Icons.add, color: Colors.white),
                         ),
                       ),
                     ),

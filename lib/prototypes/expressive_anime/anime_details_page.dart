@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'models/anime.dart';
 import 'services/mock_data_service.dart';
 
@@ -29,7 +30,7 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
         : const Color(0xFFFF4081);
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF0F4F8),
+      backgroundColor: Colors.white,
       body: FutureBuilder<Anime?>(
         future: _fullDetailsFuture,
         builder: (context, snapshot) {
@@ -70,10 +71,9 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                         Container(color: primaryColor),
                       const DecoratedBox(
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [Colors.transparent, Colors.black45],
+                          // Manga style scanline effect or just simple border at bottom
+                          border: Border(
+                            bottom: BorderSide(color: Colors.black, width: 4),
                           ),
                         ),
                       ),
@@ -84,10 +84,8 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
               SliverToBoxAdapter(
                 child: Container(
                   decoration: const BoxDecoration(
-                    color: Color(0xFFF0F4F8),
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(32),
-                    ),
+                    color: Colors.white,
+                    // No rounded top, maybe just a hard separation
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 24.0),
@@ -106,14 +104,13 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                   Expanded(
                                     child:
                                         Text(
-                                          anime.title,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headlineSmall
-                                              ?.copyWith(
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black87,
-                                              ),
+                                          anime.title.toUpperCase(),
+                                          style: GoogleFonts.teko(
+                                            fontSize: 36,
+                                            fontWeight: FontWeight.bold,
+                                            height: 0.9,
+                                            color: Colors.black,
+                                          ),
                                         ).animate().fadeIn().slideY(
                                           begin: 0.2,
                                           end: 0,
@@ -123,25 +120,35 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                     Container(
                                       padding: const EdgeInsets.symmetric(
                                         horizontal: 12,
-                                        vertical: 6,
+                                        vertical: 8,
                                       ),
                                       decoration: BoxDecoration(
-                                        color: Colors.amber.shade100,
-                                        borderRadius: BorderRadius.circular(12),
+                                        color: Colors.white,
+                                        border: Border.all(
+                                          color: Colors.black,
+                                          width: 2,
+                                        ),
+                                        boxShadow: const [
+                                          BoxShadow(
+                                            color: Colors.black,
+                                            offset: Offset(4, 4),
+                                            blurRadius: 0,
+                                          ),
+                                        ],
                                       ),
                                       child: Row(
                                         children: [
                                           const Icon(
-                                            Icons.star_rounded,
+                                            Icons.star,
                                             size: 18,
-                                            color: Colors.amber,
+                                            color: Colors.black,
                                           ),
                                           const SizedBox(width: 4),
                                           Text(
                                             '${anime.averageScore}%',
-                                            style: const TextStyle(
+                                            style: GoogleFonts.robotoMono(
                                               fontWeight: FontWeight.bold,
-                                              color: Colors.amber,
+                                              color: Colors.black,
                                             ),
                                           ),
                                         ],
@@ -199,20 +206,31 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                     child:
                                         ElevatedButton.icon(
                                           onPressed: () {},
-                                          icon: const Icon(Icons.add_rounded),
-                                          label: const Text('Add to Library'),
+                                          icon: const Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          ),
+                                          label: Text(
+                                            'ADD TO LIBRARY',
+                                            style: GoogleFonts.teko(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
                                           style: ElevatedButton.styleFrom(
-                                            backgroundColor: primaryColor,
+                                            backgroundColor: Colors.black,
                                             foregroundColor: Colors.white,
                                             padding: const EdgeInsets.symmetric(
                                               vertical: 16,
                                             ),
-                                            elevation: 4,
-                                            shadowColor: primaryColor
-                                                .withValues(alpha: 0.4),
+                                            elevation: 0,
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
-                                                  BorderRadius.circular(16),
+                                                  BorderRadius.circular(4),
+                                              side: const BorderSide(
+                                                color: Colors.black,
+                                                width: 2,
+                                              ),
                                             ),
                                           ),
                                         ).animate().shimmer(
@@ -223,13 +241,17 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                   const SizedBox(width: 12),
                                   IconButton(
                                     onPressed: () {},
-                                    icon: const Icon(Icons.favorite_rounded),
+                                    icon: const Icon(Icons.favorite),
                                     style: IconButton.styleFrom(
                                       backgroundColor: Colors.white,
-                                      foregroundColor: Colors.redAccent,
+                                      foregroundColor: Colors.black,
                                       padding: const EdgeInsets.all(16),
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(16),
+                                        borderRadius: BorderRadius.circular(4),
+                                        side: const BorderSide(
+                                          color: Colors.black,
+                                          width: 2,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -238,9 +260,12 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                               const SizedBox(height: 32),
                               // Synopsis
                               Text(
-                                'Synopsis',
-                                style: Theme.of(context).textTheme.titleLarge
-                                    ?.copyWith(fontWeight: FontWeight.bold),
+                                'SYNOPSIS',
+                                style: GoogleFonts.teko(
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
                               ),
                               const SizedBox(height: 8),
                               Text(
@@ -263,9 +288,12 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                               horizontal: 24.0,
                             ),
                             child: Text(
-                              'Characters',
-                              style: Theme.of(context).textTheme.titleLarge
-                                  ?.copyWith(fontWeight: FontWeight.bold),
+                              'CHARACTERS',
+                              style: GoogleFonts.teko(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                           const SizedBox(height: 16),
@@ -320,9 +348,12 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                               horizontal: 24.0,
                             ),
                             child: Text(
-                              'Relations',
-                              style: Theme.of(context).textTheme.titleLarge
-                                  ?.copyWith(fontWeight: FontWeight.bold),
+                              'RELATIONS',
+                              style: GoogleFonts.teko(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                           const SizedBox(height: 16),
@@ -379,25 +410,21 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                                     vertical: 3,
                                                   ),
                                               decoration: BoxDecoration(
-                                                color: Colors.black.withValues(
-                                                  alpha: 0.6,
-                                                ),
+                                                color: Colors.black,
                                                 borderRadius:
-                                                    BorderRadius.circular(6),
+                                                    BorderRadius.circular(
+                                                      0,
+                                                    ), // Sharp
                                               ),
                                               child: Text(
                                                 relation.relationType
-                                                    .replaceAll('_', ' '),
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .labelSmall
-                                                    ?.copyWith(
-                                                      color: Colors.white,
-                                                      fontSize: 9,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      letterSpacing: 0.5,
-                                                    ),
+                                                    .replaceAll('_', ' ')
+                                                    .toUpperCase(),
+                                                style: GoogleFonts.robotoMono(
+                                                  color: Colors.white,
+                                                  fontSize: 10,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -432,9 +459,12 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                               horizontal: 24.0,
                             ),
                             child: Text(
-                              'Recommendations',
-                              style: Theme.of(context).textTheme.titleLarge
-                                  ?.copyWith(fontWeight: FontWeight.bold),
+                              'RECOMMENDATIONS',
+                              style: GoogleFonts.teko(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                           const SizedBox(height: 16),
@@ -505,19 +535,23 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.grey.shade200),
+        borderRadius: BorderRadius.circular(4),
+        border: Border.all(color: Colors.black, width: 2),
+        boxShadow: const [
+          BoxShadow(color: Colors.black, offset: Offset(2, 2), blurRadius: 0),
+        ],
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 14, color: Colors.grey[600]),
+          Icon(icon, size: 14, color: Colors.black),
           const SizedBox(width: 4),
           Text(
-            label,
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              fontWeight: FontWeight.w600,
-              color: Colors.grey[800],
+            label.toUpperCase(),
+            style: GoogleFonts.robotoMono(
+              fontWeight: FontWeight.bold,
+              fontSize: 12,
+              color: Colors.black,
             ),
           ),
         ],
