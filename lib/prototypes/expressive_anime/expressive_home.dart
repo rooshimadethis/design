@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'models/anime.dart';
 import 'models/user_profile.dart';
 import 'services/mock_data_service.dart';
@@ -95,6 +96,228 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
     });
   }
 
+  void _showUserProfileDialog(UserProfile user) {
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        backgroundColor: Colors.transparent,
+        insetPadding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(24),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: Colors.black, width: 4),
+            boxShadow: const [
+              BoxShadow(color: Colors.black, offset: Offset(10, 10)),
+            ],
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 3),
+                      boxShadow: const [
+                        BoxShadow(color: Colors.black, offset: Offset(4, 4)),
+                      ],
+                    ),
+                    child: ExpressiveImage(
+                      imageUrl: user.avatarLarge,
+                      width: 80,
+                      height: 80,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          user.name.toUpperCase(),
+                          style: GoogleFonts.teko(
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                            height: 1,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 2,
+                          ),
+                          color: Colors.red[900],
+                          child: Text(
+                            'PREMIUM OTAKU',
+                            style: GoogleFonts.teko(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 2,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () => Navigator.pop(context),
+                    icon: const Icon(
+                      Icons.close,
+                      color: Colors.black,
+                      size: 32,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 32),
+              Text(
+                'ANIME STATISTICS',
+                style: GoogleFonts.teko(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic,
+                  decoration: TextDecoration.underline,
+                  decorationThickness: 2,
+                ),
+              ),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildStatItem(
+                    'WATCHED',
+                    (user.stats?.episodesWatched ?? 0).toString(),
+                    PhosphorIcons.play(),
+                  ),
+                  _buildStatItem(
+                    'DAYS',
+                    ((user.stats?.minutesWatched ?? 0) / 1440).toStringAsFixed(
+                      1,
+                    ),
+                    PhosphorIcons.clock(),
+                  ),
+                  _buildStatItem(
+                    'MEAN SCORE',
+                    (user.stats?.meanScore ?? 0).toString(),
+                    PhosphorIcons.star(),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 24),
+              Text(
+                'LIST STATUS',
+                style: GoogleFonts.teko(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic,
+                  decoration: TextDecoration.underline,
+                  decorationThickness: 2,
+                ),
+              ),
+              const SizedBox(height: 12),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: (user.stats?.statuses ?? []).map((s) {
+                  return _buildStatusChip(s.status, s.count);
+                }).toList(),
+              ),
+              const SizedBox(height: 32),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () => Navigator.pop(context),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    foregroundColor: Colors.white,
+                    shape: const RoundedRectangleBorder(),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    elevation: 0,
+                  ),
+                  child: Text(
+                    'CLOSE PROFILE',
+                    style: GoogleFonts.teko(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 2,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildStatItem(String label, String value, PhosphorIconData icon) {
+    return Column(
+      children: [
+        Icon(icon, size: 28, color: Colors.black),
+        const SizedBox(height: 4),
+        Text(
+          value,
+          style: GoogleFonts.teko(
+            fontSize: 24,
+            fontWeight: FontWeight.w900,
+            height: 1,
+          ),
+        ),
+        Text(
+          label,
+          style: GoogleFonts.teko(
+            fontSize: 14,
+            color: Colors.grey[700],
+            letterSpacing: 1,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildStatusChip(String status, int count) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: Colors.black, width: 2),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            status,
+            style: GoogleFonts.teko(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+          const SizedBox(width: 8),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            color: Colors.black,
+            child: Text(
+              '$count',
+              style: GoogleFonts.robotoMono(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -166,26 +389,33 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                               width: 16,
                             ), // Spacing between text and avatar
                             if (avatarUrl != null && avatarUrl.isNotEmpty)
-                              Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.rectangle, // Square avatar
-                                  border: Border.all(
-                                    color: Colors.black,
-                                    width: 3,
-                                  ),
-                                  boxShadow: const [
-                                    BoxShadow(
+                              GestureDetector(
+                                onTap: () {
+                                  if (user != null) {
+                                    _showUserProfileDialog(user);
+                                  }
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle, // Square avatar
+                                    border: Border.all(
                                       color: Colors.black,
-                                      blurRadius: 0,
-                                      offset: Offset(4, 4),
+                                      width: 3,
                                     ),
-                                  ],
-                                ),
-                                child: ExpressiveImage(
-                                  imageUrl: avatarUrl,
-                                  width: 56,
-                                  height: 56,
-                                  fit: BoxFit.cover,
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        color: Colors.black,
+                                        blurRadius: 0,
+                                        offset: Offset(4, 4),
+                                      ),
+                                    ],
+                                  ),
+                                  child: ExpressiveImage(
+                                    imageUrl: avatarUrl,
+                                    width: 56,
+                                    height: 56,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                           ],
@@ -209,7 +439,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                   ).animate().fadeIn(delay: 100.ms).slideX(begin: -0.2, end: 0),
                   const SizedBox(height: 16),
                   SizedBox(
-                    height: 220, // Slightly shorter for watching cards
+                    height: 180, // Reduced height for better aspect ratio
                     child: FutureBuilder<List<WatchingEntry>>(
                       future: _watchingFuture,
                       builder: (context, snapshot) {

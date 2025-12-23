@@ -28,6 +28,7 @@ class ExpressiveImage extends StatelessWidget {
       width: width,
       height: height,
       fit: fit,
+      alignment: Alignment.center,
       frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
         if (wasSynchronouslyLoaded) {
           return child;
@@ -35,7 +36,14 @@ class ExpressiveImage extends StatelessWidget {
         return AnimatedSwitcher(
           duration: 500.ms,
           child: frame != null
-              ? child.animate().fadeIn(duration: 500.ms, curve: Curves.easeOut)
+              ? SizedBox(
+                  width: width,
+                  height: height,
+                  child: child.animate().fadeIn(
+                    duration: 500.ms,
+                    curve: Curves.easeOut,
+                  ),
+                )
               : _buildSkeleton(key: const ValueKey('skeleton')),
         );
       },
@@ -47,7 +55,13 @@ class ExpressiveImage extends StatelessWidget {
 
   Widget _buildSkeleton({Key? key}) {
     final baseColor = skeletonColor ?? Colors.grey[300]!;
-    return Container(key: key, width: width, height: height, color: baseColor)
+    return Container(
+          key: key,
+          width: width,
+          height: height,
+          color: baseColor,
+          alignment: Alignment.center,
+        )
         .animate(onPlay: (controller) => controller.repeat())
         .shimmer(duration: 1500.ms, color: Colors.white.withValues(alpha: 0.3));
   }

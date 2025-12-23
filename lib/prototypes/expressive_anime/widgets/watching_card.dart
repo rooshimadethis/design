@@ -79,6 +79,7 @@ class _WatchingCardState extends State<WatchingCard> {
           ],
         ),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Image Section
             Container(
@@ -91,10 +92,11 @@ class _WatchingCardState extends State<WatchingCard> {
                 tag: 'watching_${widget.entry.id}',
                 child: SizedBox(
                   width: 100,
-                  height: 140, // Fixed height for consistency
                   child: ExpressiveImage(
                     imageUrl: widget.entry.anime.coverImage,
                     fit: BoxFit.cover,
+                    width: 100,
+                    height: double.infinity,
                     skeletonColor: widget.entry.anime.parsedColor,
                   ),
                 ),
