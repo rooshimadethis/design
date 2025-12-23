@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'models/anime.dart';
 import 'services/mock_data_service.dart';
+import 'widgets/expressive_image.dart';
 
 class AnimeDetailsPage extends StatefulWidget {
   final Anime anime;
@@ -98,9 +99,10 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                               ).createShader(rect);
                             },
                             blendMode: BlendMode.srcOver,
-                            child: Image.network(
-                              anime.bannerImage ?? anime.coverImage!,
+                            child: ExpressiveImage(
+                              imageUrl: anime.bannerImage ?? anime.coverImage,
                               fit: BoxFit.cover,
+                              skeletonColor: anime.parsedColor,
                             ),
                           ),
                         )
@@ -134,11 +136,10 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                 ),
                               ],
                             ),
-                            child: Image.network(
-                              anime.coverImage ?? '',
+                            child: ExpressiveImage(
+                              imageUrl: anime.coverImage,
                               fit: BoxFit.cover,
-                              errorBuilder: (_, __, ___) =>
-                                  Container(color: Colors.grey),
+                              skeletonColor: anime.parsedColor,
                             ),
                           ),
                         ),
@@ -402,16 +403,16 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                           color: Colors.black,
                                           width: 2,
                                         ),
-                                        image: DecorationImage(
-                                          image: NetworkImage(character.image),
-                                          fit: BoxFit.cover,
-                                        ),
                                         boxShadow: const [
                                           BoxShadow(
                                             color: Colors.black,
                                             offset: Offset(4, 4),
                                           ),
                                         ],
+                                      ),
+                                      child: ExpressiveImage(
+                                        imageUrl: character.image,
+                                        fit: BoxFit.cover,
                                       ),
                                     ),
                                     const SizedBox(height: 8),
@@ -496,18 +497,19 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                                 color: Colors.black,
                                                 width: 3,
                                               ),
-                                              image: DecorationImage(
-                                                image: NetworkImage(
-                                                  relAnime.coverImage ?? '',
-                                                ),
-                                                fit: BoxFit.cover,
-                                              ),
                                               boxShadow: const [
                                                 BoxShadow(
                                                   color: Colors.black,
                                                   offset: Offset(4, 4),
                                                 ),
                                               ],
+                                            ),
+                                            child: ExpressiveImage(
+                                              imageUrl:
+                                                  relAnime.coverImage ?? '',
+                                              fit: BoxFit.cover,
+                                              skeletonColor:
+                                                  relAnime.parsedColor,
                                             ),
                                           ),
                                           Positioned(
@@ -601,18 +603,17 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                           color: Colors.black,
                                           width: 3,
                                         ),
-                                        image: DecorationImage(
-                                          image: NetworkImage(
-                                            rec.coverImage ?? '',
-                                          ),
-                                          fit: BoxFit.cover,
-                                        ),
                                         boxShadow: const [
                                           BoxShadow(
                                             color: Colors.black,
                                             offset: Offset(4, 4),
                                           ),
                                         ],
+                                      ),
+                                      child: ExpressiveImage(
+                                        imageUrl: rec.coverImage ?? '',
+                                        fit: BoxFit.cover,
+                                        skeletonColor: rec.parsedColor,
                                       ),
                                     ),
                                     const SizedBox(height: 8),

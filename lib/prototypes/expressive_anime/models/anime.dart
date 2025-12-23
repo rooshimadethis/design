@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Character {
   final int id;
   final String name;
@@ -44,6 +46,16 @@ class Anime {
   final int? episodes;
   final List<String> genres;
   final String? color;
+
+  Color get parsedColor {
+    if (color == null) return Colors.black;
+    try {
+      return Color(int.parse(color!.replaceAll('#', '0xFF')));
+    } catch (_) {
+      return Colors.black;
+    }
+  }
+
   final String? description;
   final List<Character> characters;
   final List<Studio> studios;

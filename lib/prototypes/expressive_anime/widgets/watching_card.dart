@@ -3,6 +3,7 @@ import 'package:confetti/confetti.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../services/mock_data_service.dart';
 import '../anime_details_page.dart';
+import 'expressive_image.dart';
 
 class WatchingCard extends StatefulWidget {
   final WatchingEntry entry;
@@ -91,16 +92,11 @@ class _WatchingCardState extends State<WatchingCard> {
                 child: SizedBox(
                   width: 100,
                   height: 140, // Fixed height for consistency
-                  child: widget.entry.anime.coverImage != null
-                      ? Image.network(
-                          widget.entry.anime.coverImage!,
-                          fit: BoxFit.cover,
-                          errorBuilder: (_, __, ___) => Container(
-                            color: Colors.grey[200],
-                            child: const Icon(Icons.broken_image),
-                          ),
-                        )
-                      : Container(color: Colors.grey[200]),
+                  child: ExpressiveImage(
+                    imageUrl: widget.entry.anime.coverImage,
+                    fit: BoxFit.cover,
+                    skeletonColor: widget.entry.anime.parsedColor,
+                  ),
                 ),
               ),
             ),

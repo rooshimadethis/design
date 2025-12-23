@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../services/mock_data_service.dart';
 import '../anime_details_page.dart';
 import '../widgets/watching_card.dart';
+import '../widgets/expressive_image.dart';
 
 class LibraryPage extends StatefulWidget {
   final String? initialTabName;
@@ -179,14 +180,11 @@ class _LibraryPageState extends State<LibraryPage> {
               child: Stack(
                 fit: StackFit.expand,
                 children: [
-                  anime.coverImage != null
-                      ? Image.network(
-                          anime.coverImage!,
-                          fit: BoxFit.cover,
-                          errorBuilder: (_, __, ___) =>
-                              Container(color: Colors.grey[200]),
-                        )
-                      : Container(color: Colors.grey[200]),
+                  ExpressiveImage(
+                    imageUrl: anime.coverImage,
+                    fit: BoxFit.cover,
+                    skeletonColor: anime.parsedColor,
+                  ),
                   // Progress Badge if watching
                   if (entry.progress > 0)
                     Positioned(

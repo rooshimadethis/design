@@ -7,6 +7,7 @@ import 'services/mock_data_service.dart';
 import 'anime_details_page.dart';
 import 'screens/library_page.dart';
 import 'widgets/watching_card.dart';
+import 'widgets/expressive_image.dart';
 
 class ExpressiveApp extends StatelessWidget {
   const ExpressiveApp({super.key});
@@ -180,8 +181,8 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                                     ),
                                   ],
                                 ),
-                                child: Image.network(
-                                  avatarUrl,
+                                child: ExpressiveImage(
+                                  imageUrl: avatarUrl,
                                   width: 56,
                                   height: 56,
                                   fit: BoxFit.cover,
@@ -541,16 +542,11 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                 children: [
                   Hero(
                     tag: 'anime_cover_${anime.id}',
-                    child: anime.coverImage != null
-                        ? Image.network(
-                            anime.coverImage!,
-                            fit: BoxFit.cover,
-                            errorBuilder: (_, __, ___) => Container(
-                              color: Colors.grey[200],
-                              child: const Icon(Icons.broken_image),
-                            ),
-                          )
-                        : Container(color: Colors.grey[200]),
+                    child: ExpressiveImage(
+                      imageUrl: anime.coverImage,
+                      fit: BoxFit.cover,
+                      skeletonColor: anime.parsedColor,
+                    ),
                   ),
                   if (anime.averageScore != null)
                     Positioned(
