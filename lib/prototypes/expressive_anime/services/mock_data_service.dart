@@ -141,4 +141,73 @@ class MockDataService {
       return [];
     }
   }
+
+  /// Get the names of all available lists from the user's library
+  Future<List<String>> getAvailableListNames() async {
+    final jsonString = await rootBundle.loadString(
+      'assets/anilist_data/viewer_data.json',
+    );
+    final Map<String, dynamic> json = jsonDecode(jsonString);
+    final List<dynamic> lists = json['data']['MediaListCollection']['lists'];
+
+    return lists.map((list) => list['name'] as String).toList();
+  }
+
+  /// Check if an anime is in the user's library and return the entry
+  Future<WatchingEntry?> getMediaListEntry(int animeId) async {
+    final jsonString = await rootBundle.loadString(
+      'assets/anilist_data/viewer_data.json',
+    );
+    final Map<String, dynamic> json = jsonDecode(jsonString);
+    final List<dynamic> lists = json['data']['MediaListCollection']['lists'];
+
+    for (var list in lists) {
+      final List<dynamic> entries = list['entries'];
+      for (var entry in entries) {
+        if (entry['media']['id'] == animeId) {
+          return WatchingEntry(
+            id: entry['id'],
+            progress: entry['progress'] ?? 0,
+            userScore: entry['score'] ?? 0,
+            anime: Anime.fromJson(entry['media']),
+          );
+        }
+      }
+    }
+    return null;
+  }
+
+  /// Save or update a media list entry (mock mutation)
+  /// In a real app, this would call the AniList API
+  Future<void> saveMediaListEntry(
+    int animeId,
+    String listName,
+    int progress,
+  ) async {
+    debugPrint(
+      'Mock mutation: Saving anime $animeId to list "$listName" with progress $progress',
+    );
+    // In a real implementation, this would make an API call
+    // For now, we just log the action
+  }
+
+  /// Update episode progress with auto-status logic
+  /// Automatically moves to COMPLETED when all episodes are watched
+  Future<void> updateEpisodeProgress(
+    int animeId,
+    int progress,
+    int? totalEpisodes,
+  ) async {
+    String targetList = 'Current';
+
+    // Auto-update to Completed if all episodes are watched
+    if (totalEpisodes != null && progress >= totalEpisodes) {
+      targetList = 'Completed';
+    }
+
+    debugPrint(
+      'Mock mutation: Updating anime $animeId progress to $progress (target list: $targetList)',
+    );
+    // In a real implementation, this would make an API call
+  }
 }
