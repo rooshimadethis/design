@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../common/models/anime.dart';
 import '../../common/services/mock_data_service.dart';
@@ -42,30 +43,43 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
         index: _selectedIndex,
         children: [
           SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(24.0),
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(vertical: 24.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 20),
-                  Text(
-                    'Good Morning!',
-                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 20),
+                        Text(
+                          'Good Morning!',
+                          style: Theme.of(context).textTheme.headlineMedium
+                              ?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black87,
+                              ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Let\'s find some anime.',
+                          style: Theme.of(context).textTheme.titleMedium
+                              ?.copyWith(color: Colors.black54),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Let\'s find some anime.',
-                    style: Theme.of(
-                      context,
-                    ).textTheme.titleMedium?.copyWith(color: Colors.black54),
-                  ),
                   const SizedBox(height: 32),
-                  // Placeholder for future vibrant content
-                  // Content
-                  Expanded(
+                  // Trending Section
+                  _buildSectionTitle(
+                    context,
+                    'Trending Now',
+                  ).animate().fadeIn(delay: 100.ms).slideX(begin: -0.2, end: 0),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    height: 280,
                     child: FutureBuilder<List<Anime>>(
                       future: MockDataService().getTrendingAnime(),
                       builder: (context, snapshot) {
@@ -74,24 +88,54 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                           return const Center(
                             child: CircularProgressIndicator(),
                           );
-                        } else if (snapshot.hasError) {
-                          return Center(
-                            child: Text('Error: ${snapshot.error}'),
-                          );
-                        } else if (!snapshot.hasData ||
-                            snapshot.data!.isEmpty) {
-                          return const Center(child: Text('No data found'));
                         }
-
-                        final animeList = snapshot.data!;
+                        final animeList = snapshot.data ?? [];
                         return ListView.separated(
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
                           scrollDirection: Axis.horizontal,
                           itemCount: animeList.length,
                           separatorBuilder: (_, __) =>
                               const SizedBox(width: 16),
                           itemBuilder: (context, index) {
-                            final anime = animeList[index];
-                            return _buildAnimeCard(context, anime);
+                            return _buildAnimeCard(context, animeList[index])
+                                .animate(delay: (index * 100).ms)
+                                .fadeIn()
+                                .slideX(begin: 0.2, end: 0);
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 32),
+                  // Popular Section
+                  _buildSectionTitle(
+                    context,
+                    'Most Popular',
+                  ).animate().fadeIn(delay: 400.ms).slideX(begin: -0.2, end: 0),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    height: 280,
+                    child: FutureBuilder<List<Anime>>(
+                      future: MockDataService().getPopularAnime(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        final animeList = snapshot.data ?? [];
+                        return ListView.separated(
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: animeList.length,
+                          separatorBuilder: (_, __) =>
+                              const SizedBox(width: 16),
+                          itemBuilder: (context, index) {
+                            return _buildAnimeCard(context, animeList[index])
+                                .animate(delay: (500 + index * 100).ms)
+                                .fadeIn()
+                                .slideX(begin: 0.2, end: 0);
                           },
                         );
                       },
@@ -101,7 +145,65 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
               ),
             ),
           ),
-          const Center(child: Text("Search Page")),
+
+          // Search Page
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Search',
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Search anime...',
+                      prefixIcon: const Icon(Icons.search_rounded),
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  Expanded(
+                    child: FutureBuilder<List<Anime>>(
+                      future: MockDataService().searchAnime('naruto'),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        final animeList = snapshot.data ?? [];
+                        return GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                mainAxisSpacing: 16,
+                                crossAxisSpacing: 16,
+                                childAspectRatio: 0.7,
+                              ),
+                          itemCount: animeList.length,
+                          itemBuilder: (context, index) {
+                            return _buildAnimeCard(context, animeList[index]);
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
           const Center(child: Text("Library Page")),
         ],
       ),
@@ -127,6 +229,25 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
             selectedIcon: Icon(Icons.video_library_rounded),
             label: 'Library',
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSectionTitle(BuildContext context, String title) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
+          ),
+          TextButton(onPressed: () {}, child: const Text('See All')),
         ],
       ),
     );
