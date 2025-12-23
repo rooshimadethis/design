@@ -371,44 +371,58 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
           const Center(child: Text("Library Page")),
         ],
       ),
-      bottomNavigationBar: NavigationBarTheme(
-        data: NavigationBarThemeData(
-          labelTextStyle: WidgetStateProperty.all(
-            GoogleFonts.teko(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              fontStyle: FontStyle.italic,
-              color: Colors.black,
-            ),
-          ),
-          iconTheme: WidgetStateProperty.all(
-            IconThemeData(color: Colors.black),
-          ),
-        ),
-        child: NavigationBar(
-          selectedIndex: _selectedIndex,
-          onDestinationSelected: (index) =>
-              setState(() => _selectedIndex = index),
-          elevation: 0,
-          backgroundColor: Colors.white,
-          indicatorColor: Colors.grey[300], // Softer indicator for manga style
-          destinations: const [
-            NavigationDestination(
-              icon: Icon(Icons.home_outlined),
-              selectedIcon: Icon(Icons.home_filled),
-              label: 'HOME',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.search_outlined),
-              selectedIcon: Icon(Icons.search),
-              label: 'EXPLORE',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.video_library_outlined),
-              selectedIcon: Icon(Icons.video_library),
-              label: 'LIBRARY',
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.1),
+              blurRadius: 10,
+              offset: const Offset(0, -5),
             ),
           ],
+        ),
+        child: NavigationBarTheme(
+          data: NavigationBarThemeData(
+            labelTextStyle: WidgetStateProperty.all(
+              GoogleFonts.teko(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            iconTheme: WidgetStateProperty.all(
+              IconThemeData(color: Colors.black),
+            ),
+          ),
+          child: NavigationBar(
+            // height: 50,
+            selectedIndex: _selectedIndex,
+            onDestinationSelected: (index) =>
+                setState(() => _selectedIndex = index),
+            elevation: 0,
+            backgroundColor: Colors.white,
+            indicatorColor:
+                Colors.grey[300], // Softer indicator for manga style
+            destinations: const [
+              NavigationDestination(
+                icon: Icon(Icons.home_outlined),
+                selectedIcon: Icon(Icons.home_filled),
+                label: 'HOME',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.search_outlined),
+                selectedIcon: Icon(Icons.search),
+                label: 'EXPLORE',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.video_library_outlined),
+                selectedIcon: Icon(Icons.video_library),
+                label: 'LIBRARY',
+              ),
+            ],
+          ),
         ),
       ),
     );
