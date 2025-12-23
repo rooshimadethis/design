@@ -2,31 +2,31 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "flutter_design_playground (iOS Simulator)",
+            "name": "flutter_design_tool (iOS Simulator)",
             "request": "launch",
             "type": "dart",
             "preLaunchTask": "Launch iOS Simulator"
         },
         {
-            "name": "flutter_design_playground (Pixel 9)",
+            "name": "flutter_design_tool (Pixel 9)",
             "request": "launch",
             "type": "dart",
             "preLaunchTask": "Launch Pixel 9"
         },
         {
-            "name": "flutter_design_playground (Pixel 9 Pro Fold)",
+            "name": "flutter_design_tool (Pixel 9 Pro Fold)",
             "request": "launch",
             "type": "dart",
             "preLaunchTask": "Launch Pixel 9 Pro Fold"
         },
         {
-            "name": "flutter_design_playground (Pixel 9 Pro Fold (2))",
+            "name": "flutter_design_tool (Pixel 9 Pro Fold (2))",
             "request": "launch",
             "type": "dart",
             "preLaunchTask": "Launch Pixel 9 Pro Fold (2)"
         },
         {
-            "name": "flutter_design_playground (Chrome)",
+            "name": "flutter_design_tool (Chrome)",
             "request": "launch",
             "type": "dart",
             "deviceId": "chrome",
@@ -36,7 +36,7 @@
             ]
         },
         {
-            "name": "flutter_design_playground (macOS)",
+            "name": "flutter_design_tool (macOS)",
             "request": "launch",
             "type": "dart",
             "deviceId": "macos"

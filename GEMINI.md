@@ -3,6 +3,8 @@
 ## Project Overview
 A monolithic sandbox environment designed for rapid Flutter UI prototyping and design iterations. The project emphasizes isolation of design concepts while maintaining a shared "harness" for easy development and zero-friction iteration.
 
+**Repository**: [github.com/rooshimadethis/flutter-design-tool](https://github.com/rooshimadethis/flutter-design-tool)
+
 ## Tech Stack
 - **Framework**: Flutter (Dart)
 - **Styling/Fonts**: `google_fonts`, `phosphor_flutter`
