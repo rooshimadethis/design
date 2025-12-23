@@ -6,6 +6,8 @@ import '../anime_details_page.dart';
 import '../widgets/watching_card.dart';
 import '../widgets/expressive_image.dart';
 import '../widgets/anime_card_skeleton.dart';
+import '../widgets/outlined_star.dart';
+import '../utils/color_parser.dart';
 
 class LibraryPage extends StatefulWidget {
   final String? initialTabName;
@@ -186,12 +188,7 @@ class _LibraryPageState extends State<LibraryPage> {
 
   Widget _buildLibraryCard(BuildContext context, WatchingEntry entry) {
     final anime = entry.anime;
-    Color shadowColor = Colors.black;
-    if (anime.color != null) {
-      try {
-        shadowColor = Color(int.parse(anime.color!.replaceAll('#', '0xFF')));
-      } catch (_) {}
-    }
+    final shadowColor = ColorParser.parseAnimeColor(anime.color);
 
     return GestureDetector(
       onTap: () {
@@ -268,7 +265,7 @@ class _LibraryPageState extends State<LibraryPage> {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            _buildOutlinedStar(12),
+                            const OutlinedStar(size: 12),
                             const SizedBox(width: 4),
                             Text(
                               '${entry.userScore}',
@@ -304,22 +301,6 @@ class _LibraryPageState extends State<LibraryPage> {
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildOutlinedStar(double size) {
-    return Stack(
-      children: [
-        Icon(Icons.star, size: size, color: Colors.black),
-        Icon(Icons.star_border, size: size, color: Colors.black),
-        Positioned(
-          top: 1,
-          left: 1,
-          bottom: 1,
-          right: 1,
-          child: Icon(Icons.star, size: size - 2, color: Colors.yellow),
-        ),
-      ],
     );
   }
 }

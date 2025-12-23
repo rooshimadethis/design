@@ -4,6 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'models/anime.dart';
 import 'services/mock_data_service.dart';
 import 'widgets/expressive_image.dart';
+import 'widgets/outlined_star.dart';
+import 'widgets/metadata_chip.dart';
+import 'utils/color_parser.dart';
 
 class AnimeDetailsPage extends StatefulWidget {
   final Anime anime;
@@ -36,15 +39,7 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
         future: _fullDetailsFuture,
         builder: (context, snapshot) {
           final anime = snapshot.data ?? widget.anime;
-
-          Color shadowColor = Colors.black;
-          if (anime.color != null) {
-            try {
-              shadowColor = Color(
-                int.parse(anime.color!.replaceAll('#', '0xFF')),
-              );
-            } catch (_) {}
-          }
+          final shadowColor = ColorParser.parseAnimeColor(anime.color);
 
           return CustomScrollView(
             slivers: [
@@ -205,7 +200,7 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                       ),
                                       child: Row(
                                         children: [
-                                          _buildOutlinedStar(18),
+                                          const OutlinedStar(size: 18),
                                           const SizedBox(width: 4),
                                           Text(
                                             '${anime.averageScore}%',
@@ -227,41 +222,37 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                 children: [
                                   if (anime.season != null &&
                                       anime.seasonYear != null)
-                                    _buildMetadataChip(
-                                      context,
-                                      '${anime.season} ${anime.seasonYear}',
-                                      Icons.calendar_today_rounded,
-                                      shadowColor,
+                                    MetadataChip(
+                                      label:
+                                          '${anime.season} ${anime.seasonYear}',
+                                      icon: Icons.calendar_today_rounded,
+                                      shadowColor: shadowColor,
                                     ),
                                   if (anime.status != null)
-                                    _buildMetadataChip(
-                                      context,
-                                      anime.status!,
-                                      Icons.info_outline_rounded,
-                                      shadowColor,
+                                    MetadataChip(
+                                      label: anime.status!,
+                                      icon: Icons.info_outline_rounded,
+                                      shadowColor: shadowColor,
                                     ),
                                   if (anime.studios.isNotEmpty)
-                                    _buildMetadataChip(
-                                      context,
-                                      anime.studios.first.name,
-                                      Icons.business_rounded,
-                                      shadowColor,
+                                    MetadataChip(
+                                      label: anime.studios.first.name,
+                                      icon: Icons.business_rounded,
+                                      shadowColor: shadowColor,
                                     ),
                                   if (anime.episodes != null)
-                                    _buildMetadataChip(
-                                      context,
-                                      '${anime.episodes} Episodes',
-                                      Icons.movie_filter_rounded,
-                                      shadowColor,
+                                    MetadataChip(
+                                      label: '${anime.episodes} Episodes',
+                                      icon: Icons.movie_filter_rounded,
+                                      shadowColor: shadowColor,
                                     ),
                                   ...anime.genres
                                       .take(3)
                                       .map(
-                                        (genre) => _buildMetadataChip(
-                                          context,
-                                          genre,
-                                          Icons.tag_rounded,
-                                          shadowColor,
+                                        (genre) => MetadataChip(
+                                          label: genre,
+                                          icon: Icons.tag_rounded,
+                                          shadowColor: shadowColor,
                                         ),
                                       ),
                                 ],
@@ -647,60 +638,6 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
           );
         },
       ),
-    );
-  }
-
-  Widget _buildMetadataChip(
-    BuildContext context,
-    String label,
-    IconData icon,
-    Color shadowColor,
-  ) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.zero,
-        border: Border.all(color: Colors.black, width: 2),
-        boxShadow: [
-          BoxShadow(
-            color: shadowColor,
-            offset: const Offset(2, 2),
-            blurRadius: 0,
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 14, color: Colors.black),
-          const SizedBox(width: 4),
-          Text(
-            label.toUpperCase(),
-            style: GoogleFonts.robotoMono(
-              fontWeight: FontWeight.bold,
-              fontSize: 12,
-              color: Colors.black,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildOutlinedStar(double size) {
-    return Stack(
-      children: [
-        Icon(Icons.star, size: size, color: Colors.black),
-        Icon(Icons.star_border, size: size, color: Colors.black),
-        Positioned(
-          top: 1,
-          left: 1,
-          bottom: 1,
-          right: 1,
-          child: Icon(Icons.star, size: size - 2, color: Colors.yellow),
-        ),
-      ],
     );
   }
 }
