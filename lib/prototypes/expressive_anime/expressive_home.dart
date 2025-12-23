@@ -230,7 +230,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                                       delay: (index < 6 ? index * 100 : 0).ms,
                                     )
                                     .fadeIn()
-                                    .slideX(begin: 0.2, end: 0),
+                                    .slideX(begin: 0.1, end: 0),
                               ],
                             );
                           },
@@ -281,7 +281,10 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                                       delay: (index < 6 ? index * 100 : 0).ms,
                                     )
                                     .fadeIn()
-                                    .slideX(begin: 0.2, end: 0),
+                                    .scale(
+                                      begin: const Offset(0.9, 0.9),
+                                      end: const Offset(1.0, 1.0),
+                                    ),
                               ],
                             );
                           },

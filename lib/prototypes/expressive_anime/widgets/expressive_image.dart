@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ExpressiveImage extends StatelessWidget {
   final String? imageUrl;
@@ -23,50 +24,29 @@ class ExpressiveImage extends StatelessWidget {
       return _buildSkeleton();
     }
 
-    Widget image = Image.network(
-      imageUrl!,
+    return CachedNetworkImage(
+      imageUrl: imageUrl!,
       width: width,
       height: height,
       fit: fit,
       alignment: Alignment.center,
-      frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
-        if (wasSynchronouslyLoaded) {
-          return child;
-        }
-        return AnimatedSwitcher(
-          duration: 500.ms,
-          layoutBuilder: (currentChild, previousChildren) {
-            return Stack(
-              fit: StackFit.expand,
-              alignment: Alignment.center,
-              children: [
-                ...previousChildren,
-                if (currentChild != null) currentChild,
-              ],
-            );
-          },
-          child: frame != null
-              ? SizedBox(
-                  width: width,
-                  height: height,
-                  child: child.animate().fadeIn(
-                    duration: 500.ms,
-                    curve: Curves.easeOut,
-                  ),
-                )
-              : _buildSkeleton(key: const ValueKey('skeleton')),
-        );
-      },
-      errorBuilder: (context, error, stackTrace) {
-        return _buildSkeleton();
-      },
+      // Fade in from skeleton color instead of white
+      fadeInDuration: const Duration(milliseconds: 150),
+      fadeInCurve: Curves.easeOut,
+      // Show skeleton while loading
+      placeholder: (context, url) => _buildSkeleton(),
+      // Show skeleton on error
+      errorWidget: (context, url, error) => _buildSkeleton(),
+      // Aggressive caching (only if width/height are finite values)
+      memCacheWidth: (width != null && width!.isFinite)
+          ? (width! * 2).toInt()
+          : null,
+      memCacheHeight: (height != null && height!.isFinite)
+          ? (height! * 2).toInt()
+          : null,
+      maxWidthDiskCache: 1000,
+      maxHeightDiskCache: 1000,
     );
-
-    if (width != null || height != null) {
-      return SizedBox(width: width, height: height, child: image);
-    }
-
-    return image;
   }
 
   Widget _buildSkeleton({Key? key}) {

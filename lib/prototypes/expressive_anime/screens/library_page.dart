@@ -177,7 +177,7 @@ class _LibraryPageState extends State<LibraryPage> {
           children: [
             const AnimeCardSkeleton(),
             _buildLibraryCard(context, entry)
-                .animate(delay: (index < 8 ? index * 50 : 0).ms)
+                .animate(delay: (index < 8 ? index * 100 : 0).ms)
                 .fadeIn()
                 .scale(begin: const Offset(0.9, 0.9), end: const Offset(1, 1)),
           ],
