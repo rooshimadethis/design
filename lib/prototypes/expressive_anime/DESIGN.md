@@ -34,3 +34,8 @@
 ### Phase 3: Polish
 - [ ] **Page Transitions**: Shared Element Transitions (Hero animations).
 - [ ] **Micro-animations**: Button presses, like hearts, loading states.
+
+TODO:
+- [ ] confetti/haptics on episode completion
+- [ ] skeletons for loading?
+- [ ] light and dark mode

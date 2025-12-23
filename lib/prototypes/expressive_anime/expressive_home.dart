@@ -34,6 +34,13 @@ class ExpressiveHomePage extends StatefulWidget {
 
 class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
   int _selectedIndex = 0;
+  final Map<int, int> _progressOverrides = {};
+
+  void _incrementProgress(int entryId, int currentProgress) {
+    setState(() {
+      _progressOverrides[entryId] = currentProgress + 1;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,11 +79,49 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                     ),
                   ),
                   const SizedBox(height: 32),
+                  // Watching Section
+                  _buildSectionTitle(
+                    context,
+                    'Continue Watching',
+                  ).animate().fadeIn(delay: 100.ms).slideX(begin: -0.2, end: 0),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    height: 220, // Slightly shorter for watching cards
+                    child: FutureBuilder<List<WatchingEntry>>(
+                      future: MockDataService().getWatchingList(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        final entries = snapshot.data ?? [];
+                        return ListView.separated(
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: entries.length,
+                          separatorBuilder: (_, __) =>
+                              const SizedBox(width: 16),
+                          itemBuilder: (context, index) {
+                            final entry = entries[index];
+                            final progress =
+                                _progressOverrides[entry.id] ?? entry.progress;
+                            return _buildWatchingCard(context, entry, progress)
+                                .animate(delay: (index * 100).ms)
+                                .fadeIn()
+                                .slideX(begin: 0.2, end: 0);
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 32),
                   // Trending Section
                   _buildSectionTitle(
                     context,
                     'Trending Now',
-                  ).animate().fadeIn(delay: 100.ms).slideX(begin: -0.2, end: 0),
+                  ).animate().fadeIn(delay: 200.ms).slideX(begin: -0.2, end: 0),
                   const SizedBox(height: 16),
                   SizedBox(
                     height: 280,
@@ -98,42 +143,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                               const SizedBox(width: 16),
                           itemBuilder: (context, index) {
                             return _buildAnimeCard(context, animeList[index])
-                                .animate(delay: (index * 100).ms)
-                                .fadeIn()
-                                .slideX(begin: 0.2, end: 0);
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                  const SizedBox(height: 32),
-                  // Popular Section
-                  _buildSectionTitle(
-                    context,
-                    'Most Popular',
-                  ).animate().fadeIn(delay: 400.ms).slideX(begin: -0.2, end: 0),
-                  const SizedBox(height: 16),
-                  SizedBox(
-                    height: 280,
-                    child: FutureBuilder<List<Anime>>(
-                      future: MockDataService().getPopularAnime(),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        }
-                        final animeList = snapshot.data ?? [];
-                        return ListView.separated(
-                          padding: const EdgeInsets.symmetric(horizontal: 24),
-                          scrollDirection: Axis.horizontal,
-                          itemCount: animeList.length,
-                          separatorBuilder: (_, __) =>
-                              const SizedBox(width: 16),
-                          itemBuilder: (context, index) {
-                            return _buildAnimeCard(context, animeList[index])
-                                .animate(delay: (500 + index * 100).ms)
+                                .animate(delay: (300 + index * 100).ms)
                                 .fadeIn()
                                 .slideX(begin: 0.2, end: 0);
                           },
@@ -341,6 +351,136 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                 ],
               ),
             ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildWatchingCard(
+    BuildContext context,
+    WatchingEntry entry,
+    int progress,
+  ) {
+    // Calculate progress as a fraction (assuming 12, 24, etc episodes if available,
+    // else just show a bar that fills up somewhat arbitrarily or based on strict logic)
+    // The JSON provided has 'episodes', so we can use that.
+    final totalEpisodes = entry.anime.episodes ?? 12; // fallback
+    final progressFraction = (progress / totalEpisodes).clamp(0.0, 1.0);
+
+    // Check if there is a next episode
+    final hasNext = progress < totalEpisodes;
+
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => AnimeDetailsPage(anime: entry.anime),
+          ),
+        );
+      },
+      child: Container(
+        width: 280, // Wider card for watching status
+        margin: const EdgeInsets.only(bottom: 8), // For shadow
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(24),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.05),
+              blurRadius: 16,
+              offset: const Offset(0, 8),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            // Image Section
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(24),
+                bottomLeft: Radius.circular(24),
+              ),
+              child: Hero(
+                tag: 'watching_${entry.id}',
+                child: SizedBox(
+                  width: 100,
+                  height: double.infinity,
+                  child: entry.anime.coverImage != null
+                      ? Image.network(
+                          entry.anime.coverImage!,
+                          fit: BoxFit.cover,
+                          errorBuilder: (_, __, ___) => Container(
+                            color: Colors.grey[200],
+                            child: const Icon(Icons.broken_image),
+                          ),
+                        )
+                      : Container(color: Colors.grey[200]),
+                ),
+              ),
+            ),
+            // Info Section
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      entry.anime.title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Episode ${progress + 1}',
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    // Progress Bar
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(4),
+                      child: LinearProgressIndicator(
+                        value: progressFraction,
+                        backgroundColor: Colors.grey[100],
+                        color: Theme.of(context).colorScheme.primary,
+                        minHeight: 6,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            // Plus Button
+            if (hasNext)
+              Padding(
+                padding: const EdgeInsets.only(right: 16.0),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () => _incrementProgress(entry.id, progress),
+                    borderRadius: BorderRadius.circular(12),
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Icon(
+                        Icons.add_rounded,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
           ],
         ),
       ),
