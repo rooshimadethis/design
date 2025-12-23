@@ -19,22 +19,20 @@ class WatchingEntry {
 class MockDataService {
   Future<UserProfile> getUserProfile() async {
     final jsonString = await rootBundle.loadString(
-      'assets/anilist_data/user_profile.json',
+      'assets/anilist_data/viewer_data.json',
     );
     final Map<String, dynamic> json = jsonDecode(jsonString);
-    return UserProfile.fromJson(json['data']['User']);
+    return UserProfile.fromJson(json['data']['Viewer']);
   }
 
   Future<List<WatchingEntry>> getWatchingList() async {
     final jsonString = await rootBundle.loadString(
-      'assets/anilist_data/user_library.json',
+      'assets/anilist_data/viewer_data.json',
     );
     final Map<String, dynamic> json = jsonDecode(jsonString);
     final List<dynamic> lists = json['data']['MediaListCollection']['lists'];
 
     // Find the "Watching" list
-    // In the real app/data, this might be "Watching" or "Current"
-    // We'll look for standard AniList status names
     final watchingList = lists.firstWhere(
       (list) => list['name'] == 'Watching' || list['name'] == 'Current',
       orElse: () => null,
@@ -50,6 +48,30 @@ class MockDataService {
         anime: Anime.fromJson(e['media']),
       );
     }).toList();
+  }
+
+  Future<Map<String, List<WatchingEntry>>> getLibraryLists() async {
+    final jsonString = await rootBundle.loadString(
+      'assets/anilist_data/viewer_data.json',
+    );
+    final Map<String, dynamic> json = jsonDecode(jsonString);
+    final List<dynamic> lists = json['data']['MediaListCollection']['lists'];
+
+    final Map<String, List<WatchingEntry>> library = {};
+
+    for (var list in lists) {
+      final String name = list['name'];
+      final List<dynamic> entries = list['entries'];
+      library[name] = entries.map((e) {
+        return WatchingEntry(
+          id: e['id'],
+          progress: e['progress'] ?? 0,
+          anime: Anime.fromJson(e['media']),
+        );
+      }).toList();
+    }
+
+    return library;
   }
 
   Future<List<Anime>> getTrendingAnime() async {

@@ -1,5 +1,82 @@
 {
   "data": {
+    "Viewer": {
+      "id": 7612289,
+      "name": "VoltAndVeg",
+      "avatar": {
+        "large": "https://s4.anilist.co/file/anilistcdn/user/avatar/large/default.png"
+      },
+      "statistics": {
+        "anime": {
+          "count": 52,
+          "minutesWatched": 35529,
+          "episodesWatched": 1487,
+          "meanScore": 84,
+          "statuses": [
+            {
+              "count": 50,
+              "status": "PLANNING"
+            },
+            {
+              "count": 31,
+              "status": "COMPLETED"
+            },
+            {
+              "count": 13,
+              "status": "CURRENT"
+            },
+            {
+              "count": 8,
+              "status": "DROPPED"
+            }
+          ]
+        }
+      },
+      "favourites": {
+        "anime": {
+          "nodes": []
+        },
+        "characters": {
+          "nodes": []
+        }
+      },
+      "mediaListOptions": {
+        "scoreFormat": "POINT_10",
+        "rowOrder": "score",
+        "animeList": {
+          "sectionOrder": [
+            "Watching",
+            "Rewatching",
+            "Completed",
+            "Completed TV",
+            "Completed Movie",
+            "Completed OVA",
+            "Completed ONA",
+            "Completed TV Short",
+            "Completed Special",
+            "Completed Music",
+            "Paused",
+            "Dropped",
+            "Planning"
+          ],
+          "customLists": []
+        },
+        "mangaList": {
+          "sectionOrder": [
+            "Reading",
+            "Rereading",
+            "Completed",
+            "Completed Manga",
+            "Completed Novel",
+            "Completed One Shot",
+            "Paused",
+            "Dropped",
+            "Planning"
+          ],
+          "customLists": []
+        }
+      }
+    },
     "MediaListCollection": {
       "lists": [
         {
