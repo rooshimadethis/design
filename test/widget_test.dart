@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:flutter_design_playground/main.dart';
+import 'package:flutter_design_tool/main.dart';
 
 void main() {
   testWidgets('App smoke test', (WidgetTester tester) async {

@@ -1,4 +1,4 @@
-import 'package:flutter_design_playground/prototypes/marshmallow/models/social_feed_models.dart';
+import 'package:flutter_design_tool/prototypes/marshmallow/models/social_feed_models.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
