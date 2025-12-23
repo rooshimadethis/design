@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 // import 'prototypes/anime_cyberpunk/main_screen.dart';
 import 'prototypes/expressive_anime/expressive_home.dart';
+// ignore: unused_import
 import 'prototypes/marshmallow/main.dart';
 
 void main() {
@@ -15,9 +16,11 @@ class DesignPlaygroundApp extends StatelessWidget {
   /// --------------------------------------------------------------------------
   /// 🛠️ DEV MODE: DIRECT BOOT
   /// Assign a widget here to skip the menu and boot directly into a prototype.
-  /// Example: static Widget? activePrototype = CyberpunkMain();
   /// --------------------------------------------------------------------------
-  static Widget? activePrototype = const MarshmallowPrototypeApp();
+
+  // static Widget? activePrototype = const MarshmallowPrototypeApp();
+  static Widget? activePrototype = const ExpressiveApp();
+  // static Widget? activePrototype = null; // Boot to Menu
 
   @override
   Widget build(BuildContext context) {

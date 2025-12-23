@@ -24,10 +24,10 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    // Parse color or use default
-    final primaryColor = widget.anime.color != null
-        ? Color(int.parse(widget.anime.color!.replaceAll('#', '0xFF')))
-        : const Color(0xFFFF4081);
+    // Parse color or use default black for Manga style
+    // final primaryColor = widget.anime.color != null
+    //     ? Color(int.parse(widget.anime.color!.replaceAll('#', '0xFF')))
+    //     : Colors.black;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -36,19 +36,40 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
         builder: (context, snapshot) {
           final anime = snapshot.data ?? widget.anime;
 
+          Color shadowColor = Colors.black;
+          if (anime.color != null) {
+            try {
+              shadowColor = Color(
+                int.parse(anime.color!.replaceAll('#', '0xFF')),
+              );
+            } catch (_) {}
+          }
+
           return CustomScrollView(
             slivers: [
               SliverAppBar(
                 expandedHeight: 300,
                 pinned: true,
                 stretch: true,
-                backgroundColor: primaryColor,
-                leading: IconButton(
-                  icon: const Icon(Icons.arrow_back_rounded),
-                  onPressed: () => Navigator.pop(context),
-                  style: IconButton.styleFrom(
-                    backgroundColor: Colors.black26,
-                    foregroundColor: Colors.white,
+                backgroundColor: Colors
+                    .black, // Force black header in collapsed state? Or use primary.
+                // Let's use black for maximum contrast manga feel.
+                leading: Container(
+                  margin: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.black, width: 2),
+                    boxShadow: const [
+                      BoxShadow(color: Colors.black, offset: Offset(2, 2)),
+                    ],
+                  ),
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.arrow_back_rounded,
+                      color: Colors.black,
+                    ),
+                    onPressed: () => Navigator.pop(context),
+                    padding: EdgeInsets.zero,
                   ),
                 ),
                 flexibleSpace: FlexibleSpaceBar(
@@ -62,13 +83,21 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                       if (anime.bannerImage != null || anime.coverImage != null)
                         Hero(
                           tag: 'anime_cover_${anime.id}',
-                          child: Image.network(
-                            anime.bannerImage ?? anime.coverImage!,
-                            fit: BoxFit.cover,
+                          child: ColorFiltered(
+                            // Optional: Desaturate for manga feel? maybe not, covers are colorful.
+                            // colorFilter: const ColorFilter.mode(Colors.grey, BlendMode.saturation),
+                            colorFilter: const ColorFilter.mode(
+                              Colors.transparent,
+                              BlendMode.multiply,
+                            ),
+                            child: Image.network(
+                              anime.bannerImage ?? anime.coverImage!,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         )
                       else
-                        Container(color: primaryColor),
+                        Container(color: Colors.black),
                       const DecoratedBox(
                         decoration: BoxDecoration(
                           // Manga style scanline effect or just simple border at bottom
@@ -106,7 +135,7 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                         Text(
                                           anime.title.toUpperCase(),
                                           style: GoogleFonts.teko(
-                                            fontSize: 36,
+                                            fontSize: 42,
                                             fontWeight: FontWeight.bold,
                                             height: 0.9,
                                             color: Colors.black,
@@ -128,10 +157,10 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                           color: Colors.black,
                                           width: 2,
                                         ),
-                                        boxShadow: const [
+                                        boxShadow: [
                                           BoxShadow(
-                                            color: Colors.black,
-                                            offset: Offset(4, 4),
+                                            color: shadowColor,
+                                            offset: const Offset(4, 4),
                                             blurRadius: 0,
                                           ),
                                         ],
@@ -141,7 +170,7 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                           const Icon(
                                             Icons.star,
                                             size: 18,
-                                            color: Colors.black,
+                                            color: Colors.amber,
                                           ),
                                           const SizedBox(width: 4),
                                           Text(
@@ -168,24 +197,28 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                       context,
                                       '${anime.season} ${anime.seasonYear}',
                                       Icons.calendar_today_rounded,
+                                      shadowColor,
                                     ),
                                   if (anime.status != null)
                                     _buildMetadataChip(
                                       context,
                                       anime.status!,
                                       Icons.info_outline_rounded,
+                                      shadowColor,
                                     ),
                                   if (anime.studios.isNotEmpty)
                                     _buildMetadataChip(
                                       context,
                                       anime.studios.first.name,
                                       Icons.business_rounded,
+                                      shadowColor,
                                     ),
                                   if (anime.episodes != null)
                                     _buildMetadataChip(
                                       context,
                                       '${anime.episodes} Episodes',
                                       Icons.movie_filter_rounded,
+                                      shadowColor,
                                     ),
                                   ...anime.genres
                                       .take(3)
@@ -194,6 +227,7 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                           context,
                                           genre,
                                           Icons.tag_rounded,
+                                          shadowColor,
                                         ),
                                       ),
                                 ],
@@ -213,7 +247,7 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                           label: Text(
                                             'ADD TO LIBRARY',
                                             style: GoogleFonts.teko(
-                                              fontSize: 20,
+                                              fontSize: 24,
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
@@ -226,10 +260,10 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                             elevation: 0,
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
-                                                  BorderRadius.circular(4),
+                                                  BorderRadius.zero, // Sharp
                                               side: const BorderSide(
                                                 color: Colors.black,
-                                                width: 2,
+                                                width: 3,
                                               ),
                                             ),
                                           ),
@@ -247,10 +281,11 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                       foregroundColor: Colors.black,
                                       padding: const EdgeInsets.all(16),
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(4),
+                                        borderRadius:
+                                            BorderRadius.zero, // Sharp
                                         side: const BorderSide(
                                           color: Colors.black,
-                                          width: 2,
+                                          width: 3,
                                         ),
                                       ),
                                     ),
@@ -262,21 +297,35 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                               Text(
                                 'SYNOPSIS',
                                 style: GoogleFonts.teko(
-                                  fontSize: 28,
+                                  fontSize: 32,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black,
+                                  fontStyle: FontStyle.italic,
                                 ),
                               ),
                               const SizedBox(height: 8),
-                              Text(
-                                anime.description?.replaceAll('<br>', '\n') ??
-                                    "No description available.",
-                                style: Theme.of(context).textTheme.bodyLarge
-                                    ?.copyWith(
-                                      color: Colors.black54,
-                                      height: 1.5,
+                              Container(
+                                padding: const EdgeInsets.all(16),
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    left: BorderSide(
+                                      color: Colors.black,
+                                      width: 4,
                                     ),
-                              ).animate().fadeIn(delay: 400.ms),
+                                  ),
+                                ),
+                                child: Text(
+                                  anime.description?.replaceAll('<br>', '\n') ??
+                                      "No description available.",
+                                  style: Theme.of(context).textTheme.bodyLarge
+                                      ?.copyWith(
+                                        color: Colors.black87,
+                                        height: 1.5,
+                                        fontFamily:
+                                            GoogleFonts.robotoMono().fontFamily,
+                                      ),
+                                ).animate().fadeIn(delay: 400.ms),
+                              ),
                             ],
                           ),
                         ),
@@ -290,15 +339,16 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                             child: Text(
                               'CHARACTERS',
                               style: GoogleFonts.teko(
-                                fontSize: 28,
+                                fontSize: 32,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black,
+                                fontStyle: FontStyle.italic,
                               ),
                             ),
                           ),
                           const SizedBox(height: 16),
                           SizedBox(
-                            height: 150,
+                            height: 180, // Taller for square cards
                             child: ListView.separated(
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 24,
@@ -311,28 +361,45 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                 final character = anime.characters[index];
                                 return Column(
                                   children: [
-                                    CircleAvatar(
-                                      radius: 40,
-                                      backgroundImage: NetworkImage(
-                                        character.image,
+                                    Container(
+                                      width: 100,
+                                      height: 100,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.black,
+                                          width: 2,
+                                        ),
+                                        image: DecorationImage(
+                                          image: NetworkImage(character.image),
+                                          fit: BoxFit.cover,
+                                        ),
+                                        boxShadow: const [
+                                          BoxShadow(
+                                            color: Colors.black,
+                                            offset: Offset(4, 4),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                     const SizedBox(height: 8),
                                     Text(
-                                      character.name.split(' ').first,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall
-                                          ?.copyWith(
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                      character.name
+                                          .split(' ')
+                                          .first
+                                          .toUpperCase(),
+                                      style: GoogleFonts.teko(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        color: Colors.black,
+                                      ),
                                     ),
                                     Text(
-                                      character.role,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .labelSmall
-                                          ?.copyWith(color: Colors.grey),
+                                      character.role.toUpperCase(),
+                                      style: GoogleFonts.robotoMono(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey[700],
+                                      ),
                                     ),
                                   ],
                                 );
@@ -350,9 +417,10 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                             child: Text(
                               'RELATIONS',
                               style: GoogleFonts.teko(
-                                fontSize: 28,
+                                fontSize: 32,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black,
+                                fontStyle: FontStyle.italic,
                               ),
                             ),
                           ),
@@ -390,19 +458,28 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                             width: 100,
                                             height: 140,
                                             decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(12),
+                                              borderRadius: BorderRadius.zero,
+                                              border: Border.all(
+                                                color: Colors.black,
+                                                width: 3,
+                                              ),
                                               image: DecorationImage(
                                                 image: NetworkImage(
                                                   relAnime.coverImage ?? '',
                                                 ),
                                                 fit: BoxFit.cover,
                                               ),
+                                              boxShadow: const [
+                                                BoxShadow(
+                                                  color: Colors.black,
+                                                  offset: Offset(4, 4),
+                                                ),
+                                              ],
                                             ),
                                           ),
                                           Positioned(
-                                            top: 6,
-                                            left: 6,
+                                            top: 0,
+                                            left: 0,
                                             child: Container(
                                               padding:
                                                   const EdgeInsets.symmetric(
@@ -412,17 +489,15 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                               decoration: BoxDecoration(
                                                 color: Colors.black,
                                                 borderRadius:
-                                                    BorderRadius.circular(
-                                                      0,
-                                                    ), // Sharp
+                                                    BorderRadius.zero, // Sharp
                                               ),
                                               child: Text(
                                                 relation.relationType
                                                     .replaceAll('_', ' ')
                                                     .toUpperCase(),
-                                                style: GoogleFonts.robotoMono(
+                                                style: GoogleFonts.teko(
                                                   color: Colors.white,
-                                                  fontSize: 10,
+                                                  fontSize: 12,
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),
@@ -461,9 +536,10 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                             child: Text(
                               'RECOMMENDATIONS',
                               style: GoogleFonts.teko(
-                                fontSize: 28,
+                                fontSize: 32,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black,
+                                fontStyle: FontStyle.italic,
                               ),
                             ),
                           ),
@@ -487,13 +563,23 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
                                       width: 100,
                                       height: 140,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(12),
+                                        borderRadius: BorderRadius.zero,
+                                        border: Border.all(
+                                          color: Colors.black,
+                                          width: 3,
+                                        ),
                                         image: DecorationImage(
                                           image: NetworkImage(
                                             rec.coverImage ?? '',
                                           ),
                                           fit: BoxFit.cover,
                                         ),
+                                        boxShadow: const [
+                                          BoxShadow(
+                                            color: Colors.black,
+                                            offset: Offset(4, 4),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                     const SizedBox(height: 8),
@@ -530,15 +616,24 @@ class _AnimeDetailsPageState extends State<AnimeDetailsPage> {
     );
   }
 
-  Widget _buildMetadataChip(BuildContext context, String label, IconData icon) {
+  Widget _buildMetadataChip(
+    BuildContext context,
+    String label,
+    IconData icon,
+    Color shadowColor,
+  ) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.zero,
         border: Border.all(color: Colors.black, width: 2),
-        boxShadow: const [
-          BoxShadow(color: Colors.black, offset: Offset(2, 2), blurRadius: 0),
+        boxShadow: [
+          BoxShadow(
+            color: shadowColor,
+            offset: const Offset(2, 2),
+            blurRadius: 0,
+          ),
         ],
       ),
       child: Row(

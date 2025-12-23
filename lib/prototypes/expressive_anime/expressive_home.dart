@@ -18,27 +18,25 @@ class ExpressiveApp extends StatelessWidget {
         useMaterial3: true,
         scaffoldBackgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF000000), // Black primary
+          seedColor: Colors.black,
           primary: Colors.black,
-          secondary: const Color(0xFFFF4081),
+          secondary: Colors.red[900], // Manga blood red
           surface: Colors.white,
           brightness: Brightness.light,
         ),
         textTheme: GoogleFonts.bangersTextTheme().copyWith(
-          // If bangers isn't ideal for body, we can mix.
-          // But let's stick to standard fonts with aggressive styling for now to be safe,
-          // as Bangers might not be readable for small text.
-          // actually, let's use 'Anime' style standard:
+          // Using Teko for that "Shonen Jump" title feel
           headlineMedium: GoogleFonts.teko(
-            fontSize: 32,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 1.0,
+            fontSize: 36, // Larger for drama
+            fontWeight: FontWeight.w700,
+            letterSpacing: 1.2,
             color: Colors.black,
           ),
           titleLarge: GoogleFonts.teko(
-            fontSize: 24,
+            fontSize: 28,
             fontWeight: FontWeight.bold,
             color: Colors.black,
+            fontStyle: FontStyle.italic, // Action-y
           ),
           titleMedium: GoogleFonts.roboto(
             fontWeight: FontWeight.bold,
@@ -130,28 +128,38 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                               children: [
                                 const SizedBox(height: 20),
                                 Text(
-                                  '$greeting, $name!',
+                                  '$greeting, $name',
                                   style: Theme.of(context)
                                       .textTheme
                                       .headlineMedium
                                       ?.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black87,
-                                        fontSize: 24,
+                                        color: Colors.black,
+                                        fontSize: 32,
+                                        fontStyle: FontStyle.italic,
                                       ),
                                 ),
                                 const SizedBox(height: 4),
-                                Text(
-                                  'Let\'s find some anime.',
-                                  style: Theme.of(context).textTheme.titleMedium
-                                      ?.copyWith(color: Colors.black54),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                    vertical: 2,
+                                  ),
+                                  color: Colors.black,
+                                  child: Text(
+                                    'Let\'s find some anime.',
+                                    style: GoogleFonts.teko(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: 2.0,
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
                             if (avatarUrl != null && avatarUrl.isNotEmpty)
                               Container(
                                 decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
+                                  shape: BoxShape.rectangle, // Square avatar
                                   border: Border.all(
                                     color: Colors.black,
                                     width: 3,
@@ -160,14 +168,15 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                                     BoxShadow(
                                       color: Colors.black,
                                       blurRadius: 0,
-                                      offset: Offset(2, 2),
+                                      offset: Offset(4, 4),
                                     ),
                                   ],
                                 ),
-                                child: CircleAvatar(
-                                  radius: 24,
-                                  backgroundImage: NetworkImage(avatarUrl),
-                                  backgroundColor: Colors.grey[200],
+                                child: Image.network(
+                                  avatarUrl,
+                                  width: 56,
+                                  height: 56,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                           ],
@@ -190,7 +199,9 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
                           return const Center(
-                            child: CircularProgressIndicator(),
+                            child: CircularProgressIndicator(
+                              color: Colors.black,
+                            ),
                           );
                         }
                         final entries = snapshot.data ?? [];
@@ -233,7 +244,9 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
                           return const Center(
-                            child: CircularProgressIndicator(),
+                            child: CircularProgressIndicator(
+                              color: Colors.black,
+                            ),
                           );
                         }
                         final animeList = snapshot.data ?? [];
@@ -266,9 +279,10 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Search',
+                    'SEARCH',
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.italic,
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -282,10 +296,11 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                         );
                       });
                     },
+                    style: GoogleFonts.robotoMono(fontWeight: FontWeight.bold),
                     decoration: InputDecoration(
-                      hintText: 'SEARCH MANGA/ANIME...',
+                      hintText: 'FIND MANGA...',
                       hintStyle: GoogleFonts.teko(
-                        fontSize: 18,
+                        fontSize: 20,
                         color: Colors.grey,
                       ),
                       prefixIcon: const Icon(
@@ -295,24 +310,23 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                       filled: true,
                       fillColor: Colors.white,
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.zero,
                         borderSide: const BorderSide(
                           color: Colors.black,
                           width: 3,
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.zero,
                         borderSide: const BorderSide(
                           color: Colors.black,
-                          width: 3,
+                          width: 4,
                         ),
                       ),
                       contentPadding: const EdgeInsets.symmetric(
                         vertical: 16,
                         horizontal: 16,
                       ),
-                      // Add a hard shadow effect via container typically, but here we just do border
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -323,7 +337,9 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
                           return const Center(
-                            child: CircularProgressIndicator(),
+                            child: CircularProgressIndicator(
+                              color: Colors.black,
+                            ),
                           );
                         }
                         final animeList = snapshot.data ?? [];
@@ -350,29 +366,44 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
           const Center(child: Text("Library Page")),
         ],
       ),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _selectedIndex,
-        onDestinationSelected: (index) =>
-            setState(() => _selectedIndex = index),
-        elevation: 0,
-        backgroundColor: Colors.white,
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home_rounded),
-            label: 'Home',
+      bottomNavigationBar: NavigationBarTheme(
+        data: NavigationBarThemeData(
+          labelTextStyle: WidgetStateProperty.all(
+            GoogleFonts.teko(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
           ),
-          NavigationDestination(
-            icon: Icon(Icons.search_outlined),
-            selectedIcon: Icon(Icons.search_rounded),
-            label: 'Explore',
+          iconTheme: WidgetStateProperty.all(
+            IconThemeData(color: Colors.black),
           ),
-          NavigationDestination(
-            icon: Icon(Icons.video_library_outlined),
-            selectedIcon: Icon(Icons.video_library_rounded),
-            label: 'Library',
-          ),
-        ],
+        ),
+        child: NavigationBar(
+          selectedIndex: _selectedIndex,
+          onDestinationSelected: (index) =>
+              setState(() => _selectedIndex = index),
+          elevation: 0,
+          backgroundColor: Colors.white,
+          indicatorColor: Colors.grey[300], // Softer indicator for manga style
+          destinations: const [
+            NavigationDestination(
+              icon: Icon(Icons.home_outlined),
+              selectedIcon: Icon(Icons.home_filled),
+              label: 'HOME',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.search_outlined),
+              selectedIcon: Icon(Icons.search),
+              label: 'EXPLORE',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.video_library_outlined),
+              selectedIcon: Icon(Icons.video_library),
+              label: 'LIBRARY',
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -383,19 +414,44 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            title.toUpperCase(),
-            style: Theme.of(
-              context,
-            ).textTheme.titleLarge?.copyWith(fontStyle: FontStyle.italic),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+            decoration: BoxDecoration(
+              color: Colors.black,
+              border: Border.all(color: Colors.black, width: 2),
+            ),
+            child: Text(
+              title.toUpperCase(),
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: Colors.white,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
           ),
-          TextButton(onPressed: () {}, child: const Text('See All')),
+          TextButton(
+            onPressed: () {},
+            child: Text(
+              'See All >',
+              style: GoogleFonts.teko(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                color: Colors.black,
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 
   Widget _buildAnimeCard(BuildContext context, Anime anime) {
+    Color shadowColor = Colors.black;
+    if (anime.color != null) {
+      try {
+        shadowColor = Color(int.parse(anime.color!.replaceAll('#', '0xFF')));
+      } catch (_) {}
+    }
+
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
@@ -409,32 +465,31 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(width: 3, color: Colors.black),
-          borderRadius: BorderRadius.circular(8),
-          boxShadow: const [
-            BoxShadow(color: Colors.black, blurRadius: 0, offset: Offset(6, 6)),
+          borderRadius: BorderRadius.zero,
+          boxShadow: [
+            BoxShadow(
+              color: shadowColor,
+              blurRadius: 0,
+              offset: const Offset(8, 8),
+            ),
           ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
-              child: ClipRRect(
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(5),
-                ),
-                child: Hero(
-                  tag: 'anime_cover_${anime.id}',
-                  child: anime.coverImage != null
-                      ? Image.network(
-                          anime.coverImage!,
-                          fit: BoxFit.cover,
-                          errorBuilder: (_, __, ___) => Container(
-                            color: Colors.grey[200],
-                            child: const Icon(Icons.broken_image),
-                          ),
-                        )
-                      : Container(color: Colors.grey[200]),
-                ),
+              child: Hero(
+                tag: 'anime_cover_${anime.id}',
+                child: anime.coverImage != null
+                    ? Image.network(
+                        anime.coverImage!,
+                        fit: BoxFit.cover,
+                        errorBuilder: (_, __, ___) => Container(
+                          color: Colors.grey[200],
+                          child: const Icon(Icons.broken_image),
+                        ),
+                      )
+                    : Container(color: Colors.grey[200]),
               ),
             ),
             Container(
@@ -450,26 +505,22 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.teko(
-                      fontSize: 18,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      height: 1.0,
+                      height: 0.9,
                     ),
                   ),
                   if (anime.averageScore != null) ...[
-                    const SizedBox(height: 4),
+                    const SizedBox(height: 6),
                     Row(
                       children: [
-                        const Icon(
-                          Icons.star, // Sharp star
-                          size: 14,
-                          color: Colors.black,
-                        ),
+                        const Icon(Icons.star, size: 16, color: Colors.amber),
                         const SizedBox(width: 4),
                         Text(
                           '${anime.averageScore}%',
                           style: GoogleFonts.robotoMono(
                             fontWeight: FontWeight.bold,
-                            fontSize: 12,
+                            fontSize: 14,
                             color: Colors.black,
                           ),
                         ),
@@ -530,6 +581,15 @@ class _WatchingCardState extends State<WatchingCard> {
     // Check if there is a next episode
     final hasNext = widget.progress < totalEpisodes;
 
+    Color shadowColor = Colors.black;
+    if (widget.entry.anime.color != null) {
+      try {
+        shadowColor = Color(
+          int.parse(widget.entry.anime.color!.replaceAll('#', '0xFF')),
+        );
+      } catch (_) {}
+    }
+
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
@@ -541,15 +601,19 @@ class _WatchingCardState extends State<WatchingCard> {
       child: Container(
         width: 280, // Wider card for watching status
         margin: const EdgeInsets.only(
-          bottom: 8,
-          right: 8,
+          bottom: 12,
+          right: 12,
         ), // For shadow spacing
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(width: 3, color: Colors.black),
-          borderRadius: BorderRadius.circular(8),
-          boxShadow: const [
-            BoxShadow(color: Colors.black, blurRadius: 0, offset: Offset(6, 6)),
+          borderRadius: BorderRadius.zero,
+          boxShadow: [
+            BoxShadow(
+              color: shadowColor,
+              blurRadius: 0,
+              offset: const Offset(8, 8),
+            ),
           ],
         ),
         child: Row(
@@ -561,27 +625,21 @@ class _WatchingCardState extends State<WatchingCard> {
                   right: BorderSide(width: 3, color: Colors.black),
                 ),
               ),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(5),
-                  bottomLeft: Radius.circular(5),
-                ),
-                child: Hero(
-                  tag: 'watching_${widget.entry.id}',
-                  child: SizedBox(
-                    width: 100,
-                    height: double.infinity,
-                    child: widget.entry.anime.coverImage != null
-                        ? Image.network(
-                            widget.entry.anime.coverImage!,
-                            fit: BoxFit.cover,
-                            errorBuilder: (_, __, ___) => Container(
-                              color: Colors.grey[200],
-                              child: const Icon(Icons.broken_image),
-                            ),
-                          )
-                        : Container(color: Colors.grey[200]),
-                  ),
+              child: Hero(
+                tag: 'watching_${widget.entry.id}',
+                child: SizedBox(
+                  width: 100,
+                  height: double.infinity,
+                  child: widget.entry.anime.coverImage != null
+                      ? Image.network(
+                          widget.entry.anime.coverImage!,
+                          fit: BoxFit.cover,
+                          errorBuilder: (_, __, ___) => Container(
+                            color: Colors.grey[200],
+                            child: const Icon(Icons.broken_image),
+                          ),
+                        )
+                      : Container(color: Colors.grey[200]),
                 ),
               ),
             ),
@@ -598,36 +656,40 @@ class _WatchingCardState extends State<WatchingCard> {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.teko(
-                        fontSize: 20,
+                        fontSize: 24,
                         fontWeight: FontWeight.bold,
-                        height: 1.0,
+                        height: 0.9,
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Text(
-                      'EPISODE ${widget.progress + 1}',
-                      style: GoogleFonts.robotoMono(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 6,
+                        vertical: 2,
+                      ),
+                      color: Colors.black,
+                      child: Text(
+                        'EPISODE ${widget.progress + 1}',
+                        style: GoogleFonts.robotoMono(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 12),
                     // Progress Bar
                     Container(
-                      height: 12,
+                      height: 16,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.black, width: 2),
-                        borderRadius: BorderRadius.circular(6),
+                        borderRadius: BorderRadius.zero,
                       ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(4),
-                        child: LinearProgressIndicator(
-                          value: progressFraction,
-                          backgroundColor: Colors.white,
-                          color: Colors.black,
-                          minHeight: 12,
-                        ),
+                      child: LinearProgressIndicator(
+                        value: progressFraction,
+                        backgroundColor: Colors.white,
+                        color: Colors.black,
+                        minHeight: 12,
                       ),
                     ),
                   ],
@@ -658,14 +720,23 @@ class _WatchingCardState extends State<WatchingCard> {
                           widget.onIncrement();
                           _confettiController.play();
                         },
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.zero,
                         child: Container(
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
                             color: Colors.black,
-                            borderRadius: BorderRadius.circular(8),
+                            shape: BoxShape.rectangle,
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.black,
+                                offset: Offset(2, 2),
+                              ),
+                            ],
                           ),
-                          child: const Icon(Icons.add, color: Colors.white),
+                          child: const Icon(
+                            Icons.add_sharp,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
