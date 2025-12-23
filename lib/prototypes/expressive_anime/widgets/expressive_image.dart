@@ -29,10 +29,15 @@ class ExpressiveImage extends StatelessWidget {
       height: height,
       fit: fit,
       frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
-        if (wasSynchronouslyLoaded || frame != null) {
+        if (wasSynchronouslyLoaded) {
           return child;
         }
-        return _buildSkeleton();
+        return AnimatedSwitcher(
+          duration: 500.ms,
+          child: frame != null
+              ? child.animate().fadeIn(duration: 500.ms, curve: Curves.easeOut)
+              : _buildSkeleton(key: const ValueKey('skeleton')),
+        );
       },
       errorBuilder: (context, error, stackTrace) {
         return _buildSkeleton();
@@ -40,9 +45,9 @@ class ExpressiveImage extends StatelessWidget {
     );
   }
 
-  Widget _buildSkeleton() {
+  Widget _buildSkeleton({Key? key}) {
     final baseColor = skeletonColor ?? Colors.grey[300]!;
-    return Container(width: width, height: height, color: baseColor)
+    return Container(key: key, width: width, height: height, color: baseColor)
         .animate(onPlay: (controller) => controller.repeat())
         .shimmer(duration: 1500.ms, color: Colors.white.withValues(alpha: 0.3));
   }
