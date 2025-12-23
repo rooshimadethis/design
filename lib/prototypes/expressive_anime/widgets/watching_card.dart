@@ -10,6 +10,7 @@ class WatchingCard extends StatefulWidget {
   final int progress;
   final VoidCallback onIncrement;
   final double? width;
+  final double? height;
 
   const WatchingCard({
     super.key,
@@ -17,6 +18,7 @@ class WatchingCard extends StatefulWidget {
     required this.progress,
     required this.onIncrement,
     this.width,
+    this.height,
   });
 
   @override
@@ -65,6 +67,7 @@ class _WatchingCardState extends State<WatchingCard> {
       },
       child: Container(
         width: widget.width ?? 280,
+        height: widget.height,
         margin: const EdgeInsets.only(bottom: 12, right: 12),
         decoration: BoxDecoration(
           color: Colors.white,

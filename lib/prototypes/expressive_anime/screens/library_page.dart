@@ -121,6 +121,7 @@ class _LibraryPageState extends State<LibraryPage> {
                     // In a real app, this would update state/API
                   },
                   width: double.infinity,
+                  height: 140,
                 ),
               )
               .animate(delay: (index * 100).ms)

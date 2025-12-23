@@ -9,6 +9,7 @@ import 'anime_details_page.dart';
 import 'screens/library_page.dart';
 import 'widgets/watching_card.dart';
 import 'widgets/expressive_image.dart';
+import 'widgets/anime_card_skeleton.dart';
 
 class ExpressiveApp extends StatelessWidget {
   const ExpressiveApp({super.key});
@@ -445,10 +446,16 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
-                          return const Center(
-                            child: CircularProgressIndicator(
-                              color: Colors.black,
-                            ),
+                          return ListView.separated(
+                            padding: const EdgeInsets.symmetric(horizontal: 24),
+                            scrollDirection: Axis.horizontal,
+                            itemCount: 3,
+                            separatorBuilder: (_, __) =>
+                                const SizedBox(width: 16),
+                            itemBuilder: (context, index) =>
+                                const AnimeCardSkeleton(
+                                  isHorizontal: true,
+                                ).animate(delay: (index * 100).ms).fadeIn(),
                           );
                         }
                         final entries = snapshot.data ?? [];
@@ -462,15 +469,24 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                             final entry = entries[index];
                             final progress =
                                 _progressOverrides[entry.id] ?? entry.progress;
-                            return WatchingCard(
-                                  entry: entry,
-                                  progress: progress,
-                                  onIncrement: () =>
-                                      _incrementProgress(entry.id, progress),
-                                )
-                                .animate(delay: (index * 100).ms)
-                                .fadeIn()
-                                .slideX(begin: 0.2, end: 0);
+                            return Stack(
+                              children: [
+                                const AnimeCardSkeleton(isHorizontal: true),
+                                WatchingCard(
+                                      entry: entry,
+                                      progress: progress,
+                                      onIncrement: () => _incrementProgress(
+                                        entry.id,
+                                        progress,
+                                      ),
+                                    )
+                                    .animate(
+                                      delay: (index < 6 ? index * 100 : 0).ms,
+                                    )
+                                    .fadeIn()
+                                    .slideX(begin: 0.2, end: 0),
+                              ],
+                            );
                           },
                         );
                       },
@@ -492,10 +508,16 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
-                          return const Center(
-                            child: CircularProgressIndicator(
-                              color: Colors.black,
-                            ),
+                          return ListView.separated(
+                            padding: const EdgeInsets.symmetric(horizontal: 24),
+                            scrollDirection: Axis.horizontal,
+                            itemCount: 4,
+                            separatorBuilder: (_, __) =>
+                                const SizedBox(width: 16),
+                            itemBuilder: (context, index) =>
+                                const AnimeCardSkeleton()
+                                    .animate(delay: (index * 100).ms)
+                                    .fadeIn(),
                           );
                         }
                         final animeList = snapshot.data ?? [];
@@ -506,10 +528,17 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                           separatorBuilder: (_, __) =>
                               const SizedBox(width: 16),
                           itemBuilder: (context, index) {
-                            return _buildAnimeCard(context, animeList[index])
-                                .animate(delay: (300 + index * 100).ms)
-                                .fadeIn()
-                                .slideX(begin: 0.2, end: 0);
+                            return Stack(
+                              children: [
+                                const AnimeCardSkeleton(),
+                                _buildAnimeCard(context, animeList[index])
+                                    .animate(
+                                      delay: (index < 6 ? index * 100 : 0).ms,
+                                    )
+                                    .fadeIn()
+                                    .slideX(begin: 0.2, end: 0),
+                              ],
+                            );
                           },
                         );
                       },
@@ -585,10 +614,19 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
-                          return const Center(
-                            child: CircularProgressIndicator(
-                              color: Colors.black,
-                            ),
+                          return GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  mainAxisSpacing: 16,
+                                  crossAxisSpacing: 16,
+                                  childAspectRatio: 0.7,
+                                ),
+                            itemCount: 6,
+                            itemBuilder: (context, index) =>
+                                const AnimeCardSkeleton()
+                                    .animate(delay: (index * 100).ms)
+                                    .fadeIn(),
                           );
                         }
                         final animeList = snapshot.data ?? [];
