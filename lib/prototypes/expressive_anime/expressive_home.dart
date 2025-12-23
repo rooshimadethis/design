@@ -123,39 +123,44 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                         return Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const SizedBox(height: 20),
-                                Text(
-                                  '$greeting, $name',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium
-                                      ?.copyWith(
-                                        color: Colors.black,
-                                        fontSize: 32,
-                                        fontStyle: FontStyle.italic,
-                                      ),
-                                ),
-                                const SizedBox(height: 4),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 8,
-                                    vertical: 2,
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(height: 20),
+                                  Text(
+                                    '$greeting, $name',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineMedium
+                                        ?.copyWith(
+                                          color: Colors.black,
+                                          fontSize: 32,
+                                          fontStyle: FontStyle.italic,
+                                        ),
                                   ),
-                                  color: Colors.black,
-                                  child: Text(
-                                    'Let\'s find some anime.',
-                                    style: GoogleFonts.teko(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: 2.0,
+                                  const SizedBox(height: 4),
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 8,
+                                      vertical: 2,
+                                    ),
+                                    color: Colors.black,
+                                    child: Text(
+                                      'Let\'s find some anime.',
+                                      style: GoogleFonts.teko(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 2.0,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
+                            const SizedBox(
+                              width: 16,
+                            ), // Spacing between text and avatar
                             if (avatarUrl != null && avatarUrl.isNotEmpty)
                               Container(
                                 decoration: BoxDecoration(
@@ -372,6 +377,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
             GoogleFonts.teko(
               fontSize: 18,
               fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic,
               color: Colors.black,
             ),
           ),
@@ -461,7 +467,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
         );
       },
       child: Container(
-        width: 160,
+        width: 180,
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(width: 3, color: Colors.black),
@@ -478,18 +484,63 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
-              child: Hero(
-                tag: 'anime_cover_${anime.id}',
-                child: anime.coverImage != null
-                    ? Image.network(
-                        anime.coverImage!,
-                        fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) => Container(
-                          color: Colors.grey[200],
-                          child: const Icon(Icons.broken_image),
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Hero(
+                    tag: 'anime_cover_${anime.id}',
+                    child: anime.coverImage != null
+                        ? Image.network(
+                            anime.coverImage!,
+                            fit: BoxFit.cover,
+                            errorBuilder: (_, __, ___) => Container(
+                              color: Colors.grey[200],
+                              child: const Icon(Icons.broken_image),
+                            ),
+                          )
+                        : Container(color: Colors.grey[200]),
+                  ),
+                  if (anime.averageScore != null)
+                    Positioned(
+                      top: 8,
+                      left: 8,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
                         ),
-                      )
-                    : Container(color: Colors.grey[200]),
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                          border: Border.all(color: Colors.white, width: 2),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.black,
+                              offset: Offset(2, 2),
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(
+                              Icons.star,
+                              size: 12,
+                              color: Colors.amber,
+                            ),
+                            const SizedBox(width: 4),
+                            Text(
+                              '${anime.averageScore}%',
+                              style: GoogleFonts.robotoMono(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                ],
               ),
             ),
             Container(
@@ -502,31 +553,14 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                 children: [
                   Text(
                     anime.title.toUpperCase(),
-                    maxLines: 2,
+                    maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.teko(
-                      fontSize: 20,
+                      fontSize: 22,
                       fontWeight: FontWeight.bold,
                       height: 0.9,
                     ),
                   ),
-                  if (anime.averageScore != null) ...[
-                    const SizedBox(height: 6),
-                    Row(
-                      children: [
-                        const Icon(Icons.star, size: 16, color: Colors.amber),
-                        const SizedBox(width: 4),
-                        Text(
-                          '${anime.averageScore}%',
-                          style: GoogleFonts.robotoMono(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
                 ],
               ),
             ),
