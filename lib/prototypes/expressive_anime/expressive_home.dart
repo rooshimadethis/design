@@ -65,6 +65,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
     text: 'naruto',
   );
   String? _libraryInitialTab;
+  Key _libraryKey = const PageStorageKey('library_page');
 
   late Future<UserProfile> _profileFuture;
   late Future<List<WatchingEntry>> _watchingFuture;
@@ -201,6 +202,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                       setState(() {
                         _libraryInitialTab = 'Watching';
                         _selectedIndex = 2;
+                        _libraryKey = UniqueKey();
                       });
                     },
                   ).animate().fadeIn(delay: 100.ms).slideX(begin: -0.2, end: 0),
@@ -249,12 +251,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                   _buildSectionTitle(
                     context,
                     'Trending Now',
-                    onPressed: () {
-                      setState(() {
-                        _libraryInitialTab = 'Planning';
-                        _selectedIndex = 2;
-                      });
-                    },
+                    // Button removed as per request
                   ).animate().fadeIn(delay: 200.ms).slideX(begin: -0.2, end: 0),
                   const SizedBox(height: 16),
                   SizedBox(
@@ -384,7 +381,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
               ),
             ),
           ),
-          LibraryPage(initialTabName: _libraryInitialTab),
+          LibraryPage(key: _libraryKey, initialTabName: _libraryInitialTab),
         ],
       ),
       bottomNavigationBar: Container(
@@ -472,17 +469,18 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
               ),
             ),
           ),
-          TextButton(
-            onPressed: onPressed,
-            child: Text(
-              'See All >',
-              style: GoogleFonts.teko(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                color: Colors.black,
+          if (onPressed != null)
+            TextButton(
+              onPressed: onPressed,
+              child: Text(
+                'See All >',
+                style: GoogleFonts.teko(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
               ),
             ),
-          ),
         ],
       ),
     );
