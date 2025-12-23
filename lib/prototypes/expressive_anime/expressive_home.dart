@@ -145,7 +145,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    shape: BoxShape.rectangle, // Square avatar
+                                    shape: BoxShape.circle, // Circular avatar
                                     border: Border.all(
                                       color: Colors.black,
                                       width: 3,
@@ -158,11 +158,13 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                                       ),
                                     ],
                                   ),
-                                  child: ExpressiveImage(
-                                    imageUrl: avatarUrl,
-                                    width: 56,
-                                    height: 56,
-                                    fit: BoxFit.cover,
+                                  child: ClipOval(
+                                    child: ExpressiveImage(
+                                      imageUrl: avatarUrl,
+                                      width: 56,
+                                      height: 56,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ),
