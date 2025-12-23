@@ -73,6 +73,7 @@ class MockDataService {
   ///
   /// Returns a map where keys are list names and values are lists of [WatchingEntry].
   /// Each entry includes the anime and the user's progress/score for that anime.
+  /// Lists are ordered: Watching, Planning, Completed, Dropped
   Future<Map<String, List<WatchingEntry>>> getLibraryLists() async {
     final jsonString = await rootBundle.loadString(
       'assets/anilist_data/viewer_data.json',
@@ -95,7 +96,24 @@ class MockDataService {
       }).toList();
     }
 
-    return library;
+    // Reorder lists to: Watching, Planning, Completed, Dropped
+    final orderedLibrary = <String, List<WatchingEntry>>{};
+    const desiredOrder = ['Watching', 'Planning', 'Completed', 'Dropped'];
+
+    for (final listName in desiredOrder) {
+      if (library.containsKey(listName)) {
+        orderedLibrary[listName] = library[listName]!;
+      }
+    }
+
+    // Add any remaining lists that weren't in the desired order
+    for (final entry in library.entries) {
+      if (!orderedLibrary.containsKey(entry.key)) {
+        orderedLibrary[entry.key] = entry.value;
+      }
+    }
+
+    return orderedLibrary;
   }
 
   /// Loads the list of currently trending anime.
