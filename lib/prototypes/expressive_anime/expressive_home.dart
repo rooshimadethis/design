@@ -1,7 +1,9 @@
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../common/models/anime.dart';
+import '../../common/models/user_profile.dart';
 import '../../common/services/mock_data_service.dart';
 import 'anime_details_page.dart';
 
@@ -37,6 +39,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
   final Map<int, int> _progressOverrides = {};
 
   void _incrementProgress(int entryId, int currentProgress) {
+    // TODO: Stub - In a real app, this would call an API to update progress
     setState(() {
       _progressOverrides[entryId] = currentProgress + 1;
     });
@@ -57,25 +60,66 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 20),
-                        Text(
-                          'Good Morning!',
-                          style: Theme.of(context).textTheme.headlineMedium
-                              ?.copyWith(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black87,
+                    child: FutureBuilder<UserProfile>(
+                      future: MockDataService().getUserProfile(),
+                      builder: (context, snapshot) {
+                        final user = snapshot.data;
+                        final name = user?.name ?? 'Guest';
+                        final avatarUrl = user?.avatarMedium;
+
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(height: 20),
+                                Text(
+                                  'Good Morning, $name!',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black87,
+                                        fontSize: 24,
+                                      ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  'Let\'s find some anime.',
+                                  style: Theme.of(context).textTheme.titleMedium
+                                      ?.copyWith(color: Colors.black54),
+                                ),
+                              ],
+                            ),
+                            if (avatarUrl != null)
+                              Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Colors.white,
+                                    width: 2,
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withValues(
+                                        alpha: 0.1,
+                                      ),
+                                      blurRadius: 8,
+                                      offset: const Offset(0, 4),
+                                    ),
+                                  ],
+                                ),
+                                child: CircleAvatar(
+                                  radius: 24,
+                                  backgroundImage: NetworkImage(avatarUrl),
+                                  backgroundColor: Colors.grey[200],
+                                ),
                               ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Let\'s find some anime.',
-                          style: Theme.of(context).textTheme.titleMedium
-                              ?.copyWith(color: Colors.black54),
-                        ),
-                      ],
+                          ],
+                        );
+                      },
                     ),
                   ),
                   const SizedBox(height: 32),
@@ -107,7 +151,12 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                             final entry = entries[index];
                             final progress =
                                 _progressOverrides[entry.id] ?? entry.progress;
-                            return _buildWatchingCard(context, entry, progress)
+                            return WatchingCard(
+                                  entry: entry,
+                                  progress: progress,
+                                  onIncrement: () =>
+                                      _incrementProgress(entry.id, progress),
+                                )
                                 .animate(delay: (index * 100).ms)
                                 .fadeIn()
                                 .slideX(begin: 0.2, end: 0);
@@ -356,26 +405,57 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
       ),
     );
   }
+}
 
-  Widget _buildWatchingCard(
-    BuildContext context,
-    WatchingEntry entry,
-    int progress,
-  ) {
+class WatchingCard extends StatefulWidget {
+  final WatchingEntry entry;
+  final int progress;
+  final VoidCallback onIncrement;
+
+  const WatchingCard({
+    super.key,
+    required this.entry,
+    required this.progress,
+    required this.onIncrement,
+  });
+
+  @override
+  State<WatchingCard> createState() => _WatchingCardState();
+}
+
+class _WatchingCardState extends State<WatchingCard> {
+  late ConfettiController _confettiController;
+
+  @override
+  void initState() {
+    super.initState();
+    _confettiController = ConfettiController(
+      duration: const Duration(seconds: 1),
+    );
+  }
+
+  @override
+  void dispose() {
+    _confettiController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     // Calculate progress as a fraction (assuming 12, 24, etc episodes if available,
     // else just show a bar that fills up somewhat arbitrarily or based on strict logic)
     // The JSON provided has 'episodes', so we can use that.
-    final totalEpisodes = entry.anime.episodes ?? 12; // fallback
-    final progressFraction = (progress / totalEpisodes).clamp(0.0, 1.0);
+    final totalEpisodes = widget.entry.anime.episodes ?? 12; // fallback
+    final progressFraction = (widget.progress / totalEpisodes).clamp(0.0, 1.0);
 
     // Check if there is a next episode
-    final hasNext = progress < totalEpisodes;
+    final hasNext = widget.progress < totalEpisodes;
 
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => AnimeDetailsPage(anime: entry.anime),
+            builder: (context) => AnimeDetailsPage(anime: widget.entry.anime),
           ),
         );
       },
@@ -402,13 +482,13 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                 bottomLeft: Radius.circular(24),
               ),
               child: Hero(
-                tag: 'watching_${entry.id}',
+                tag: 'watching_${widget.entry.id}',
                 child: SizedBox(
                   width: 100,
                   height: double.infinity,
-                  child: entry.anime.coverImage != null
+                  child: widget.entry.anime.coverImage != null
                       ? Image.network(
-                          entry.anime.coverImage!,
+                          widget.entry.anime.coverImage!,
                           fit: BoxFit.cover,
                           errorBuilder: (_, __, ___) => Container(
                             color: Colors.grey[200],
@@ -428,7 +508,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      entry.anime.title,
+                      widget.entry.anime.title,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
@@ -437,7 +517,7 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'Episode ${progress + 1}',
+                      'Episode ${widget.progress + 1}',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: Theme.of(context).colorScheme.primary,
                         fontWeight: FontWeight.w600,
@@ -462,23 +542,49 @@ class _ExpressiveHomePageState extends State<ExpressiveHomePage> {
             if (hasNext)
               Padding(
                 padding: const EdgeInsets.only(right: 16.0),
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    onTap: () => _incrementProgress(entry.id, progress),
-                    borderRadius: BorderRadius.circular(12),
-                    child: Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primaryContainer,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    ConfettiWidget(
+                      confettiController: _confettiController,
+                      blastDirectionality: BlastDirectionality.explosive,
+                      shouldLoop: false,
+                      gravity: 0.2, // Float down slowly
+                      numberOfParticles: 10,
+                      maxBlastForce: 5,
+                      minBlastForce: 2,
+                      colors: const [
+                        Colors.green,
+                        Colors.blue,
+                        Colors.pink,
+                        Colors.orange,
+                        Colors.purple,
+                      ], // manually specify colors
+                    ),
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () {
+                          widget.onIncrement();
+                          _confettiController.play();
+                        },
                         borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Icon(
-                        Icons.add_rounded,
-                        color: Theme.of(context).colorScheme.primary,
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.primaryContainer,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Icon(
+                            Icons.add_rounded,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ),
           ],

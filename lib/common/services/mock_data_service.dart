@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import '../models/anime.dart';
+import '../models/user_profile.dart';
 
 class WatchingEntry {
   final Anime anime;
@@ -15,6 +16,14 @@ class WatchingEntry {
 }
 
 class MockDataService {
+  Future<UserProfile> getUserProfile() async {
+    final jsonString = await rootBundle.loadString(
+      'assets/anilist_data/user_profile.json',
+    );
+    final Map<String, dynamic> json = jsonDecode(jsonString);
+    return UserProfile.fromJson(json['data']['User']);
+  }
+
   Future<List<WatchingEntry>> getWatchingList() async {
     final jsonString = await rootBundle.loadString(
       'assets/anilist_data/user_watching_list.json',
